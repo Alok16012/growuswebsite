@@ -1,9 +1,25 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
+import { downloadLeads } from "./downloadLeads";
+
 export const LeadsInbox = () => {
   const [n, setN] = useState([]);
   const [s, setS] = useState(true);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState(false);
+
+  const exportLeads = async () => {
+    setExporting(true);
+    setExportError(false);
+    try {
+      await downloadLeads(n);
+    } catch {
+      setExportError(true);
+    } finally {
+      setExporting(false);
+    }
+  };
   useEffect(() => {
     (async () => {
       const { data, error } = await supabase
@@ -36,12 +52,27 @@ export const LeadsInbox = () => {
   }
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <h2 className="text-white font-bold text-xl">Recent Leads</h2>
-        <div className="text-white/40 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
-          {n.length} total entries
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="text-white/60 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
+            {n.length} total entries
+          </span>
+          <button
+            type="button"
+            onClick={exportLeads}
+            disabled={n.length === 0 || exporting}
+            className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {exporting ? "Preparing Excel…" : "Download Excel"}
+          </button>
         </div>
       </div>
+      {exportError && (
+        <p role="alert" className="mb-4 text-sm text-red-300">
+          The Excel download failed. Please try again.
+        </p>
+      )}
       {n.length === 0 ? (
         <div className="bg-white/5 border border-white/10 rounded-2xl p-10 text-center text-white/50">
           No leads found. When users submit forms, they will appear here.
