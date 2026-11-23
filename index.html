@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growus Auto - Quality Control & Supply Chain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-BWs3ErqF.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C_mNjsmn.css">
+  <style>
+    img[alt="Growus Auto Logo"] {
+      background-color: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    (function () {
+      var labels = ['DOMESTIC CLIENTS', 'INTERNATIONAL CLIENTS'];
+      var injected = false;
+
+      function addLabels() {
+        if (injected) return true;
+
+        // Find the space-y-6 container that holds the 2 marquee rows
+        var containers = document.querySelectorAll('.space-y-6');
+        var rowsContainer = null;
+        for (var i = 0; i < containers.length; i++) {
+          var children = containers[i].children;
+          if (children.length >= 2 &&
+              children[0].classList.contains('overflow-hidden') &&
+              children[1].classList.contains('overflow-hidden')) {
+            rowsContainer = containers[i];
+            break;
+          }
+        }
+        if (!rowsContainer) return false;
+
+        // Snapshot rows into array first (live HTMLCollection shifts on DOM mutation)
+        var rows = [rowsContainer.children[0], rowsContainer.children[1]];
+        for (var j = 0; j < 2; j++) {
+          var row = rows[j];
+          if (!row || row.querySelector('.growus-row-label')) continue;
+
+          var wrapper = document.createElement('div');
+          wrapper.style.cssText = 'position:relative;';
+
+          var label = document.createElement('div');
+          label.className = 'growus-row-label';
+          label.textContent = labels[j];
+          label.style.cssText = [
+            'display:inline-block',
+            'font-size:10px',
+            'font-weight:900',
+            'letter-spacing:0.25em',
+            'text-transform:uppercase',
+            'color:#2563eb',
+            'background:#eff6ff',
+            'border:1px solid #bfdbfe',
+            'border-radius:6px',
+            'padding:3px 10px',
+            'margin-bottom:8px',
+            'margin-left:4px'
+          ].join(';');
+
+          row.parentNode.insertBefore(wrapper, row);
+          wrapper.appendChild(label);
+          wrapper.appendChild(row);
+        }
+
+        injected = true;
+        return true;
+      }
+
+      var observer = new MutationObserver(function () {
+        if (addLabels()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      setTimeout(function () { observer.disconnect(); }, 20000);
+    })();
+  </script>
+</body>
+
+</html>

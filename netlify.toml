@@ -1,0 +1,9 @@
+# Static site: the files are already built, so Netlify publishes them as they are.
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
