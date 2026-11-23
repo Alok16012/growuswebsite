@@ -1,7 +1,9 @@
-# Static site: the files are already built, so Netlify publishes them as they are.
 [build]
-  publish = "."
-  command = ""
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 [[redirects]]
   from = "/*"

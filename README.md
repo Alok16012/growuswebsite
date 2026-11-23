@@ -1,10 +1,27 @@
-# Growus Auto (growusauto.com)
+# Growus Auto website (growusauto.com)
 
-These are the built files of the live site, recovered from the Netlify deploy
-(site `growus-auto-industrial`) on 2026-11-23. The original React/Vite source was not kept.
+React + Vite + Tailwind CSS site. Content comes from Supabase (`site_settings` table, row id 1),
+merged over the defaults in `src/config/defaultConfig.js`. Form submissions go to the `leads` table.
 
-- `index.html`: page shell (also includes an inline script that adds the DOMESTIC / INTERNATIONAL CLIENTS labels)
-- `assets/index-BWs3ErqF.js`: compiled React app (minified). Supabase tables used: `leads`, `site_settings`
-- `assets/index-C_mNjsmn.css`: compiled Tailwind CSS
+This source was rebuilt on 2026-11-23 from the live production bundle (the original source was lost).
+Every page was checked against the live site and renders the same.
 
-Netlify deploys this folder as it is (see `netlify.toml`), with no build step.
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy
+
+Push to `main`. Netlify builds with `npm run build` and publishes `dist/` (see `netlify.toml`).
+
+## Layout
+
+- `src/App.jsx`: page switching (home, about, services, service detail, gallery, culture, open positions, contact, admin)
+- `src/pages/`: one file per page
+- `src/components/`: shared parts (Navbar, Footer, modals, IndiaMap) and per-page sections in subfolders
+- `src/admin/`: admin panel (login, leads inbox, content editors that save to `site_settings`)
+- `src/context/SiteConfigContext.jsx`: loads and saves the site config
+- `src/lib/supabase.js`: Supabase client

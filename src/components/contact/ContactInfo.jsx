@@ -1,0 +1,124 @@
+import { useSiteConfig } from "../../context/SiteConfigContext";
+
+export const ContactInfo = () => {
+  const { config } = useSiteConfig();
+  const info = config.contact.info;
+  const config_global = config.global;
+  const i = [
+    <svg
+      className="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+      />
+    </svg>,
+    <svg
+      className="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+      />
+    </svg>,
+    <svg
+      className="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"
+      />
+    </svg>,
+    <svg
+      className="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      />
+    </svg>,
+  ];
+  return (
+    <section
+      className="py-16 px-8 border-b border-black/5"
+      style={{
+        backgroundColor:
+          config_global.design?.backgrounds?.sectionLight || "#f9fafb",
+      }}
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {info.items.map((c, u) => (
+          <div
+            key={u}
+            className="group p-10 rounded-3xl border border-white/5 transition-all duration-500 text-center shadow-xl hover:shadow-2xl"
+            style={{
+              backgroundColor:
+                config_global.design?.backgrounds?.sectionDark ||
+                config_global.deepBlue,
+              borderColor:
+                config_global.design?.text?.subheading || "transparent",
+            }}
+          >
+            <div
+              className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 mx-auto transition-all duration-500"
+              style={{
+                color:
+                  config_global.design?.icons?.color ||
+                  config_global.primaryBlue,
+              }}
+            >
+              {i[u] || i[0]}
+            </div>
+            <h4
+              className="font-black text-xl mb-4 tracking-tighter uppercase"
+              style={{
+                color: config_global.design?.text?.heading || "#ffffff",
+              }}
+            >
+              {c.title}
+            </h4>
+            <div className="space-y-1">
+              {c.details.map((d, m) => (
+                <p
+                  key={m}
+                  className="text-sm font-bold leading-relaxed"
+                  style={{
+                    color: config_global.design?.text?.paragraph || "#cbd5e1",
+                  }}
+                >
+                  {d}
+                </p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};

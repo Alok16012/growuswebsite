@@ -1,0 +1,52 @@
+import { useState } from "react";
+import { useSiteConfig } from "../context/SiteConfigContext";
+import { Navbar } from "../components/Navbar";
+import { ServicesHero } from "../components/services/ServicesHero";
+import { ServiceCard } from "../components/services/ServiceCard";
+import { StatsBand } from "../components/services/StatsBand";
+import { QuoteCTA } from "../components/services/QuoteCTA";
+import { IndustriesServed } from "../components/services/IndustriesServed";
+import { QuoteModal } from "../components/QuoteModal";
+import { Footer } from "../components/Footer";
+
+export const ServicesPage = ({ setCurrentPage }) => {
+  const { config } = useSiteConfig();
+  const { services, global } = config;
+  const [c, setC] = useState(false);
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar currentPage="services" setCurrentPage={setCurrentPage} />
+      <ServicesHero />
+      <section className="bg-gray-50 py-14 px-8">
+        <h2
+          className="text-3xl md:text-4xl font-black text-center mb-4 uppercase tracking-tighter"
+          style={{
+            color: global.deepBlue,
+          }}
+        >
+          {services.sectionTitle}
+        </h2>
+        <div
+          className="w-24 h-1 mx-auto mb-12"
+          style={{
+            backgroundColor: global.primaryBlue,
+          }}
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {services.items.map((service, m) => (
+            <ServiceCard
+              key={m}
+              service={service}
+              onClick={() => setCurrentPage(`service-${service.slug}`)}
+            />
+          ))}
+        </div>
+      </section>
+      <StatsBand />
+      <QuoteCTA onQuoteClick={() => setC(true)} />
+      <IndustriesServed />
+      <QuoteModal isOpen={c} onClose={() => setC(false)} />
+      <Footer />
+    </div>
+  );
+};
