@@ -2,6 +2,7 @@ import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const Clients = () => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.homeClients;
   const clients = config.home.clients;
   const config_global = config.global;
   const IComponent = ({ clients, reverse = false }) => (
@@ -37,7 +38,7 @@ export const Clients = () => {
   );
   return (
     <section
-      className="py-16 px-4 md:px-8 overflow-hidden relative border-t border-black/5"
+      className="site-section overflow-hidden relative border-t border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
@@ -57,7 +58,7 @@ export const Clients = () => {
               {clients.subtitle}
             </h2>
             <h3
-              className="text-3xl md:text-6xl font-black mb-6 uppercase tracking-tighter"
+              className="section-title mb-6 uppercase"
               style={{
                 color:
                   config_global.design?.backgrounds?.sectionLight ===
@@ -78,10 +79,10 @@ export const Clients = () => {
               }}
             />
           </div>
-          <div className="flex gap-8 bg-white p-8 rounded-3xl border border-gray-100 shadow-2xl">
+          <div className="flex w-full max-w-sm justify-center gap-4 bg-white p-4 sm:gap-8 sm:p-8 rounded-3xl border border-gray-100 shadow-2xl">
             <div className="text-center">
               <div
-                className="text-4xl md:text-6xl font-black mb-2"
+                className="text-3xl sm:text-4xl font-black mb-2"
                 style={{
                   color:
                     config_global.design?.backgrounds?.sectionLight ===
@@ -94,20 +95,20 @@ export const Clients = () => {
                 {clients.domesticCount}
               </div>
               <div
-                className="text-[10px] font-black uppercase tracking-[0.3em]"
+                className="text-xs font-bold uppercase tracking-wide"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||
                     config_global.primaryBlue,
                 }}
               >
-                Domestic
+                {pageCopy.domestic}
               </div>
             </div>
             <div className="h-16 w-px bg-gray-200 self-center" />
             <div className="text-center">
               <div
-                className="text-4xl md:text-6xl font-black mb-2"
+                className="text-3xl sm:text-4xl font-black mb-2"
                 style={{
                   color:
                     config_global.design?.backgrounds?.sectionLight ===
@@ -120,14 +121,14 @@ export const Clients = () => {
                 {clients.overseasCount}
               </div>
               <div
-                className="text-[10px] font-black uppercase tracking-[0.3em]"
+                className="text-xs font-bold uppercase tracking-wide"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||
                     config_global.primaryBlue,
                 }}
               >
-                Overseas
+                {pageCopy.overseas}
               </div>
             </div>
           </div>

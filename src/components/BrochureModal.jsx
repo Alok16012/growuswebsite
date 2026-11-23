@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase";
 
 export const BrochureModal = ({ isOpen, onClose }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.brochure;
   const i = config.brochures || [];
   const [c, setC] = useState(1);
   const [d, setD] = useState(null);
@@ -113,16 +114,15 @@ export const BrochureModal = ({ isOpen, onClose }) => {
             <span className="text-white/80 font-bold text-sm">growus auto</span>
           </div>
           <h2 className="text-white text-2xl md:text-3xl font-black leading-tight mb-2 uppercase tracking-tighter">
-            GET OUR LATEST
+            {pageCopy.getOurLatest}
           </h2>
           <h2 className="text-white text-2xl md:text-3xl font-black leading-tight mb-6 uppercase tracking-tighter">
-            <span className="text-deep-blue font-black">CORPORATE</span>
+            <span className="text-deep-blue font-black">{pageCopy.corporate}</span>
             <br />
-            <span className="text-deep-blue font-black">BROCHURES</span>
+            <span className="text-deep-blue font-black">{pageCopy.brochures}</span>
           </h2>
           <p className="text-white/80 text-sm leading-relaxed mb-8">
-            Take a deep dive into our quality solutions, engineering excellence,
-            and global service standards.
+            {pageCopy.takeADeepDiveInto}
           </p>
           <div className="space-y-3">
             <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 </svg>
               </div>
               <span className="text-white text-xs font-black uppercase tracking-widest">
-                Instant Access
+                {pageCopy.instantAccess}
               </span>
             </div>
             <div className="flex items-center gap-3">
@@ -158,7 +158,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 </svg>
               </div>
               <span className="text-white text-xs font-black uppercase tracking-widest">
-                Global Standards
+                {pageCopy.globalStandards}
               </span>
             </div>
           </div>
@@ -185,10 +185,10 @@ export const BrochureModal = ({ isOpen, onClose }) => {
           {c === 1 && (
             <div>
               <p className="text-primary-blue text-[10px] font-black tracking-[0.3em] uppercase mb-2">
-                STEP 1 OF 2
+                {pageCopy.step1Of2}
               </p>
               <h3 className="text-deep-blue text-xl font-black mb-6 uppercase tracking-tighter">
-                SELECT A BROCHURE
+                {pageCopy.selectABrochure}
               </h3>
               <div className="space-y-3">
                 {i.map((E) => (
@@ -257,13 +257,13 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-                BACK
+                {pageCopy.back}
               </button>
               <p className="text-primary-blue text-[10px] font-black tracking-[0.3em] uppercase mb-2">
-                STEP 2 OF 2
+                {pageCopy.step2Of2}
               </p>
               <h3 className="text-deep-blue text-xl font-black mb-1 uppercase tracking-tighter">
-                FILL YOUR DETAILS
+                {pageCopy.fillYourDetails}
               </h3>
               <p className="text-gray-600 text-xs mb-5 font-medium">
                 For:{" "}
@@ -275,7 +275,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 <div>
                   <input
                     type="text"
-                    placeholder="Your Name *"
+                    placeholder={pageCopy.yourName}
                     value={p.name}
                     onChange={(E) =>
                       setP({
@@ -290,7 +290,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 <div>
                   <input
                     type="email"
-                    placeholder="Email Address *"
+                    placeholder={pageCopy.emailAddress}
                     value={p.email}
                     onChange={(E) =>
                       setP({
@@ -305,7 +305,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 <div>
                   <input
                     type="tel"
-                    placeholder="Mobile Number *"
+                    placeholder={pageCopy.mobileNumber}
                     value={p.mobile}
                     onChange={(E) =>
                       setP({
@@ -360,13 +360,13 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                           d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                         />
                       </svg>
-                      DOWNLOAD BROCHURE
+                      {pageCopy.downloadBrochure}
                     </>
                   )}
                 </button>
               </form>
               <p className="text-gray-600 text-[9px] text-center mt-3">
-                By downloading, you agree to receive updates from Growus Auto.
+                {pageCopy.byDownloadingYouAgreeTo}
               </p>
             </div>
           )}
@@ -388,10 +388,10 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 </svg>
               </div>
               <h3 className="text-deep-blue text-lg font-black mb-2 uppercase tracking-tighter">
-                DOWNLOAD STARTED!
+                {pageCopy.downloadStarted}
               </h3>
               <p className="text-gray-600 text-sm text-center font-medium">
-                Thank you! Your brochure is being downloaded.
+                {pageCopy.thankYouYourBrochureIs}
               </p>
             </div>
           )}

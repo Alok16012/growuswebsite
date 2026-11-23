@@ -1,7 +1,18 @@
-import { ColorInput, TextInput } from "../fields";
+import { ImageUpload, ColorInput, TextInput } from "../fields";
 
 export const NavbarEditor = ({ config, updateConfig }) => (
   <div>
+    <TextInput
+      label="Portal destination (https:// or site path)"
+      value={config.navbar.topBarUrl}
+      onChange={(value) => updateConfig("navbar.topBarUrl", value)}
+    />
+    <ImageUpload
+      label="Website logo image"
+      value={config.navbar.logoUrl}
+      onChange={(value) => updateConfig("navbar.logoUrl", value)}
+      bucketName="images"
+    />
     <ColorInput
       label="Header Background Color"
       value={config.navbar.backgroundColor}

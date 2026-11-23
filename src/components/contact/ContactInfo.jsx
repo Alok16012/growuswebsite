@@ -66,7 +66,7 @@ export const ContactInfo = () => {
   ];
   return (
     <section
-      className="py-16 px-8 border-b border-black/5"
+      className="site-section border-b border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",

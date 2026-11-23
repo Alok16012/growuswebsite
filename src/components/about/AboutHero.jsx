@@ -5,7 +5,7 @@ export const AboutHero = () => {
   const hero = config.about.hero;
   const config_global = config.global;
   return (
-    <section className="relative h-[500px] w-full overflow-hidden">
+    <section className="relative flex w-full overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -13,7 +13,7 @@ export const AboutHero = () => {
         }}
       />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-8 text-center pt-28 md:pt-32">
+      <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
           className="font-black text-sm tracking-[0.4em] mb-6 animate-fade-in-down"
           style={{
@@ -26,7 +26,7 @@ export const AboutHero = () => {
           {hero.subtitle}
         </p>
         <h1
-          className="text-5xl md:text-7xl font-black mb-6 tracking-tight"
+          className="page-title mb-6"
           style={{
             color:
               config_global.design?.hero?.heading ||

@@ -5,9 +5,9 @@ export const IndustriesServed = () => {
   const industries = config.home.industries;
   const config_global = config.global;
   return (
-    <section className="bg-gray-50 py-16 px-8 overflow-hidden border-y border-black/5">
+    <section className="bg-gray-50 site-section overflow-hidden border-y border-black/5">
       <h2
-        className="text-3xl md:text-4xl font-black text-center mb-4 uppercase tracking-tighter"
+        className="section-title text-center mb-4 uppercase"
         style={{
           color: config_global.deepBlue,
         }}

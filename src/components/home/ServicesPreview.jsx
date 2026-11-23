@@ -2,6 +2,7 @@ import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const ServicesPreview = ({ setCurrentPage }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.homeServices;
   const services = config.home.services;
   const config_global = config.global;
   const c = [
@@ -100,7 +101,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
       }}
     >
       <h2
-        className="text-2xl md:text-4xl font-black text-center mb-4 uppercase tracking-tighter"
+        className="section-title text-center mb-4 uppercase"
         style={{
           color:
             config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
@@ -193,7 +194,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
                     config_global.design?.buttons?.primaryText || "#ffffff",
                 }}
               >
-                VIEW DETAILS
+                {pageCopy.viewDetails}
               </button>
             </div>
           </div>

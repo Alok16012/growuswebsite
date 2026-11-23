@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSiteConfig } from "../context/SiteConfigContext";
 import { LeadsInbox } from "../admin/LeadsInbox";
 import { GlobalEditor } from "../admin/editors/GlobalEditor";
@@ -25,36 +25,77 @@ import { ContactInfoEditor } from "../admin/editors/contact/ContactInfoEditor";
 import { ContactFormEditor } from "../admin/editors/contact/ContactFormEditor";
 import { JoinProgramFormEditor } from "../admin/editors/about/JoinProgramFormEditor";
 import { FooterEditor } from "../admin/editors/FooterEditor";
+import { PageCopyEditor } from "../admin/editors/PageCopyEditor";
+import { CollectionControls } from "../admin/editors/CollectionControls";
 import { ADMIN_TABS } from "../admin/tabs";
-import { AdminLogin } from "../admin/AdminLogin";
+import { AdminLogin, isAdminUser } from "../admin/AdminLogin";
+import { supabase } from "../lib/supabase";
 
 export const AdminPage = ({ setCurrentPage }) => {
-  const { config, updateConfig, resetConfig } = useSiteConfig();
-  const [c, setC] = useState(
-    () => sessionStorage.getItem("admin_auth") === "true",
-  );
+  const { config: publishedConfig, defaultConfig, saveConfig } = useSiteConfig();
+  const [draft, setDraft] = useState(null);
+  const [admin, setAdmin] = useState(null);
+  const [checkingSession, setCheckingSession] = useState(true);
+  const config = draft ?? publishedConfig;
   const [d, setD] = useState("global");
   const [p, setP] = useState(true);
   const [b, setB] = useState(false);
-  const [v, setV] = useState(false);
-  const onLogin = () => {
-    setC(true);
-    sessionStorage.setItem("admin_auth", "true");
+  const [saveStatus, setSaveStatus] = useState("idle");
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setAdmin(isAdminUser(session?.user) ? session.user : null);
+        setCheckingSession(false);
+      },
+    );
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      setSaveStatus("logout-error");
+      return;
+    }
+    setDraft(null);
+    setSaveStatus("idle");
   };
-  const _ = () => {
-    setC(false);
-    sessionStorage.removeItem("admin_auth");
+
+  const updateConfig = (path, value) => {
+    setSaveStatus((status) => status === "saving" ? status : "idle");
+    setDraft((previous) => {
+      const next = structuredClone(previous ?? publishedConfig);
+      const keys = path.split(".");
+      let target = next;
+      for (const key of keys.slice(0, -1)) {
+        target[key] ??= {};
+        target = target[key];
+      }
+      target[keys.at(-1)] = value;
+      return next;
+    });
   };
-  const C = () => {
-    setV(true);
-    setTimeout(() => setV(false), 2000);
+
+  const persist = async (reset = false) => {
+    setSaveStatus("saving");
+    try {
+      await saveConfig(reset ? structuredClone(defaultConfig) : draft);
+      setDraft((current) => reset || current === draft ? null : current);
+      setB(false);
+      setSaveStatus(reset ? "reset" : "saved");
+    } catch {
+      setSaveStatus("error");
+    }
   };
-  const E = () => {
-    resetConfig();
-    setB(false);
-    setV(true);
-    setTimeout(() => setV(false), 2000);
-  };
+  const saving = saveStatus === "saving";
+  const saveMessage = {
+    saving: "Saving…",
+    saved: "Changes saved.",
+    reset: "Content reset.",
+    error: "Could not save changes. Please try again.",
+    "logout-error": "Could not sign out. Please try again.",
+  }[saveStatus];
   const RComponent = () => {
     switch (d) {
       case "leads":
@@ -125,7 +166,10 @@ export const AdminPage = ({ setCurrentPage }) => {
         return null;
     }
   };
-  if (c) {
+  if (checkingSession) {
+    return <p className="p-6" role="status">Checking admin session…</p>;
+  }
+  if (admin) {
     return (
       <div className="min-h-screen bg-[#0A0F1A] flex">
         <aside
@@ -160,7 +204,7 @@ export const AdminPage = ({ setCurrentPage }) => {
           </nav>
           <div className="p-4 border-t border-white/5 space-y-2">
             <button
-              onClick={_}
+              onClick={signOut} disabled={saving}
               className="w-full bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[10px] font-black py-2.5 rounded-xl transition-all uppercase tracking-widest flex items-center justify-center gap-2 border border-red-500/20"
             >
               🔒 Logout Session
@@ -199,32 +243,38 @@ export const AdminPage = ({ setCurrentPage }) => {
                   {ADMIN_TABS.find((A) => A.id === d)?.label}
                 </h2>
                 <p className="text-white/30 text-xs font-medium">
-                  Logged in as growusdata@gmail.com
+                  Logged in as {admin.email}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              {v && (
-                <span className="text-emerald-400 text-xs font-bold uppercase tracking-widest animate-pulse">
-                  ✓ Saved!
+              {!b && saveMessage && (
+                <span role="status" className="text-white text-sm">
+                  {saveMessage}
                 </span>
               )}
               <button
+                disabled={saving}
                 onClick={() => setB(true)}
                 className="bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-bold px-5 py-2.5 rounded-xl transition-all uppercase tracking-wider border border-red-500/20"
               >
                 Reset All
               </button>
               <button
-                onClick={C}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-2.5 rounded-xl transition-all uppercase tracking-wider shadow-lg shadow-blue-600/20"
+                onClick={() => persist()}
+                disabled={!draft || saving}
+                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-2.5 rounded-xl transition-all uppercase tracking-wider shadow-lg shadow-blue-600/20 disabled:opacity-50"
               >
                 💾 Save Changes
               </button>
             </div>
           </header>
           <div className="flex-1 overflow-y-auto p-6">
-            <div className="max-w-2xl mx-auto">{RComponent()}</div>
+            <fieldset disabled={saving} className="min-w-0 max-w-2xl mx-auto">
+              {RComponent()}
+              <CollectionControls tab={d} config={config} updateConfig={updateConfig} />
+              <PageCopyEditor tab={d} config={config} updateConfig={updateConfig} />
+            </fieldset>
           </div>
         </main>
         {b && (
@@ -237,15 +287,18 @@ export const AdminPage = ({ setCurrentPage }) => {
                 This will reset ALL content, colors, and images back to the
                 original defaults. This action cannot be undone.
               </p>
+              {saveMessage && <p role="status" className="mb-4 text-white">{saveMessage}</p>}
               <div className="flex gap-3">
                 <button
-                  onClick={() => setB(false)}
+                  disabled={saving}
+                  onClick={() => { setB(false); setSaveStatus("idle"); }}
                   className="flex-1 bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl text-sm font-bold transition-all uppercase tracking-widest"
                 >
                   Cancel
                 </button>
                 <button
-                  onClick={E}
+                  disabled={saving}
+                  onClick={() => persist(true)}
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-sm font-bold transition-all uppercase tracking-widest"
                 >
                   Reset Everything
@@ -257,5 +310,5 @@ export const AdminPage = ({ setCurrentPage }) => {
       </div>
     );
   }
-  return <AdminLogin onLogin={onLogin} />;
+  return <AdminLogin />;
 };

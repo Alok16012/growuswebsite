@@ -1,4 +1,7 @@
+import { defaultPageCopy } from "./pageCopy.js";
+
 export const defaultConfig = {
+  pageCopy: defaultPageCopy,
   global: {
     primaryBlue: "#2563eb",
     deepBlue: "#0a3663",
@@ -41,6 +44,7 @@ export const defaultConfig = {
     logoText: "growus",
     logoHighlight: "auto",
     topBarText: "Go to My Portal",
+    topBarUrl: "",
     quoteButtonText: "QUOTE",
     quoteButtonBg: "#39C72A",
     brochureButtonText: "BROCHURES",
@@ -53,9 +57,9 @@ export const defaultConfig = {
         "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2560&auto=format&fit=crop",
       overlayColor: "#064289",
       overlayToColor: "#0a3663",
-      heading: "OPTIMIZE YOUR SUPPLY CHAIN WITH OUR GLOBAL SERVICES",
+      heading: "Quality Control That Keeps Production Moving",
       subtext:
-        "We deliver uncompromised excellence across 10+ countries with our elite team of 500+ engineers.",
+        "From on-site engineering to supply-chain inspections, we help manufacturers catch issues early and protect delivery quality.",
       button1Text: `INDUSTRIAL & TECHNICAL
 SOLUTIONS`,
       button1Bg: "#39C72A",
@@ -64,22 +68,22 @@ INSPECTION`,
       button2Border: "#ffffff",
       stats: [
         {
-          number: 500,
+          number: 800,
           suffix: "+",
           label: "Engineers",
         },
         {
-          number: 10,
+          number: 5,
           suffix: "+",
           label: "Countries",
         },
         {
-          number: 15,
+          number: 6,
           suffix: "+",
           label: "Years Experience",
         },
         {
-          number: 99,
+          number: 95,
           suffix: "%",
           label: "Client Retention",
         },
@@ -176,8 +180,8 @@ INSPECTION`,
       headingHighlight: "In Global Quality Control",
       benefits: [
         "ISO Certified Processes",
-        "500+ Trained Quality Engineers",
-        "Operations in 10+ Countries",
+        "800+ Trained Quality Engineers",
+        "Operations in 5+ Countries",
         "Real-time Reporting & Analytics",
         "24/7 Client Support",
       ],
@@ -335,6 +339,7 @@ INSPECTION`,
     },
   },
   careers: {
+    heroImage: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop",
     jobs: [
       {
         title: "Quality Control Lead",
@@ -412,10 +417,10 @@ INSPECTION`,
       paragraph1:
         "Starting with a vision to revolutionize industrial quality control, GROWUS has grown into a trusted partner for global OEMs. Our journey is defined by a relentless pursuit of precision and an unwavering commitment to client success.",
       paragraph2:
-        "Today, we operate across 10+ countries, with over 500 engineers delivering excellence on-site every day. Our expertise spans automotive, aerospace, electronics, and more.",
-      stat1: "15+",
+        "Today, our 800+ engineers support clients across 5+ countries. Our expertise spans automotive, aerospace, electronics, and more.",
+      stat1: "6+",
       stat1Label: "YEARS EXPERIENCE",
-      stat2: "500+",
+      stat2: "800+",
       stat2Label: "EXPERT ENGINEERS",
     },
     dna: {
@@ -516,7 +521,7 @@ INSPECTION`,
     heroTitle: "Technical",
     heroTitleHighlight: "Expertise",
     heroSubtext:
-      "World-class quality management solutions delivered across 10+ countries by 500+ expert engineers.",
+      "Quality management solutions delivered by 800+ expert engineers across 5+ countries.",
     heroBg:
       "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=2070&auto=format&fit=crop",
     items: [
@@ -1133,7 +1138,7 @@ INSPECTION`,
     heroBg:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop",
     heroDescription:
-      "We don't just build technical solutions; we build careers. Join a community of 700+ engineers where precision meets passion and innovation is a daily standard.",
+      "We don't just build technical solutions; we build careers. Join a community of 800+ engineers where precision meets passion and innovation is a daily standard.",
     dnaSubtitle: "OUR DNA",
     dnaTitle: "The Values We Live By",
     dnaValues: [
@@ -1169,7 +1174,7 @@ INSPECTION`,
       },
       {
         title: "Global Exposure",
-        desc: "Work on international projects across 10+ countries.",
+        desc: "Work on international projects across 5+ countries.",
       },
       {
         title: "Work-Life Balance",
@@ -1316,11 +1321,12 @@ INSPECTION`,
       ],
     },
     form: {
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.463132646399!2d73.77443831489467!3d18.643202987334743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9e6e0000001%3A0xe53f53c15330e258!2sJai%20Ganesh%20Vision!5e0!3m2!1sen!2sin!4v1651234567890!5m2!1sen!2sin",
       subtitle: "SEND A MESSAGE",
       heading: "START A CONVERSATION",
       description:
         "Our expert engineers are ready to understand your requirements and provide tailored quality solutions.",
-      supportText: "24/7 TECHNICAL SUPPORT AVAILABLE",
+      supportText: "MON-SAT TECHNICAL SUPPORT AVAILABLE",
       submitButtonText: "SEND INQUIRY →",
       submitButtonBg: "#32cd32",
       fields: [
@@ -1351,12 +1357,13 @@ INSPECTION`,
           type: "select",
           required: true,
           options: [
-            "Industrial Automation",
-            "Engineering Solutions",
-            "Software Development",
-            "Quality Consulting",
+            "Quality Management",
+            "Third Party Inspection",
+            "Engineering & Design",
+            "NDT Testing",
             "Supply Chain Management",
-            "Global Standards",
+            "AMC Services",
+            "Cooler Rental Services",
           ],
         },
         {
@@ -1445,7 +1452,7 @@ INSPECTION`,
     logoText: "growus",
     logoHighlight: "auto",
     description:
-      "Your trusted partner in global quality control and supply chain solutions. Delivering excellence across 10+ countries.",
+      "Your trusted partner in global quality control and supply chain solutions. Supporting clients across 5+ countries.",
     quickLinks: [
       "Home",
       "About Us",

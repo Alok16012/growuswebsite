@@ -115,6 +115,11 @@ export const ADMIN_TABS = [
     icon: "🤝",
   },
   {
+    id: "quote-form",
+    label: "📝 Quote Form",
+    icon: "📝",
+  },
+  {
     id: "brochures",
     label: "📂 Brochures",
     icon: "📂",

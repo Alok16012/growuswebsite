@@ -19,7 +19,7 @@ export const CulturePage = ({ setCurrentPage }) => {
       <CulturePerks />
       <Workspaces />
       <CultureCTA setCurrentPage={setCurrentPage} />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };

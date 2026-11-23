@@ -1,21 +1,25 @@
-export const ResumeCTA = ({ onApply }) => (
-  <section className="py-16 px-8 bg-white border-t border-black/5">
+import { useSiteConfig } from "../../context/SiteConfigContext";
+
+export const ResumeCTA = ({ onApply }) => {
+  const pageCopy = useSiteConfig().config.pageCopy.resume;
+  return (
+  <section className="site-section bg-white border-t border-black/5">
     <div className="max-w-4xl mx-auto">
       <div className="bg-gradient-to-r from-primary-blue to-blue-600 p-16 rounded-3xl text-center">
-        <h3 className="text-white text-4xl font-black mb-6">
-          Don't See Your Role?
+        <h3 className="section-title text-white mb-6">
+          {pageCopy.dontSeeYourRole}
         </h3>
         <p className="text-white/80 text-lg mb-10 max-w-xl mx-auto">
-          We're always looking for talented people. Send us your resume and
-          we'll keep you in mind for future openings.
+          {pageCopy.wereAlwaysLookingForTalented}
         </p>
         <button
           onClick={onApply}
           className="bg-white text-primary-blue font-black px-10 py-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all"
         >
-          SEND YOUR RESUME →
+          {pageCopy.sendYourResume}
         </button>
       </div>
     </div>
   </section>
-);
+  );
+};

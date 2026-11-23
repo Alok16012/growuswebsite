@@ -2,11 +2,12 @@ import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const OurStory = () => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.aboutStory;
   const story = config.about.story;
   const config_global = config.global;
   return (
     <section
-      className="py-16 px-8"
+      className="site-section"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#ffffff",
@@ -42,7 +43,7 @@ export const OurStory = () => {
                 color: config_global.deepBlue,
               }}
             >
-              Years of <br /> Excellence
+              {pageCopy.yearsOf} <br /> {pageCopy.excellence}
             </span>
           </div>
         </div>
@@ -58,7 +59,7 @@ export const OurStory = () => {
             {story.subtitle}
           </h2>
           <h3
-            className="text-4xl md:text-5xl font-black mb-8 leading-tight uppercase tracking-tight"
+            className="section-title mb-8 uppercase"
             style={{
               color:
                 config_global.design?.backgrounds?.sectionLight === "#ffffff" ||

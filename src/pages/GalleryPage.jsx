@@ -13,7 +13,7 @@ export const GalleryPage = ({ setCurrentPage }) => {
       <Navbar currentPage="gallery" setCurrentPage={setCurrentPage} />
       <GalleryHero />
       <GalleryGrid />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };

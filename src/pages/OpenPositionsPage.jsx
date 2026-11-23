@@ -22,7 +22,7 @@ export const OpenPositionsPage = ({ setCurrentPage }) => {
       <CareersHero />
       <JobList onApply={onApply} />
       <ResumeCTA onApply={() => onApply(null)} />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
       <JobApplicationModal
         isOpen={e}
         onClose={() => {

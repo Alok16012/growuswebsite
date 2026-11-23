@@ -4,7 +4,7 @@ export const GalleryHero = () => {
   const { config } = useSiteConfig();
   const { gallery, global } = config;
   return (
-    <section className="relative h-[600px] w-full overflow-hidden">
+    <section className="relative flex w-full overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -12,7 +12,7 @@ export const GalleryHero = () => {
         }}
       />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-8 pt-28 md:pt-32">
+      <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
           className="font-black text-sm tracking-[0.4em] mb-6 uppercase"
           style={{
@@ -25,7 +25,7 @@ export const GalleryHero = () => {
           {gallery.heroSubtitle}
         </p>
         <h1
-          className="text-6xl md:text-8xl font-black mb-8 tracking-tighter uppercase leading-tight"
+          className="page-title mb-6 uppercase"
           style={{
             color:
               global.design?.hero?.heading ||

@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase";
 
 export const QuoteModal = ({ isOpen, onClose }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.quote;
   const config_global = config.global;
   const [c, setC] = useState({
     name: "",
@@ -81,10 +82,10 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                   config_global.design?.text?.heading || config_global.deepBlue,
               }}
             >
-              Get a Quote
+              {pageCopy.getAQuote}
             </h3>
             <p className="text-gray-600 font-medium text-sm mt-1">
-              Fill out the form below and our team will get back to you.
+              {pageCopy.fillOutTheFormBelow}
             </p>
           </div>
           <button
@@ -132,10 +133,10 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                     config_global.deepBlue,
                 }}
               >
-                Request Sent!
+                {pageCopy.requestSent}
               </h4>
               <p className="text-gray-600 font-medium">
-                Our team will contact you shortly.
+                {pageCopy.ourTeamWillContactYou}
               </p>
             </div>
           ) : d === "error" ? (
@@ -163,10 +164,10 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                     config_global.deepBlue,
                 }}
               >
-                Something went wrong
+                {pageCopy.somethingWentWrong}
               </h4>
               <p className="text-gray-600 font-medium">
-                Please try again later.
+                {pageCopy.pleaseTryAgainLater}
               </p>
             </div>
           ) : (
@@ -181,7 +182,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                         config_global.primaryBlue,
                     }}
                   >
-                    Full Name
+                    {pageCopy.fullName}
                   </label>
                   <input
                     required
@@ -194,7 +195,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                       borderColor:
                         config_global.design?.text?.subheading || "#e2e8f0",
                     }}
-                    placeholder="John Doe"
+                    placeholder={pageCopy.johnDoe}
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -206,7 +207,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                         config_global.primaryBlue,
                     }}
                   >
-                    Email
+                    {pageCopy.email}
                   </label>
                   <input
                     required
@@ -219,7 +220,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                       borderColor:
                         config_global.design?.text?.subheading || "#e2e8f0",
                     }}
-                    placeholder="john@company.com"
+                    placeholder={pageCopy.johncompanycom}
                   />
                 </div>
               </div>
@@ -233,7 +234,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                         config_global.primaryBlue,
                     }}
                   >
-                    Phone Number
+                    {pageCopy.phoneNumber}
                   </label>
                   <input
                     required
@@ -258,7 +259,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                         config_global.primaryBlue,
                     }}
                   >
-                    Company
+                    {pageCopy.company}
                   </label>
                   <input
                     type="text"
@@ -270,7 +271,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                       borderColor:
                         config_global.design?.text?.subheading || "#e2e8f0",
                     }}
-                    placeholder="Company Name"
+                    placeholder={pageCopy.companyName}
                   />
                 </div>
               </div>
@@ -283,7 +284,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                       config_global.primaryBlue,
                   }}
                 >
-                  Service Required
+                  {pageCopy.serviceRequired}
                 </label>
                 <select
                   required
@@ -297,7 +298,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                   }}
                 >
                   <option value="" disabled className="text-gray-500">
-                    Select a service
+                    {pageCopy.selectAService}
                   </option>
                   <option value="quality-management">
                     Quality Management System
@@ -324,7 +325,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                       config_global.primaryBlue,
                   }}
                 >
-                  Message
+                  {pageCopy.message}
                 </label>
                 <textarea
                   name="message"
@@ -336,7 +337,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                     borderColor:
                       config_global.design?.text?.subheading || "#e2e8f0",
                   }}
-                  placeholder="Tell us about your requirements..."
+                  placeholder={pageCopy.tellUsAboutYourRequirements}
                 />
               </div>
               <button
@@ -372,7 +373,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                     Submitting...
                   </span>
                 ) : (
-                  "Submit Request →"
+                  pageCopy.submitButton
                 )}
               </button>
             </form>

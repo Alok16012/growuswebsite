@@ -1,4 +1,7 @@
+import { useSiteConfig } from "../context/SiteConfigContext";
+
 export const Logo = ({ size = "md", className = "" }) => {
+  const { logoUrl, logoText, logoHighlight } = useSiteConfig().config.navbar;
   const s = {
     sm: "h-8",
     md: "h-12",
@@ -8,8 +11,8 @@ export const Logo = ({ size = "md", className = "" }) => {
   return (
     <div className={`flex items-center group ${className}`}>
       <img
-        src="/growus-logo.png"
-        alt="Growus Auto Logo"
+        src={logoUrl || "/growus-logo.png"}
+        alt={[logoText, logoHighlight].filter(Boolean).join(" ") || "Growus Auto"}
         className={`w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] ${i}`}
         style={{
           backgroundColor: "rgba(255,255,255,0.95)",

@@ -4,6 +4,11 @@ import { FormFieldsEditor } from "../FormFieldsEditor";
 export const ContactFormEditor = ({ config, updateConfig }) => (
   <div>
     <TextInput
+      label="Google Maps embed URL"
+      value={config.contact.form.mapUrl}
+      onChange={(value) => updateConfig("contact.form.mapUrl", value)}
+    />
+    <TextInput
       label="Subtitle"
       value={config.contact.form.subtitle}
       onChange={(s) => updateConfig("contact.form.subtitle", s)}

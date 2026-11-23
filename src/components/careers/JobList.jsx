@@ -4,6 +4,7 @@ import { JobCard } from "./JobCard";
 
 export const JobList = ({ onApply }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.jobList;
   const s = config?.careers?.jobs || [];
   const [i, setI] = useState("");
   const [u, setU] = useState("All");
@@ -16,15 +17,15 @@ export const JobList = ({ onApply }) => {
     return b && x;
   });
   return (
-    <section className="bg-gray-50 py-16 px-8 border-y border-black/5">
+    <section className="bg-gray-50 site-section border-y border-black/5">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <h2 className="text-primary-blue text-sm font-black tracking-[0.3em] uppercase mb-4">
-              CURRENT VACANCIES
+              {pageCopy.currentVacancies}
             </h2>
-            <h3 className="text-deep-blue text-4xl font-black uppercase tracking-tighter">
-              Browse Open Roles
+            <h3 className="section-title text-deep-blue uppercase">
+              {pageCopy.browseOpenRoles}
             </h3>
           </div>
           <div className="flex items-center gap-4">
@@ -44,7 +45,7 @@ export const JobList = ({ onApply }) => {
               </svg>
               <input
                 type="text"
-                placeholder="Search by title or department..."
+                placeholder={pageCopy.searchByTitleOrDepartment}
                 value={i}
                 onChange={(g) => setI(g.target.value)}
                 className="bg-white border border-black/10 rounded-full pl-10 pr-6 py-3 text-deep-blue text-sm font-medium placeholder:text-deep-blue/50 focus:outline-none focus:border-primary-blue transition-colors w-80 shadow-inner"
@@ -71,7 +72,7 @@ export const JobList = ({ onApply }) => {
         {p.length === 0 && (
           <div className="text-center py-16">
             <p className="text-deep-blue/40 text-lg font-black uppercase tracking-widest">
-              No positions found matching your search.
+              {pageCopy.noPositionsFoundMatchingYour}
             </p>
           </div>
         )}

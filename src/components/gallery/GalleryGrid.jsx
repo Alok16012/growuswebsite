@@ -3,13 +3,14 @@ import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const GalleryGrid = () => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.gallery;
   const { gallery, global } = config;
   const [i, setI] = useState("events");
   const [u, setU] = useState(null);
   const m = i === "events" ? gallery.events : gallery.activities;
   return (
     <section
-      className="py-16 px-8 border-t border-black/5"
+      className="site-section border-t border-black/5"
       style={{
         backgroundColor: global.design?.backgrounds?.sectionLight || "#ffffff",
       }}
@@ -31,7 +32,7 @@ export const GalleryGrid = () => {
                     : "#6b7280",
               }}
             >
-              Events
+              {pageCopy.events}
             </button>
             <button
               onClick={() => setI("activities")}
@@ -47,7 +48,7 @@ export const GalleryGrid = () => {
                     : "#6b7280",
               }}
             >
-              Activities
+              {pageCopy.activities}
             </button>
           </div>
         </div>

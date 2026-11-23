@@ -21,7 +21,7 @@ export const AboutPage = ({ setCurrentPage }) => {
       <DnaValues />
       <Ecosystem onJoinClick={() => setE(true)} />
       <Team />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
       <JoinProgramModal isOpen={e} onClose={() => setE(false)} />
     </div>
   );

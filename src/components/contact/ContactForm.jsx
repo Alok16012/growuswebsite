@@ -4,6 +4,7 @@ import { supabase } from "../../lib/supabase";
 
 export const ContactForm = () => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.contactForm;
   const form_1 = config.contact.form;
   const config_global = config.global;
   const [i, setI] = useState("idle");
@@ -50,9 +51,9 @@ ${S}: ${p[S]}`;
     }
   };
   return (
-    <section className="py-16 px-8 bg-gray-50 border-t border-black/5">
+    <section className="site-section bg-gray-50 border-t border-black/5">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="space-y-12">
             <div>
               <h2
@@ -66,7 +67,7 @@ ${S}: ${p[S]}`;
                 {form_1.subtitle}
               </h2>
               <h3
-                className="text-4xl md:text-5xl font-black mb-8 leading-[1.1] tracking-tighter uppercase"
+                className="section-title mb-8 uppercase"
                 style={{
                   color:
                     config_global.design?.backgrounds?.sectionLight ===
@@ -129,21 +130,21 @@ ${S}: ${p[S]}`;
                     color: config_global.primaryBlue,
                   }}
                 >
-                  VISIT OUR HEADQUARTERS
+                  {pageCopy.visitOurHeadquarters}
                 </p>
                 <h4 className="text-white text-sm font-black uppercase leading-tight tracking-tight">
-                  Jai Ganesh Vision, <br /> Akurdi, Pune
+                  {pageCopy.jaiGaneshVision} <br /> {pageCopy.akurdiPune}
                 </h4>
               </div>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.463132646399!2d73.77443831489467!3d18.643202987334743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9e6e0000001%3A0xe53f53c15330e258!2sJai%20Ganesh%20Vision!5e0!3m2!1sen!2sin!4v1651234567890!5m2!1sen!2sin"
+                src={/^https:\/\/www\.google\.com\/maps\/embed(?:[?/]|$)/i.test(form_1.mapUrl) ? form_1.mapUrl : undefined}
                 className="w-full h-full contrast-125 transition-all duration-1000"
                 loading="lazy"
               />
             </div>
           </div>
           <div
-            className="p-10 md:p-12 rounded-[48px] border border-white/5 shadow-2xl"
+            className="min-w-0 p-5 sm:p-8 lg:p-10 rounded-[48px] border border-white/5 shadow-2xl"
             style={{
               backgroundColor: config_global.deepBlue,
             }}
@@ -166,10 +167,10 @@ ${S}: ${p[S]}`;
                   </svg>
                 </div>
                 <h4 className="text-white text-2xl font-black mb-2 uppercase tracking-tight">
-                  Inquiry Received
+                  {pageCopy.inquiryReceived}
                 </h4>
                 <p className="text-slate-300 font-medium text-sm">
-                  Our engineers will respond within 24 hours.
+                  {pageCopy.ourEngineersWillRespondWithin}
                 </p>
               </div>
             ) : i === "error" ? (
@@ -190,17 +191,17 @@ ${S}: ${p[S]}`;
                   </svg>
                 </div>
                 <h4 className="text-white text-2xl font-black mb-2 uppercase tracking-tight">
-                  Something went wrong
+                  {pageCopy.somethingWentWrong}
                 </h4>
                 <p className="text-slate-300 font-medium text-sm">
-                  Please try again later.
+                  {pageCopy.pleaseTryAgainLater}
                 </p>
               </div>
             ) : (
               <form onSubmit={u} className="space-y-6">
                 {config.contact.form.fields?.map((d, m) => (
                   <div key={m}>
-                    <label className="block text-white/40 text-[10px] font-black tracking-widest uppercase mb-2 ml-1">
+                    <label className="block text-white/80 text-sm font-bold tracking-wide uppercase mb-2 ml-1">
                       {d.label}
                     </label>
                     {d.type === "textarea" ? (

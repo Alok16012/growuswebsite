@@ -4,6 +4,7 @@ import { supabase } from "../../lib/supabase";
 
 export const JoinProgramModal = ({ isOpen, onClose }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.joinProgram;
   const { joinProgramForm, global } = config;
   const [u, setU] = useState("idle");
   if (!isOpen) {
@@ -79,10 +80,10 @@ ${C}: ${b[C]}`;
                 color: global.design?.text?.heading || global.deepBlue,
               }}
             >
-              Join The Program
+              {pageCopy.joinTheProgram}
             </h3>
             <p className="text-gray-600 font-medium text-sm mt-1">
-              Become a part of our global quality network.
+              {pageCopy.becomeAPartOfOur}
             </p>
           </div>
           <button
@@ -123,10 +124,10 @@ ${C}: ${b[C]}`;
                 </svg>
               </div>
               <h4 className="text-deep-blue text-2xl font-black mb-2 uppercase tracking-tight">
-                Application Submitted!
+                {pageCopy.applicationSubmitted}
               </h4>
               <p className="text-gray-600 font-medium">
-                We'll review your details and get in touch.
+                {pageCopy.wellReviewYourDetailsAnd}
               </p>
             </div>
           ) : u === "error" ? (
@@ -147,10 +148,10 @@ ${C}: ${b[C]}`;
                 </svg>
               </div>
               <h4 className="text-deep-blue text-2xl font-black mb-2 uppercase tracking-tight">
-                Something went wrong
+                {pageCopy.somethingWentWrong}
               </h4>
               <p className="text-gray-600 font-medium">
-                Please try again later.
+                {pageCopy.pleaseTryAgainLater}
               </p>
             </div>
           ) : (

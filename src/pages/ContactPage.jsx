@@ -15,7 +15,7 @@ export const ContactPage = ({ setCurrentPage }) => {
       <ContactHero />
       <ContactInfo />
       <ContactForm />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };

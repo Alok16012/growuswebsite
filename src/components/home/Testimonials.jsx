@@ -14,7 +14,7 @@ export const Testimonials = () => {
     >
       <div className="max-w-6xl mx-auto">
         <h2
-          className="text-center text-3xl md:text-5xl font-black mb-12 uppercase tracking-tighter"
+          className="section-title text-center mb-12 uppercase"
           style={{
             color:
               config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||

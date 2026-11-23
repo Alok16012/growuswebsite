@@ -7,6 +7,8 @@
 @layer base {
   body {
     font-family: "DM Sans", system-ui, sans-serif;
+    background-color: #fff;
+    color: #1a1a1a;
   }
   h1,
   h2,
@@ -15,6 +17,47 @@
   h5,
   h6 {
     font-family: Sora, sans-serif;
+  }
+}
+
+@layer components {
+  .site-gutter,
+  .site-container,
+  .site-section {
+    padding-inline: clamp(1rem, 3.5vw, 3rem);
+  }
+
+  .site-container {
+    width: 100%;
+    max-width: 86rem;
+    margin-inline: auto;
+  }
+
+  .site-section {
+    padding-block: clamp(2.75rem, 6vw, 5rem);
+  }
+
+  .page-hero {
+    min-height: clamp(25rem, 40vw, 34rem);
+    padding-block: 9rem 3rem;
+  }
+
+  .page-title,
+  .section-title {
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 4.75vw, 4.25rem);
+    line-height: 1.08;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.15vw, 3rem);
+    line-height: 1.16;
   }
 }
 
@@ -38,12 +81,6 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  font-family: Inter, system-ui, sans-serif;
-  background-color: #fff;
-  color: #1a1a1a;
 }
 
 ::-webkit-scrollbar {

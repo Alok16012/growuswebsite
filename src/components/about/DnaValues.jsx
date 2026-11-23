@@ -6,7 +6,7 @@ export const DnaValues = () => {
   const config_global = config.global;
   return (
     <section
-      className="py-16 px-8 border-y border-black/5"
+      className="site-section border-y border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
@@ -25,7 +25,7 @@ export const DnaValues = () => {
             {dna.subtitle}
           </h2>
           <h3
-            className="text-4xl md:text-5xl font-black uppercase tracking-tighter"
+            className="section-title uppercase"
             style={{
               color:
                 config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||

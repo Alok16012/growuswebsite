@@ -58,46 +58,16 @@ export const SiteConfigProvider = ({ children }) => {
       .subscribe();
     return () => supabase.removeChannel(m);
   }, []);
-  const updateConfig = (m, p) => {
-    setConfig((g) => {
-      const b = JSON.parse(JSON.stringify(g));
-      const x = m.split(".");
-      let v = b;
-      for (let j = 0; j < x.length - 1; j++) {
-        if (v[x[j]] === undefined) {
-          v[x[j]] = {};
-        }
-        v = v[x[j]];
-      }
-      v[x[x.length - 1]] = p;
-      supabase
-        .from("site_settings")
-        .upsert({
-          id: 1,
-          config_data: b,
-        })
-        .then(({ error }) => {
-          if (error) {
-            console.error("Error saving config to Supabase:", error);
-          }
-        });
-      return b;
-    });
-  };
-  const resetConfig = () => {
-    const m = JSON.parse(JSON.stringify(defaultConfig));
-    setConfig(m);
-    supabase
+  const saveConfig = async (nextConfig) => {
+    const { data, error } = await supabase
       .from("site_settings")
-      .upsert({
-        id: 1,
-        config_data: m,
-      })
-      .then(({ error }) => {
-        if (error) {
-          console.error("Error resetting config to Supabase:", error);
-        }
-      });
+      .upsert({ id: 1, config_data: nextConfig })
+      .select("id")
+      .single();
+    if (error || !data) {
+      throw error || new Error("The settings update was not confirmed.");
+    }
+    setConfig(nextConfig);
   };
   if (i) {
     return (
@@ -121,8 +91,7 @@ export const SiteConfigProvider = ({ children }) => {
     <SiteConfigContext.Provider
       value={{
         config,
-        updateConfig,
-        resetConfig,
+        saveConfig,
         defaultConfig: defaultConfig,
       }}
     >

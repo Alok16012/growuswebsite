@@ -4,7 +4,7 @@ export const ServicesHero = () => {
   const { config } = useSiteConfig();
   const { services, global } = config;
   return (
-    <section className="relative h-[450px] w-full overflow-hidden">
+    <section className="relative flex w-full overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -12,7 +12,7 @@ export const ServicesHero = () => {
         }}
       />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-8 text-center pt-28 md:pt-32">
+      <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
           className="font-black text-sm tracking-[0.4em] mb-6 animate-fade-in-down uppercase"
           style={{
@@ -25,7 +25,7 @@ export const ServicesHero = () => {
           {services.heroSubtitle}
         </p>
         <h1
-          className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight"
+          className="page-title mb-6 uppercase"
           style={{
             color:
               global.design?.hero?.heading ||

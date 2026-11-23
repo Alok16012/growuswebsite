@@ -5,7 +5,7 @@ export const ContactHero = () => {
   const hero = config.contact.hero;
   const config_global = config.global;
   return (
-    <section className="relative h-[400px] w-full overflow-hidden">
+    <section className="relative flex w-full overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -13,7 +13,7 @@ export const ContactHero = () => {
         }}
       />
       <div className="absolute inset-0 bg-black/60" />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-8 text-center pt-28 md:pt-32">
+      <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
           className="font-black text-sm tracking-[0.4em] mb-6 animate-fade-in-down uppercase"
           style={{
@@ -26,7 +26,7 @@ export const ContactHero = () => {
           {hero.subtitle}
         </p>
         <h1
-          className="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase leading-tight"
+          className="page-title mb-6 uppercase"
           style={{
             color:
               config_global.design?.hero?.heading ||

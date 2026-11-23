@@ -6,7 +6,7 @@ export const Industries = () => {
   const config_global = config.global;
   return (
     <section
-      className="py-16 px-8 overflow-hidden border-t border-black/5"
+      className="site-section overflow-hidden border-t border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
@@ -24,7 +24,7 @@ export const Industries = () => {
           {industries.subtitle}
         </h2>
         <h3
-          className="text-4xl md:text-5xl font-black uppercase tracking-tighter"
+          className="section-title uppercase"
           style={{
             color:
               config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||

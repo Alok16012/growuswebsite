@@ -4,7 +4,7 @@ export const CultureHero = () => {
   const { config } = useSiteConfig();
   const { culture, global } = config;
   return (
-    <section className="relative h-[500px] w-full overflow-hidden">
+    <section className="relative flex w-full overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -12,7 +12,7 @@ export const CultureHero = () => {
         }}
       />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 h-full flex flex-col items-start justify-end pb-20 px-8 md:px-16 lg:px-24 max-w-6xl mx-auto">
+      <div className="page-hero site-container relative z-10 flex flex-col items-start justify-end">
         <p
           className="font-black text-sm tracking-[0.4em] mb-6 uppercase"
           style={{
@@ -25,7 +25,7 @@ export const CultureHero = () => {
           {culture.heroSubtitle}
         </p>
         <h1
-          className="text-5xl md:text-7xl font-black mb-6 tracking-tighter leading-[1.1] uppercase"
+          className="page-title mb-6 uppercase"
           style={{
             color:
               global.design?.hero?.heading ||

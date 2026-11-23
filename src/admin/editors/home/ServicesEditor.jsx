@@ -1,7 +1,12 @@
-import { CollapsibleSection, ImageUpload, TextInput } from "../../fields";
+import { ColorInput, CollapsibleSection, ImageUpload, TextInput } from "../../fields";
 
 export const ServicesEditor = ({ config, updateConfig }) => (
   <div>
+    <ColorInput
+      label="View all button background"
+      value={config.home.services.viewAllBg}
+      onChange={(value) => updateConfig("home.services.viewAllBg", value)}
+    />
     <TextInput
       label="Section Title"
       value={config.home.services.sectionTitle}

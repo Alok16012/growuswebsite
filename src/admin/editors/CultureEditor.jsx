@@ -8,6 +8,26 @@ import {
 export const CultureEditor = ({ config, updateConfig }) => (
   <div>
     <TextInput
+      label="DNA subtitle"
+      value={config.culture.dnaSubtitle}
+      onChange={(value) => updateConfig("culture.dnaSubtitle", value)}
+    />
+    <TextInput
+      label="Perks subtitle"
+      value={config.culture.perksSubtitle}
+      onChange={(value) => updateConfig("culture.perksSubtitle", value)}
+    />
+    <TextInput
+      label="Workspaces subtitle"
+      value={config.culture.workspacesSubtitle}
+      onChange={(value) => updateConfig("culture.workspacesSubtitle", value)}
+    />
+    <TextInput
+      label="Workspaces title"
+      value={config.culture.workspacesTitle}
+      onChange={(value) => updateConfig("culture.workspacesTitle", value)}
+    />
+    <TextInput
       label="Hero Title"
       value={config.culture.heroTitle}
       onChange={(s) => updateConfig("culture.heroTitle", s)}

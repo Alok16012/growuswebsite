@@ -17,9 +17,9 @@ export const ServicesPage = ({ setCurrentPage }) => {
     <div className="min-h-screen bg-white">
       <Navbar currentPage="services" setCurrentPage={setCurrentPage} />
       <ServicesHero />
-      <section className="bg-gray-50 py-14 px-8">
+      <section className="bg-gray-50 site-section">
         <h2
-          className="text-3xl md:text-4xl font-black text-center mb-4 uppercase tracking-tighter"
+          className="section-title text-center mb-4 uppercase"
           style={{
             color: global.deepBlue,
           }}
@@ -46,7 +46,7 @@ export const ServicesPage = ({ setCurrentPage }) => {
       <QuoteCTA onQuoteClick={() => setC(true)} />
       <IndustriesServed />
       <QuoteModal isOpen={c} onClose={() => setC(false)} />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };

@@ -1,15 +1,27 @@
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
-export const AdminLogin = ({ onLogin }) => {
+export const isAdminUser = (user) =>
+  user?.id === "ea369a9f-033a-404f-999b-f4428524c449";
+
+export const AdminLogin = () => {
   const [e, setE] = useState("");
   const [i, setI] = useState("");
   const [u, setU] = useState("");
-  const m = (p) => {
+  const m = async (p) => {
     p.preventDefault();
-    if (e === "growusdata@gmail.com" && i === "admin123") {
-      onLogin();
-    } else {
-      setU("Invalid credentials. Please try again.");
+    setU("");
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: e.trim(),
+      password: i,
+    });
+    if (error) {
+      setU("We could not sign you in. Check your email and password.");
+      return;
+    }
+    if (!isAdminUser(data.user)) {
+      await supabase.auth.signOut();
+      setU("This account does not have admin access.");
     }
   };
   return (
@@ -38,7 +50,7 @@ export const AdminLogin = ({ onLogin }) => {
               onChange={(p) => setE(p.target.value)}
               required
               className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:border-blue-500 transition-all font-medium"
-              placeholder="admin@growus.com"
+              placeholder="you@company.com"
             />
           </div>
           <div className="mb-8">

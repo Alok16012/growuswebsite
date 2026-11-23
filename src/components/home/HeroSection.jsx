@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import CountUp from "react-countup";
 import { useSiteConfig } from "../../context/SiteConfigContext";
+import { QuoteModal } from "../QuoteModal";
 
-export const HeroSection = () => {
+export const HeroSection = ({ setCurrentPage }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.homeHero;
   const hero = config.home.hero;
   const config_global = config.global;
-  const [i, setI] = useState(true);
+  const [isPromoVisible, setIsPromoVisible] = useState(true);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
-    <section className="relative h-[100vh] min-h-[700px] w-full overflow-hidden">
+    <section className="relative isolate flex min-h-[min(100svh,52rem)] w-full flex-col overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat w-full"
         style={{
@@ -17,10 +20,10 @@ export const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
-      <div className="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-14 lg:px-20 pt-28 md:pt-32 pb-36">
+      <div className="site-container relative z-10 flex flex-1 flex-col justify-center pb-12 pt-36 sm:pb-16">
         <div className="max-w-2xl">
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-6 tracking-tight"
+            className="page-title mb-6"
             style={{
               color: hero.headingColor || "#ffffff",
               textShadow: "0 2px 20px rgba(0,0,0,0.4)",
@@ -39,6 +42,8 @@ export const HeroSection = () => {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <button
+              type="button"
+              onClick={() => setCurrentPage("services")}
               className="px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl text-center"
               style={{
                 backgroundColor:
@@ -64,6 +69,8 @@ export const HeroSection = () => {
                 ))}
             </button>
             <button
+              type="button"
+              onClick={() => setCurrentPage("services")}
               className="px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-white/10 active:scale-95 text-center"
               style={{
                 border: `2px solid ${hero.button2Border || "rgba(255,255,255,0.7)"}`,
@@ -88,12 +95,12 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full z-20">
-        <div className="bg-white/95 backdrop-blur-md border-t border-gray-100 py-5 px-2 md:px-8 flex justify-between md:justify-around items-center shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+      <div className="relative z-20 w-full">
+        <div className="bg-white/95 backdrop-blur-md border-t border-gray-100 site-gutter grid grid-cols-2 gap-y-4 py-5 sm:flex sm:justify-around sm:gap-y-0 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
           {hero.stats.map((u, d) => (
             <div
               key={d}
-              className="flex flex-col items-center flex-1 px-1 md:px-4 border-r border-gray-200 last:border-0"
+              className="flex flex-col items-center flex-1 px-2 sm:px-4 sm:border-r border-gray-200 last:border-0"
             >
               <div className="flex items-baseline gap-1 mb-1">
                 <span
@@ -118,7 +125,7 @@ export const HeroSection = () => {
                   {u.suffix}
                 </span>
               </div>
-              <p className="text-[8px] md:text-xs font-bold text-gray-500 uppercase tracking-widest text-center">
+              <p className="text-xs font-bold text-gray-600 uppercase tracking-wide text-center">
                 {u.label}
               </p>
             </div>
@@ -127,6 +134,8 @@ export const HeroSection = () => {
       </div>
       <div className="hidden lg:block absolute top-[55%] right-0 -translate-y-1/2 z-20">
         <button
+          type="button"
+          onClick={() => setIsQuoteOpen(true)}
           className="hover:bg-green-600 transition-colors text-white text-sm font-bold py-4 px-3 rounded-l-md shadow-lg uppercase tracking-widest"
           style={{
             backgroundColor: hero.sideTabBg || config_global.accentGreen,
@@ -136,10 +145,12 @@ export const HeroSection = () => {
           {hero.sideTabText}
         </button>
       </div>
-      {i && (
-        <div className="hidden md:block absolute bottom-[110px] right-6 md:right-12 z-30 bg-white/95 backdrop-blur-lg border border-black/10 p-5 rounded-xl shadow-2xl max-w-[260px] md:max-w-[280px]">
+      {isPromoVisible && (
+        <div className="hidden xl:block absolute bottom-28 right-6 md:right-12 z-30 bg-white/95 backdrop-blur-lg border border-black/10 p-5 rounded-xl shadow-2xl max-w-[260px] md:max-w-[280px]">
           <button
-            onClick={() => setI(false)}
+            type="button"
+            aria-label="Close automated inspection promotion"
+            onClick={() => setIsPromoVisible(false)}
             className="absolute top-3 right-3 text-gray-400 hover:text-primary-blue transition-colors"
           >
             <svg
@@ -167,20 +178,22 @@ export const HeroSection = () => {
           <p className="text-gray-600 text-[11px] mb-2 leading-relaxed">
             {hero.popupText}
           </p>
-          <a
-            href="#"
+          <button
+            type="button"
+            onClick={() => setCurrentPage("services")}
             className="inline-flex items-center text-[10px] font-bold tracking-widest group transition-all uppercase"
             style={{
               color: config_global.primaryBlue,
             }}
           >
-            CLICK HERE
+            {pageCopy.clickHere}
             <span className="ml-2 group-hover:translate-x-1 transition-transform">
               →
             </span>
-          </a>
+          </button>
         </div>
       )}
+      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </section>
   );
 };

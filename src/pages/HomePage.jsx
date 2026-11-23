@@ -11,13 +11,13 @@ import { Footer } from "../components/Footer";
 export const HomePage = ({ setCurrentPage }) => (
   <div className="min-h-screen bg-white selection:bg-primary-blue selection:text-white">
     <Navbar currentPage="home" setCurrentPage={setCurrentPage} />
-    <HeroSection />
+    <HeroSection setCurrentPage={setCurrentPage} />
     <ServicesPreview setCurrentPage={setCurrentPage} />
     <Testimonials />
     <WhyChooseUs />
     <Industries />
     <PanIndiaPresence />
     <Clients />
-    <Footer />
+    <Footer setCurrentPage={setCurrentPage} />
   </div>
 );

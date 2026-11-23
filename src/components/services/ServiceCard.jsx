@@ -2,6 +2,7 @@ import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const ServiceCard = ({ service, onClick }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.services;
   const config_global = config.global;
   const c = {
     "quality-management": (
@@ -186,7 +187,7 @@ export const ServiceCard = ({ service, onClick }) => {
             backgroundColor: config_global.primaryBlue,
           }}
         >
-          EXPLORE SERVICE
+          {pageCopy.exploreService}
           <svg
             className="w-3.5 h-3.5"
             fill="none"

@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 
 export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.serviceDetails;
   const config_global = config.global;
   const items = config.services.items;
   const [u, setU] = useState(false);
@@ -25,7 +26,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar currentPage="services" setCurrentPage={setCurrentPage} />
-      <section className="relative h-[55vh] w-full overflow-hidden">
+      <section className="relative flex min-h-[26rem] w-full overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -33,7 +34,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           }}
         />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-10">
+        <div className="site-container relative z-10 flex flex-col justify-end pb-10 pt-36">
           <p
             className="text-[10px] font-black tracking-[0.4em] uppercase mb-2"
             style={{
@@ -43,10 +44,10 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 config_global.primaryBlue,
             }}
           >
-            GLOBAL SERVICE
+            {pageCopy.globalService}
           </p>
           <h1
-            className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3 tracking-tight uppercase"
+            className="page-title mb-3 uppercase"
             style={{
               color:
                 config_global.design?.hero?.heading ||
@@ -108,16 +109,16 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           ))}
         </div>
       </section>
-      <section className="py-14 px-6 md:px-12 lg:px-20">
+      <section className="py-14 site-gutter">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <h2
-              className="text-2xl md:text-3xl font-black mb-4 leading-tight uppercase tracking-tighter"
+              className="section-title mb-4 uppercase"
               style={{
                 color: config_global.deepBlue,
               }}
             >
-              About This Service
+              {pageCopy.aboutThisService}
             </h2>
             <div
               className="w-16 h-1.5 mb-6 rounded-full"
@@ -138,7 +139,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 backgroundColor: config_global.primaryBlue,
               }}
             >
-              REQUEST THIS SERVICE →
+              {pageCopy.requestThisService}
             </button>
           </div>
           <div className="lg:col-span-3">
@@ -205,19 +206,19 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           </div>
         </div>
       </section>
-      <section className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20 overflow-hidden relative border-y border-black/5">
+      <section className="bg-gray-50 py-16 site-gutter overflow-hidden relative border-y border-black/5">
         <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col items-center">
           <div className="text-center mb-8">
             <h2
-              className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-3"
+              className="section-title uppercase mb-3"
               style={{
                 color: config_global.deepBlue,
               }}
             >
-              Our Process
+              {pageCopy.ourProcess}
             </h2>
             <p className="text-gray-500 font-medium text-sm md:text-base mb-4">
-              Tracing our success step by step.
+              {pageCopy.tracingOurSuccessStepBy}
             </p>
             <div
               className="w-20 h-1.5 mx-auto rounded-full"
@@ -434,7 +435,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           </div>
         </div>
       </section>
-      <section className="py-10 px-6 md:px-12 lg:px-20">
+      <section className="py-10 site-gutter">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3
@@ -443,10 +444,10 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 color: config_global.deepBlue,
               }}
             >
-              Industries We Serve
+              {pageCopy.industriesWeServe}
             </h3>
             <p className="text-gray-500 text-xs font-bold">
-              This service is tailored for:
+              {pageCopy.thisServiceIsTailoredFor}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -461,7 +462,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           </div>
         </div>
       </section>
-      <section className="border-t border-black/5 py-10 px-6 md:px-12 lg:px-20 bg-gray-50">
+      <section className="border-t border-black/5 py-10 site-gutter bg-gray-50">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-center">
           {b ? (
             <button
@@ -487,7 +488,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 </svg>
               </div>
               <span className="text-[10px] font-black uppercase tracking-widest hidden md:block">
-                Previous
+                {pageCopy.previous}
               </span>
             </button>
           ) : (
@@ -500,7 +501,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
               color: config_global.deepBlue,
             }}
           >
-            View All
+            {pageCopy.viewAll}
           </button>
           {x ? (
             <button
@@ -511,7 +512,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
               className="flex items-center gap-3 text-gray-400 hover:text-primary-blue transition-all group"
             >
               <span className="text-[10px] font-black uppercase tracking-widest hidden md:block">
-                Next
+                {pageCopy.next}
               </span>
               <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-primary-blue group-hover:text-white transition-all">
                 <svg
@@ -542,10 +543,10 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
       >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-white text-xl md:text-2xl font-black mb-3">
-            Ready to get started with {m.title}?
+            {pageCopy.readyToGetStartedWith} {m.title}?
           </h2>
           <p className="text-white/80 text-sm mb-6">
-            Get in touch with our experts today for a free consultation.
+            {pageCopy.getInTouchWithOur}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <button
@@ -555,19 +556,19 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 color: config_global.primaryBlue,
               }}
             >
-              GET A FREE QUOTE →
+              {pageCopy.getAFreeQuote}
             </button>
             <a
               href={`tel:${config.footer.phone}`}
               className="border-2 border-white text-white hover:bg-white font-black px-7 py-3 rounded-full text-xs uppercase tracking-widest transition-all"
             >
-              CALL US NOW →
+              {pageCopy.callUsNow}
             </a>
           </div>
         </div>
       </section>
       <QuoteModal isOpen={u} onClose={() => setU(false)} />
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };

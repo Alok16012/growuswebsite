@@ -5,7 +5,7 @@ export const QuoteCTA = ({ onQuoteClick }) => {
   const { services, global } = config;
   return (
     <section
-      className="py-16 px-8"
+      className="site-section"
       style={{
         background: `linear-gradient(to right, ${global.primaryBlue}, #c0392b)`,
       }}

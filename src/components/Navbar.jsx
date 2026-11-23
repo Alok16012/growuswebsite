@@ -6,8 +6,10 @@ import { QuoteModal } from "./QuoteModal";
 
 export const Navbar = ({ currentPage, setCurrentPage }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.navbar;
   const config_navbar = config.navbar;
-  config.global;
+  const portalUrl = config_navbar.topBarUrl?.trim() || "";
+  const hasPortal = /^(?:https?:\/\/[^/]|\/(?![\/\\]))/i.test(portalUrl);
   const [c, setC] = useState(false);
   const [d, setD] = useState(false);
   const [p, setP] = useState(false);
@@ -24,6 +26,13 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
     setV(false);
   }, [currentPage]);
   const S = ["HOME", "ABOUT US", "SERVICES", "GALLERY", "CAREERS", "CONTACT"];
+  const navLabels = {
+    HOME: pageCopy.home,
+    "ABOUT US": pageCopy.about,
+    SERVICES: pageCopy.services,
+    GALLERY: pageCopy.gallery,
+    CONTACT: pageCopy.contact,
+  };
   const _ = currentPage === "culture" || currentPage === "open-positions";
   const C = (R) => {
     switch (R) {
@@ -111,25 +120,27 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                 />
               </svg>
-              Staff Portal
+              {pageCopy.staffPortal}
             </button>
-            <a
-              href="#"
-              className="hover:text-emerald-400 transition-colors uppercase tracking-tighter"
-            >
-              {config_navbar.topBarText}
-            </a>
+            {hasPortal && (
+              <a
+                href={portalUrl}
+                className="hover:text-emerald-400 transition-colors uppercase tracking-tighter"
+              >
+                {config_navbar.topBarText}
+              </a>
+            )}
           </div>
         </div>
-        <div className="flex items-center justify-between px-4 md:px-12 py-3 md:py-4 max-w-[1700px] mx-auto">
-          <div className="flex items-center gap-16 xl:gap-24">
+        <div className="flex items-center justify-between site-container py-3 md:py-4">
+          <div className="flex items-center gap-8 xl:gap-12">
             <div
               className="flex items-center cursor-pointer flex-shrink-0"
               onClick={() => setCurrentPage("home")}
             >
               <Logo size="md" light={false} />
             </div>
-            <div className="hidden lg:flex items-center gap-8 xl:gap-11">
+            <div className="hidden lg:flex items-center gap-4 xl:gap-8">
               {S.map((R) => {
                 if (R === "CAREERS") {
                   return (
@@ -143,7 +154,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                         onClick={() => setCurrentPage("culture")}
                         className={`text-[14px] font-extrabold uppercase tracking-tight transition-all duration-300 flex items-center gap-1.5 py-2 hover:text-[#ff3b5c] ${_ ? "text-[#ff3b5c]" : "text-white/80"}`}
                       >
-                        Careers
+                        {pageCopy.careers}
                         <svg
                           className={`w-3.5 h-3.5 transition-transform duration-300 ${d ? "rotate-180" : ""}`}
                           fill="currentColor"
@@ -167,7 +178,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                             }}
                             className={`w-full text-left px-6 py-3 text-[12px] font-bold uppercase tracking-widest transition-colors duration-300 ${currentPage === "culture" ? "bg-[#ff3b5c]/10 text-[#ff3b5c]" : "text-white/60 hover:text-white hover:bg-white/5"}`}
                           >
-                            Culture
+                            {pageCopy.culture}
                           </button>
                           <button
                             onClick={() => {
@@ -176,7 +187,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                             }}
                             className={`w-full text-left px-6 py-3 text-[12px] font-bold uppercase tracking-widest transition-colors duration-300 ${currentPage === "open-positions" ? "bg-[#ff3b5c]/10 text-[#ff3b5c]" : "text-white/60 hover:text-white hover:bg-white/5"}`}
                           >
-                            Open Positions
+                            {pageCopy.openPositions}
                           </button>
                         </div>
                       </div>
@@ -189,7 +200,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                     onClick={() => C(R)}
                     className={`text-[14px] font-extrabold uppercase tracking-tight transition-all duration-300 hover:text-[#ff3b5c] relative py-2 ${E(R) ? "text-[#ff3b5c]" : "text-white/80"}`}
                   >
-                    {R === "ABOUT US" ? "About" : R}
+                    {navLabels[R]}
                     {E(R) && (
                       <span className="absolute bottom-0 left-0 w-full h-1 bg-[#ff3b5c] rounded-full" />
                     )}
@@ -216,7 +227,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                 />
               </svg>
-              Brochures
+              {pageCopy.brochures}
             </button>
             <button
               onClick={() => setB(true)}
@@ -273,7 +284,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                         color: _ ? "#ff3b5c" : "#ffffff",
                       }}
                     >
-                      CAREERS
+                      {pageCopy.careers}
                       <svg
                         className={`w-4 h-4 transition-transform duration-200 ${d ? "rotate-180" : ""}`}
                         fill="currentColor"
@@ -303,7 +314,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                             currentPage === "culture" ? "#ff3b5c" : "#94a3b8",
                         }}
                       >
-                        Culture
+                        {pageCopy.culture}
                       </button>
                       <button
                         onClick={() => {
@@ -318,7 +329,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                               : "#94a3b8",
                         }}
                       >
-                        Open Positions
+                        {pageCopy.openPositions}
                       </button>
                     </div>
                   </div>
@@ -333,7 +344,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                     color: E(R) ? "#ff3b5c" : "#ffffff",
                   }}
                 >
-                  {R}
+                  {navLabels[R]}
                 </button>
               );
             })}

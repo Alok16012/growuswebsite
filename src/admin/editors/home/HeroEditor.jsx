@@ -2,6 +2,11 @@ import { ColorInput, ImageUpload, TextInput } from "../../fields";
 
 export const HeroEditor = ({ config, updateConfig }) => (
   <div>
+    <ColorInput
+      label="Side tab background"
+      value={config.home.hero.sideTabBg}
+      onChange={(value) => updateConfig("home.hero.sideTabBg", value)}
+    />
     <ImageUpload
       label="Background Image"
       value={config.home.hero.bgImage}

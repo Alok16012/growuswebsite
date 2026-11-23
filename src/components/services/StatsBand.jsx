@@ -5,7 +5,7 @@ export const StatsBand = () => {
   const config_global = config.global;
   const stats = config.home.hero.stats;
   return (
-    <section className="bg-gray-50 py-16 px-8 border-y border-black/5">
+    <section className="bg-gray-50 site-section border-y border-black/5">
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((i, c) => (
           <div key={c} className="group">

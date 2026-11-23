@@ -11,6 +11,16 @@ export const GlobalEditor = ({ config, updateConfig }) => (
     </div>
     <FieldGroup title="Global Identity">
       <ColorInput
+        label="Coverage emerald accent"
+        value={config.global.emeraldGreen}
+        onChange={(value) => updateConfig("global.emeraldGreen", value)}
+      />
+      <ColorInput
+        label="Coverage gold accent"
+        value={config.global.goldAccent}
+        onChange={(value) => updateConfig("global.goldAccent", value)}
+      />
+      <ColorInput
         label="Brand Primary"
         value={config.global.primaryBlue}
         onChange={(s) => updateConfig("global.primaryBlue", s)}

@@ -84,7 +84,7 @@ export const CulturePerks = () => {
     </svg>,
   ];
   return (
-    <section className="py-16 px-8 bg-white">
+    <section className="site-section bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
@@ -97,7 +97,7 @@ export const CulturePerks = () => {
               {culture.perksSubtitle}
             </h2>
             <h3
-              className="text-4xl md:text-5xl font-black mb-8 leading-[1.1] uppercase tracking-tighter"
+              className="section-title mb-8 uppercase"
               style={{
                 color: global.deepBlue,
               }}

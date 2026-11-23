@@ -1,8 +1,10 @@
 import { useSiteConfig } from "../context/SiteConfigContext";
 import { Logo } from "./Logo";
+import { readFooterLink } from "../config/footerLinks";
 
-export const Footer = () => {
+export const Footer = ({ setCurrentPage }) => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.footer;
   const { footer, global } = config;
   return (
     <footer
@@ -25,7 +27,7 @@ export const Footer = () => {
           >
             {footer.description}
           </p>
-          <div className="flex gap-4">
+          <div className="hidden" aria-hidden="true">
             <a
               href="#"
               className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center rounded-xl text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 shadow-lg group"
@@ -70,13 +72,14 @@ export const Footer = () => {
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
           >
-            Quick Links
+            {pageCopy.quickLinks}
           </h4>
           <ul className="space-y-3">
-            {footer.quickLinks.map((i) => (
-              <li key={i}>
-                <a
-                  href="#"
+            {footer.quickLinks.map(readFooterLink).map(({ label, page }, index) => (
+              <li key={index}>
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(page)}
                   className="hover:text-white text-sm font-medium transition-colors duration-300 flex items-center gap-2 group"
                   style={{
                     color: global.design?.text?.paragraph || "#94a3b8",
@@ -89,8 +92,8 @@ export const Footer = () => {
                         global.design?.text?.subheading || global.primaryBlue,
                     }}
                   />
-                  {i}
-                </a>
+                  {label}
+                </button>
               </li>
             ))}
           </ul>
@@ -102,13 +105,14 @@ export const Footer = () => {
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
           >
-            Our Services
+            {pageCopy.ourServices}
           </h4>
           <ul className="space-y-3">
             {footer.servicesList.map((i) => (
               <li key={i}>
-                <a
-                  href="#"
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage("services")}
                   className="hover:text-white text-sm font-medium transition-colors duration-300 flex items-center gap-2 group"
                   style={{
                     color: global.design?.text?.paragraph || "#94a3b8",
@@ -122,7 +126,7 @@ export const Footer = () => {
                     }}
                   />
                   {i}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -134,7 +138,7 @@ export const Footer = () => {
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
           >
-            Contact Info
+            {pageCopy.contactInfo}
           </h4>
           <ul className="space-y-4">
             <li
@@ -157,7 +161,7 @@ export const Footer = () => {
                   <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                 </svg>
               </div>
-              <span>{footer.phone}</span>
+              <a href={`tel:${footer.phone.replace(/\s/g, "")}`}>{footer.phone}</a>
             </li>
             <li
               className="flex items-center gap-4 text-sm font-medium group"
@@ -179,7 +183,7 @@ export const Footer = () => {
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
               </div>
-              <span>{footer.email}</span>
+              <a href={`mailto:${footer.email}`}>{footer.email}</a>
             </li>
             <li
               className="flex items-start gap-4 text-sm font-medium group"
@@ -227,13 +231,14 @@ export const Footer = () => {
             </a>
           </p>
         </div>
-        <div className="flex gap-8 text-[10px] text-gray-400 font-black uppercase tracking-widest">
-          <a href="#" className="hover:text-primary-blue transition-colors">
-            Privacy Policy
-          </a>
-          <a href="#" className="hover:text-primary-blue transition-colors">
-            Terms of Service
-          </a>
+        <div className="text-[10px] text-gray-400 font-black uppercase tracking-widest">
+          <button
+            type="button"
+            onClick={() => setCurrentPage("contact")}
+            className="hover:text-primary-blue transition-colors"
+          >
+            Privacy & terms: contact us
+          </button>
         </div>
       </div>
     </footer>

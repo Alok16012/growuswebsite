@@ -4,7 +4,7 @@ export const CultureCTA = ({ setCurrentPage }) => {
   const { config } = useSiteConfig();
   const { culture, global } = config;
   return (
-    <section className="py-16 px-8 bg-white border-t border-black/5">
+    <section className="site-section bg-white border-t border-black/5">
       <div className="max-w-4xl mx-auto">
         <div
           className="p-16 rounded-3xl text-center shadow-2xl"
@@ -12,7 +12,7 @@ export const CultureCTA = ({ setCurrentPage }) => {
             background: `linear-gradient(to right, ${global.primaryBlue}, ${global.deepBlue})`,
           }}
         >
-          <h3 className="text-white text-4xl font-black mb-6">
+          <h3 className="section-title text-white mb-6">
             {culture.ctaTitle}
           </h3>
           <p className="text-white/80 text-lg mb-10 max-w-xl mx-auto">

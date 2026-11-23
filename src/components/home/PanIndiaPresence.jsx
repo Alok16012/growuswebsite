@@ -6,6 +6,7 @@ import { ACTIVE_STATES } from "../../data/indiaMap";
 
 export const PanIndiaPresence = () => {
   const { config } = useSiteConfig();
+  const pageCopy = config.pageCopy.coverage;
   const panIndia = config.home.panIndia;
   const config_global = config.global;
   const [i, setI] = useState(null);
@@ -85,7 +86,7 @@ export const PanIndiaPresence = () => {
           >
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
               <span className="text-white/[0.025] font-sora font-black text-7xl tracking-widest">
-                GROWUS
+                {pageCopy.growus}
               </span>
             </div>
             <IndiaMap externalHovered={i} onStateHover={setI} />
@@ -150,7 +151,7 @@ export const PanIndiaPresence = () => {
             </p>
             <div>
               <p className="text-white/60 text-xs uppercase tracking-widest mb-3 font-semibold">
-                Active States
+                {pageCopy.activeStates}
               </p>
               <div className="flex flex-wrap gap-2">
                 {ACTIVE_STATES.map((u) => (

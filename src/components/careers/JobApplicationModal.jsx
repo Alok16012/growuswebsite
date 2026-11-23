@@ -1,5 +1,15 @@
-import { useState } from "react";
+import { useSiteConfig } from "../../context/SiteConfigContext";
+
+import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
+
+const RESUMES_BUCKET = "resumes";
+const MAX_RESUME_SIZE = 5 * 1024 * 1024;
+const RESUME_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
 
 export const JobApplicationModal = ({
   isOpen,
@@ -16,13 +26,34 @@ export const JobApplicationModal = ({
   });
   const [u, setU] = useState("idle");
   const [m, setM] = useState(null);
+  useEffect(() => {
+    if (isOpen) {
+      setI((current) => ({ ...current, position: selectedPosition }));
+    }
+  }, [isOpen, selectedPosition]);
   if (!isOpen) {
     return null;
   }
   const g = async (x) => {
     x.preventDefault();
+    if (!m) {
+      setU("error");
+      return;
+    }
+    if (m.size > MAX_RESUME_SIZE || !RESUME_TYPES.includes(m.type)) {
+      setU("invalid-file");
+      return;
+    }
     setU("submitting");
     try {
+      const extension = m.name.split(".").pop()?.toLowerCase();
+      const resumePath = `${crypto.randomUUID()}.${extension}`;
+      const { error: uploadError } = await supabase.storage
+        .from(RESUMES_BUCKET)
+        .upload(resumePath, m, { contentType: m.type, upsert: false });
+      if (uploadError) {
+        throw uploadError;
+      }
       const { error } = await supabase.from("leads").insert([
         {
           name: i.name,
@@ -30,7 +61,7 @@ export const JobApplicationModal = ({
           phone: i.phone,
           company: `${i.experience} Years Experience`,
           service: `Job Application: ${i.position}`,
-          message: `LinkedIn/Portfolio: ${i.portfolio || "N/A"}`,
+          message: `LinkedIn/Portfolio: ${i.portfolio || "N/A"}\nResume: ${resumePath}`,
           source: "Careers Form",
         },
       ]);
@@ -73,10 +104,10 @@ export const JobApplicationModal = ({
         <div className="flex items-center justify-between p-6 md:p-8 border-b border-black/5 relative z-10">
           <div>
             <h3 className="text-deep-blue font-black text-2xl tracking-tighter uppercase">
-              Apply Now
+              {pageCopy.applyNow}
             </h3>
             <p className="text-gray-600 font-medium text-sm mt-1">
-              Join our team of quality control experts.
+              {pageCopy.joinOurTeamOfQuality}
             </p>
           </div>
           <button
@@ -117,10 +148,10 @@ export const JobApplicationModal = ({
                 </svg>
               </div>
               <h4 className="text-deep-blue text-2xl font-black mb-2 uppercase tracking-tight">
-                Application Sent!
+                {pageCopy.applicationSent}
               </h4>
               <p className="text-gray-600 font-medium">
-                Our HR team will review your profile.
+                {pageCopy.ourHrTeamWillReview}
               </p>
             </div>
           ) : u === "error" ? (
@@ -141,10 +172,19 @@ export const JobApplicationModal = ({
                 </svg>
               </div>
               <h4 className="text-deep-blue text-2xl font-black mb-2 uppercase tracking-tight">
-                Submission failed
+                {pageCopy.submissionFailed}
               </h4>
               <p className="text-gray-600 font-medium">
-                Please try again later.
+                {pageCopy.pleaseTryAgainLater}
+              </p>
+            </div>
+          ) : u === "invalid-file" ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center animate-fade-in">
+              <h4 className="text-2xl font-black mb-2 uppercase tracking-tight text-deep-blue">
+                {pageCopy.resumeNotAccepted}
+              </h4>
+              <p className="text-gray-600 font-medium">
+                Upload a PDF, DOC, or DOCX file up to 5 MB.
               </p>
             </div>
           ) : (
@@ -152,7 +192,7 @@ export const JobApplicationModal = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
-                    Full Name
+                    {pageCopy.fullName}
                   </label>
                   <input
                     required
@@ -165,7 +205,7 @@ export const JobApplicationModal = ({
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
-                    Email
+                    {pageCopy.email}
                   </label>
                   <input
                     required
@@ -180,7 +220,7 @@ export const JobApplicationModal = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
-                    Phone Number
+                    {pageCopy.phoneNumber}
                   </label>
                   <input
                     required
@@ -193,7 +233,7 @@ export const JobApplicationModal = ({
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
-                    Experience (Years)
+                    {pageCopy.experienceYears}
                   </label>
                   <input
                     required
@@ -209,7 +249,7 @@ export const JobApplicationModal = ({
               </div>
               <div className="space-y-1.5">
                 <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
-                  Position Applying For
+                  {pageCopy.positionApplyingFor}
                 </label>
                 <input
                   required
@@ -218,12 +258,12 @@ export const JobApplicationModal = ({
                   value={i.position}
                   onChange={b}
                   className="w-full bg-slate-50 border border-black/10 rounded-xl px-4 py-3 text-deep-blue text-sm font-medium focus:outline-none focus:border-primary-blue transition-all shadow-inner"
-                  placeholder="Senior Quality Engineer"
+                  placeholder={pageCopy.seniorQualityEngineer}
                 />
               </div>
               <div className="space-y-1.5">
                 <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
-                  LinkedIn Profile (Optional)
+                  {pageCopy.linkedinProfileOptional}
                 </label>
                 <input
                   type="url"
@@ -231,7 +271,7 @@ export const JobApplicationModal = ({
                   value={i.portfolio}
                   onChange={b}
                   className="w-full bg-slate-50 border border-black/10 rounded-xl px-4 py-3 text-deep-blue text-sm font-medium focus:outline-none focus:border-primary-blue transition-all shadow-inner"
-                  placeholder="https://linkedin.com/in/..."
+                  placeholder={pageCopy.httpslinkedincomin}
                 />
               </div>
               <div className="space-y-1.5 mt-2">
@@ -303,7 +343,7 @@ export const JobApplicationModal = ({
                     Submitting...
                   </span>
                 ) : (
-                  "Submit Application →"
+                  pageCopy.submitButton
                 )}
               </button>
             </form>

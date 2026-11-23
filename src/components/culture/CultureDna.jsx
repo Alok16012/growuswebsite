@@ -4,7 +4,7 @@ export const CultureDna = () => {
   const { config } = useSiteConfig();
   const { culture, global } = config;
   return (
-    <section className="py-16 px-8 bg-gray-50 border-t border-black/5">
+    <section className="site-section bg-gray-50 border-t border-black/5">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2
@@ -16,7 +16,7 @@ export const CultureDna = () => {
             {culture.dnaSubtitle}
           </h2>
           <h3
-            className="text-4xl md:text-5xl font-black uppercase tracking-tighter"
+            className="section-title uppercase"
             style={{
               color: global.deepBlue,
             }}
