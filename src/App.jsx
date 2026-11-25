@@ -13,6 +13,10 @@ import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 export const App = () => {
   const [n, setN] = useState("home");
   useEffect(() => {
+    if (n === "home" && window.location.hash === "#pan-india-presence") {
+      document.getElementById("pan-india-presence")?.scrollIntoView();
+      return;
+    }
     window.scrollTo(0, 0);
   }, [n]);
   const serviceSlug = n.startsWith("service-")

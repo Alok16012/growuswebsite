@@ -16,7 +16,7 @@ export const HomePage = ({ setCurrentPage }) => (
     <Testimonials />
     <WhyChooseUs />
     <Industries />
-    <PanIndiaPresence />
+    <PanIndiaPresence setCurrentPage={setCurrentPage} />
     <Clients />
     <Footer setCurrentPage={setCurrentPage} />
   </div>
