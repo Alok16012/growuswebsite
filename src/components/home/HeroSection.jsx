@@ -1,4 +1,4 @@
-import { HeroImage } from "../SiteImage";
+import { SiteImage } from "../SiteImage";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 import { useSiteConfig } from "../../context/SiteConfigContext";
@@ -12,11 +12,8 @@ export const HeroSection = ({ setCurrentPage }) => {
   const [isPromoVisible, setIsPromoVisible] = useState(true);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
-    <section className="relative isolate flex min-h-[min(100svh,52rem)] w-full flex-col overflow-hidden">
-      <HeroImage themed src={hero.bgImage} />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
-      <div className="site-container relative z-10 flex flex-1 flex-col justify-center pb-12 pt-36 sm:pb-16">
+    <section className="growus-home-hero relative isolate flex w-full flex-col overflow-hidden">
+      <div className="site-container relative z-10 grid items-center gap-8 pb-12 pt-28 sm:pt-36 lg:grid-cols-2 lg:gap-12 lg:pb-20">
         <div className="max-w-2xl">
           <h1
             className="page-title mb-6"
@@ -89,6 +86,16 @@ export const HeroSection = ({ setCurrentPage }) => {
                 ))}
             </button>
           </div>
+        </div>
+        <div className="growus-home-hero-photo">
+          <SiteImage
+            src={hero.bgImage}
+            sizes="(min-width: 1376px) 620px, (min-width: 1024px) 46vw, 93vw"
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            className="block h-full w-full object-cover"
+          />
         </div>
       </div>
       <div className="relative z-20 w-full">
