@@ -42,7 +42,7 @@ export function PanIndiaPresence({ setCurrentPage }) {
             <figcaption className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-slate-200">
               <span className="inline-flex items-center gap-2">
                 <span className="size-3 rounded-full bg-[#84abc9]" aria-hidden="true" />
-                Listed coverage
+                India map
               </span>
               <span className="inline-flex items-center gap-2">
                 <span className="size-3 rounded-full bg-[#ff687e]" aria-hidden="true" />

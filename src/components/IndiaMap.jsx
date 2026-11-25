@@ -16,7 +16,7 @@ export function IndiaMap({ selectedState, onStateSelect }) {
           <path
             key={id}
             d={path}
-            fill={selected ? "#ff687e" : active ? "#84abc9" : "#2b4865"}
+            fill={selected ? "#ff687e" : "#84abc9"}
             stroke={selected ? "#fff" : "#102640"}
             strokeWidth={selected ? 2 : 1}
             strokeLinejoin="round"
