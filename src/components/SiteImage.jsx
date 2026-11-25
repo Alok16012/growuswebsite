@@ -22,6 +22,9 @@ export function SiteImage({ src, ...props }) {
 }
 
 function ImageRequest({ src, sizes, fallbackSrc, loading = "lazy", style, ...props }) {
+  if (src?.startsWith("https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?")) {
+    src = "/risk-mitigation.webp";
+  }
   const [attempt, setAttempt] = useState(0);
   const srcSet = sizes ? getResponsiveSources(src) : undefined;
   const sources = [

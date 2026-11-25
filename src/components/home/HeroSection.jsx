@@ -13,10 +13,10 @@ export const HeroSection = ({ setCurrentPage }) => {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
     <section className="growus-home-hero relative isolate flex w-full flex-col overflow-hidden">
-      <div className="site-container relative z-10 grid items-center gap-8 pb-12 pt-28 sm:pt-36 lg:grid-cols-2 lg:gap-12 lg:pb-20">
+      <div className="site-container relative z-10 grid items-center gap-7 pb-10 pt-36 sm:gap-10 lg:grid-cols-2 lg:gap-12 lg:pb-16">
         <div className="max-w-2xl">
           <h1
-            className="page-title mb-6"
+            className="growus-home-title page-title mb-5"
             style={{
               color: hero.headingColor || "#ffffff",
               textShadow: "0 2px 20px rgba(0,0,0,0.4)",
@@ -37,7 +37,7 @@ export const HeroSection = ({ setCurrentPage }) => {
             <button
               type="button"
               onClick={() => setCurrentPage("services")}
-              className="px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl text-center"
+              className="px-5 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl text-center"
               style={{
                 backgroundColor:
                   hero.button1Bg ||
@@ -64,7 +64,7 @@ export const HeroSection = ({ setCurrentPage }) => {
             <button
               type="button"
               onClick={() => setCurrentPage("services")}
-              className="px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:bg-white/10 active:scale-95 text-center"
+              className="px-5 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white/10 active:scale-95 text-center"
               style={{
                 border: `2px solid ${hero.button2Border || "rgba(255,255,255,0.7)"}`,
                 color:

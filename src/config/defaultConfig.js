@@ -129,7 +129,7 @@ INSPECTION`,
           description:
             "Proactive risk assessment and mitigation strategies to protect your operations and reputation.",
           image:
-            "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=2070&auto=format&fit=crop",
+            "/risk-mitigation.webp",
         },
         {
           category: "SUPPORT",
@@ -835,7 +835,7 @@ INSPECTION`,
         longDescription:
           "Using techniques like ultrasonic, magnetic particle, liquid penetrant, eddy current, and radiographic testing, our ASNT-certified technicians provide accurate and reliable results. We serve industries where safety and structural integrity are non-negotiable — from automotive to aerospace to oil & gas.",
         image:
-          "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=2070&auto=format&fit=crop",
+          "/risk-mitigation.webp",
         features: [
           {
             title: "Ultrasonic Testing (UT)",
