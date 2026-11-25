@@ -37,35 +37,6 @@ section:has(> .page-hero):has(> .growus-hero-image) > .bg-black\/40 {
   background-image: linear-gradient(#edf3fa, #fff 32rem);
 }
 
-.home-services-card {
-  border: 1px solid #162e4d1c;
-  background: #fff;
-  box-shadow: 0 8px 26px #162e4d0e;
-}
-
-.home-services-copy {
-  color: #162e4d;
-}
-
-.home-services-copy h3,
-.home-services-copy button {
-  font-weight: 700;
-}
-
-.home-services-category {
-  color: #9d283f;
-  font-weight: 700;
-  letter-spacing: .08em;
-}
-
-.home-services-link {
-  color: #162e4d;
-  background: #eef3f9;
-}
-
-.home-services-link:hover {
-  background: #dce7f4;
-}
 /* Photo frames and tones follow the public site's indigo palette. */
 .growus-image-surface,
 .growus-photo-frame {

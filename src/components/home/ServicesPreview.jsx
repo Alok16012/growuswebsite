@@ -1,4 +1,4 @@
-import { SiteImage } from "../SiteImage";
+import { ServiceCard } from "../services/ServiceCard";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const ServicesPreview = ({ setCurrentPage }) => {
@@ -35,32 +35,14 @@ export const ServicesPreview = ({ setCurrentPage }) => {
         }}
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 max-w-7xl mx-auto">
-        {services.items.slice(0, 6).map((u, d) => (
-          <article key={d} className="home-services-card group flex flex-col overflow-hidden rounded-2xl">
-            <div className="growus-image-surface relative aspect-[16/10] overflow-hidden">
-              <SiteImage
-                sizes="(min-width: 1280px) 380px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                src={u.image}
-                fallbackSrc={u.category === "RISK" ? "/risk-mitigation.webp" : undefined}
-                alt=""
-                className="block h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
-              />
-            </div>
-            <div className="home-services-copy flex flex-1 flex-col items-start p-5 md:p-6">
-              <p className="home-services-category mb-2 text-xs uppercase">{u.category}</p>
-              <h3 className="mb-2 text-xl leading-tight">{u.title}</h3>
-              <p className="mb-5 flex-1 text-sm leading-relaxed text-slate-600">
-                {u.description}
-              </p>
-              <button
-                type="button"
-                onClick={() => setCurrentPage("services")}
-                className="home-services-link rounded-md px-3 py-2 text-sm transition-colors"
-              >
-                {pageCopy.viewDetails}
-              </button>
-            </div>
-          </article>
+        {services.items.slice(0, 6).map((service, index) => (
+          <ServiceCard
+            key={index}
+            service={service}
+            actionLabel={pageCopy.viewDetails}
+            imageSizes="(min-width: 1280px) 380px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            onClick={() => setCurrentPage("services")}
+          />
         ))}
       </div>
       <div className="text-center mt-8 md:mt-12">

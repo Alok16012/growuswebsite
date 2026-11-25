@@ -1,7 +1,21 @@
 import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
-export const ServiceCard = ({ service, onClick }) => {
+const iconByCategory = {
+  INSPECTION: "third-party-inspection",
+  ENGINEERING: "engineering-design",
+  SOURCING: "sourcing-global",
+  RISK: "ndt-testing",
+  SUPPORT: "human-capital",
+  AUDITS: "quality-management",
+};
+
+export const ServiceCard = ({
+  service,
+  onClick,
+  actionLabel,
+  imageSizes = "(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw",
+}) => {
   const { config } = useSiteConfig();
   const pageCopy = config.pageCopy.services;
   const config_global = config.global;
@@ -135,19 +149,20 @@ export const ServiceCard = ({ service, onClick }) => {
   };
   return (
     <div
-      className="group relative h-[480px] rounded-3xl overflow-hidden cursor-pointer border border-black/10 hover:border-primary-blue/30 transition-all duration-500 hover:shadow-2xl bg-white shadow-xl"
+      className="group relative flex min-h-[480px] flex-col rounded-3xl overflow-hidden cursor-pointer border border-black/10 hover:border-primary-blue/30 transition-all duration-500 hover:shadow-2xl bg-white shadow-xl"
       onClick={onClick}
     >
-      <div className="growus-image-surface relative h-56 overflow-hidden">
+      <div className="growus-image-surface relative h-56 shrink-0 overflow-hidden">
         <SiteImage
-          sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+          sizes={imageSizes}
+          fallbackSrc={service.category === "RISK" ? "/risk-mitigation.webp" : undefined}
           src={service.image}
           alt={service.title}
           className="growus-photo w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60" />
         <div
-          className="absolute top-6 left-6 whitespace-nowrap text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest z-10 shadow-lg"
+          className="absolute top-6 left-6 max-w-[calc(100%-3rem)] text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest z-10 shadow-lg"
           style={{
             backgroundColor: config_global.primaryBlue,
           }}
@@ -167,11 +182,11 @@ export const ServiceCard = ({ service, onClick }) => {
             backgroundColor: `${config_global.primaryBlue}1a`,
           }}
         >
-          {c[service.slug] || c["quality-management"]}
+          {c[service.slug] || c[iconByCategory[service.category]] || c["quality-management"]}
         </div>
       </div>
       <div
-        className="p-10 pt-6 flex flex-col h-[calc(480px-224px)]"
+        className="flex flex-1 flex-col px-6 pb-7 pt-10 sm:px-8"
         style={{
           backgroundColor: config_global.deepBlue,
         }}
@@ -183,13 +198,17 @@ export const ServiceCard = ({ service, onClick }) => {
           {service.description}
         </p>
         <button
-          onClick={onClick}
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onClick();
+          }}
           className="mt-8 w-max text-white font-black text-[10px] px-6 py-2.5 rounded-full transition-all duration-300 uppercase tracking-widest shadow-lg active:scale-95 flex items-center gap-2"
           style={{
             backgroundColor: config_global.primaryBlue,
           }}
         >
-          {pageCopy.exploreService}
+          {actionLabel ?? pageCopy.exploreService}
           <svg
             className="w-3.5 h-3.5"
             fill="none"
