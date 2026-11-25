@@ -41,7 +41,7 @@ export const ServicesHero = () => {
             {services.heroTitleHighlight}
           </span>
         </h1>
-        <p className="text-gray-100 max-w-2xl text-lg font-medium leading-relaxed">
+        <p className="page-intro text-gray-100 font-medium">
           {services.heroSubtext}
         </p>
         <div

@@ -12,7 +12,7 @@ export const Industries = () => {
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-6xl mx-auto mb-12 text-center">
+      <div className="site-content mb-12 text-center">
         <h2
           className="text-sm font-black tracking-[0.4em] uppercase mb-4"
           style={{

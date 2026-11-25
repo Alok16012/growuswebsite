@@ -41,7 +41,7 @@ export const CultureHero = () => {
             {culture.heroTitleHighlight}
           </span>
         </h1>
-        <p className="text-gray-100 max-w-2xl text-lg leading-relaxed font-medium">
+        <p className="page-intro text-gray-100 font-medium">
           {culture.heroDescription}
         </p>
         <div

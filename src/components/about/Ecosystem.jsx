@@ -13,7 +13,7 @@ export const Ecosystem = ({ onJoinClick }) => {
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <h2

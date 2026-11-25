@@ -8,13 +8,13 @@ export const Footer = ({ setCurrentPage }) => {
   const { footer, global } = config;
   return (
     <footer
-      className="py-16 px-8 border-t border-white/10"
+      className="site-section border-t border-white/10"
       style={{
         backgroundColor:
           global.design?.backgrounds?.sectionDark || global.deepBlue,
       }}
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="site-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <div className="mb-6">
             <Logo size="md" />
@@ -67,7 +67,7 @@ export const Footer = ({ setCurrentPage }) => {
         </div>
         <div>
           <h4
-            className="font-black mb-6 uppercase tracking-[0.2em] text-[10px]"
+            className="font-black mb-6 uppercase tracking-wide text-xs"
             style={{
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
@@ -100,7 +100,7 @@ export const Footer = ({ setCurrentPage }) => {
         </div>
         <div>
           <h4
-            className="font-black mb-6 uppercase tracking-[0.2em] text-[10px]"
+            className="font-black mb-6 uppercase tracking-wide text-xs"
             style={{
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
@@ -133,7 +133,7 @@ export const Footer = ({ setCurrentPage }) => {
         </div>
         <div>
           <h4
-            className="font-black mb-6 uppercase tracking-[0.2em] text-[10px]"
+            className="font-black mb-6 uppercase tracking-wide text-xs"
             style={{
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
@@ -210,13 +210,13 @@ export const Footer = ({ setCurrentPage }) => {
           </ul>
         </div>
       </div>
-      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="site-content mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-          <p className="text-gray-500 text-sm font-medium uppercase tracking-widest text-[10px]">
+          <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">
             {footer.copyright}
           </p>
           <span className="hidden md:block text-gray-700">|</span>
-          <p className="text-gray-500 text-sm font-medium uppercase tracking-widest text-[10px]">
+          <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">
             Developed by{" "}
             <a
               href="https://blinks-ai.com/"
@@ -231,7 +231,7 @@ export const Footer = ({ setCurrentPage }) => {
             </a>
           </p>
         </div>
-        <div className="text-[10px] text-gray-400 font-black uppercase tracking-widest">
+        <div className="text-xs text-gray-400 font-black uppercase tracking-widest">
           <button
             type="button"
             onClick={() => setCurrentPage("contact")}

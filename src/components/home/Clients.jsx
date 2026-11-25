@@ -45,7 +45,7 @@ export const Clients = () => {
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="site-content relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between mb-12 gap-10">
           <div className="text-center lg:text-left">
             <h2

@@ -12,7 +12,7 @@ export const DnaValues = () => {
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <div className="text-center mb-12">
           <h2
             className="text-sm font-black tracking-[0.3em] uppercase mb-4"

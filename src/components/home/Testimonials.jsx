@@ -6,13 +6,13 @@ export const Testimonials = () => {
   const config_global = config.global;
   return (
     <section
-      className="px-8 py-16 border-t border-black/5"
+      className="site-section border-t border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <h2
           className="section-title text-center mb-12 uppercase"
           style={{

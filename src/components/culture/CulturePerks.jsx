@@ -85,7 +85,7 @@ export const CulturePerks = () => {
   ];
   return (
     <section className="site-section bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <h2

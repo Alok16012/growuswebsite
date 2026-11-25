@@ -9,7 +9,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
   return (
     <section
       id="services"
-      className="home-services-theme py-12 md:py-16 px-4 md:px-12 lg:px-20 border-t border-black/5"
+      className="home-services-theme site-section border-t border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
@@ -34,7 +34,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
             config_global.design?.text?.subheading || config_global.primaryBlue,
         }}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 site-content">
         {services.items.slice(0, 6).map((service, index) => (
           <ServiceCard
             key={index}

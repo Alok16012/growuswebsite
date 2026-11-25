@@ -25,7 +25,7 @@ export function PanIndiaPresence({ setCurrentPage }) {
       aria-labelledby="coverage-title"
       className="site-section scroll-mt-32 bg-[#102640] text-white"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="site-content">
         <div className="mb-8 max-w-3xl md:mb-10">
           <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#ff9dac]">
             {coverage.subtitle}

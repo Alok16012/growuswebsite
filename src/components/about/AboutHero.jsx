@@ -43,7 +43,7 @@ export const AboutHero = () => {
           </span>
         </h1>
         <p
-          className="max-w-2xl text-lg leading-relaxed font-medium"
+          className="page-intro font-medium"
           style={{
             color: config_global.design?.text?.paragraph || "#f1f5f9",
           }}

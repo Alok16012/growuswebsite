@@ -72,7 +72,7 @@ export const ContactInfo = () => {
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="site-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {info.items.map((c, u) => (
           <div
             key={u}

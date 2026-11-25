@@ -16,7 +16,7 @@ export const HeroSection = ({ setCurrentPage }) => {
       <div className="site-container relative z-10 grid items-center gap-7 pb-10 pt-36 sm:gap-10 lg:grid-cols-2 lg:gap-12 lg:pb-16">
         <div className="max-w-2xl">
           <h1
-            className="growus-home-title page-title mb-5"
+            className="page-title mb-5"
             style={{
               color: hero.headingColor || "#ffffff",
               textShadow: "0 2px 20px rgba(0,0,0,0.4)",
@@ -25,7 +25,7 @@ export const HeroSection = ({ setCurrentPage }) => {
             {hero.heading}
           </h1>
           <p
-            className="text-base md:text-lg mb-8 max-w-xl font-normal leading-relaxed"
+            className="page-intro mb-7 font-normal"
             style={{
               color: hero.subtextColor || "rgba(255,255,255,0.85)",
               textShadow: "0 1px 8px rgba(0,0,0,0.4)",

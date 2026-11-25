@@ -5,7 +5,7 @@ export const CultureDna = () => {
   const { culture, global } = config;
   return (
     <section className="site-section bg-gray-50 border-t border-black/5">
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <div className="text-center mb-12">
           <h2
             className="text-sm font-black tracking-[0.3em] uppercase mb-4"

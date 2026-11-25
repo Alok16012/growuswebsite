@@ -191,7 +191,7 @@ export const JobApplicationModal = ({
             <form onSubmit={g} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                  <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                     {pageCopy.fullName}
                   </label>
                   <input
@@ -204,7 +204,7 @@ export const JobApplicationModal = ({
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                  <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                     {pageCopy.email}
                   </label>
                   <input
@@ -219,7 +219,7 @@ export const JobApplicationModal = ({
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                  <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                     {pageCopy.phoneNumber}
                   </label>
                   <input
@@ -232,7 +232,7 @@ export const JobApplicationModal = ({
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                  <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                     {pageCopy.experienceYears}
                   </label>
                   <input
@@ -248,7 +248,7 @@ export const JobApplicationModal = ({
                 </div>
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                   {pageCopy.positionApplyingFor}
                 </label>
                 <input
@@ -262,7 +262,7 @@ export const JobApplicationModal = ({
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                   {pageCopy.linkedinProfileOptional}
                 </label>
                 <input
@@ -275,7 +275,7 @@ export const JobApplicationModal = ({
                 />
               </div>
               <div className="space-y-1.5 mt-2">
-                <label className="text-[10px] text-primary-blue font-black uppercase tracking-widest pl-1">
+                <label className="text-xs text-primary-blue font-black uppercase tracking-widest pl-1">
                   Upload Resume (PDF/DOCX)
                 </label>
                 <div className="w-full bg-slate-50 border border-dashed border-black/20 rounded-xl px-4 py-6 flex flex-col items-center justify-center cursor-pointer hover:border-primary-blue/50 transition-colors group relative overflow-hidden shadow-inner">
@@ -310,7 +310,7 @@ export const JobApplicationModal = ({
                       <span className="text-deep-blue font-black text-sm uppercase tracking-tight">
                         Click to upload or drag and drop
                       </span>
-                      <span className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mt-1">
+                      <span className="text-gray-500 text-xs font-bold uppercase tracking-widest mt-1">
                         Max file size: 5MB
                       </span>
                     </>

@@ -30,7 +30,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
       <section className="relative flex min-h-[26rem] w-full overflow-hidden">
         <HeroImage themed src={m.image} />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="site-container relative z-10 flex flex-col justify-end pb-10 pt-36">
+        <div className="page-hero site-container relative z-10 flex flex-col justify-end">
           <p
             className="text-[10px] font-black tracking-[0.4em] uppercase mb-2"
             style={{
@@ -54,7 +54,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
             {m.title}
           </h1>
           <p
-            className="text-base md:text-lg max-w-2xl leading-relaxed font-medium"
+            className="page-intro font-medium"
             style={{
               color: config_global.design?.text?.paragraph || "#f1f5f9",
             }}
@@ -64,7 +64,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
         </div>
       </section>
       <section className="bg-gray-50 py-8 border-y border-black/5">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-around items-center gap-8">
+        <div className="site-container flex flex-wrap justify-around items-center gap-8">
           {m.stats.map((v, j) => (
             <div
               key={j}
@@ -105,8 +105,8 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           ))}
         </div>
       </section>
-      <section className="py-14 site-gutter">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10">
+      <section className="site-section">
+        <div className="site-content grid grid-cols-1 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <h2
               className="section-title mb-4 uppercase"
@@ -202,8 +202,8 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           </div>
         </div>
       </section>
-      <section className="bg-gray-50 py-16 site-gutter overflow-hidden relative border-y border-black/5">
-        <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col items-center">
+      <section className="bg-gray-50 site-section overflow-hidden relative border-y border-black/5">
+        <div className="site-content relative z-10 w-full flex flex-col items-center">
           <div className="text-center mb-8">
             <h2
               className="section-title uppercase mb-3"
@@ -432,7 +432,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
         </div>
       </section>
       <section className="py-10 site-gutter">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="site-content flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3
               className="text-lg font-black uppercase tracking-tighter"
@@ -459,14 +459,15 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
         </div>
       </section>
       <section className="border-t border-black/5 py-10 site-gutter bg-gray-50">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-center">
+        <div className="site-content grid grid-cols-[1fr_auto_1fr] items-center gap-2 text-center">
           {b ? (
             <button
               onClick={() => {
                 setCurrentPage(`service-${b}`);
                 window.scrollTo(0, 0);
               }}
-              className="flex items-center gap-3 text-gray-400 hover:text-primary-blue transition-all group"
+              aria-label={pageCopy.previous}
+              className="flex items-center gap-3 justify-self-start text-gray-400 hover:text-primary-blue transition-all group"
             >
               <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-primary-blue group-hover:text-white transition-all">
                 <svg
@@ -492,7 +493,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           )}
           <button
             onClick={() => setCurrentPage("services")}
-            className="text-[10px] font-black uppercase tracking-widest hover:text-white transition-all border border-black/10 px-10 py-4 rounded-full bg-white shadow-sm"
+            className="text-[10px] font-black uppercase tracking-widest hover:text-white transition-all border border-black/10 px-4 py-4 sm:px-8 rounded-full bg-white shadow-sm"
             style={{
               color: config_global.deepBlue,
             }}
@@ -505,7 +506,8 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 setCurrentPage(`service-${x}`);
                 window.scrollTo(0, 0);
               }}
-              className="flex items-center gap-3 text-gray-400 hover:text-primary-blue transition-all group"
+              aria-label={pageCopy.next}
+              className="flex items-center gap-3 justify-self-end text-gray-400 hover:text-primary-blue transition-all group"
             >
               <span className="text-[10px] font-black uppercase tracking-widest hidden md:block">
                 {pageCopy.next}

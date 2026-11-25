@@ -7,10 +7,10 @@ export const JobCard = ({ job, onApply }) => {
     <div className="absolute top-0 right-0 w-24 h-24 bg-primary-blue/5 rounded-bl-[100px] -z-0 group-hover:bg-primary-blue/10 transition-colors" />
     <div className="relative z-10">
       <div className="flex flex-wrap gap-2 mb-5">
-        <span className="bg-primary-blue/10 text-primary-blue text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+        <span className="bg-primary-blue/10 text-primary-blue text-xs font-black uppercase tracking-wide px-4 py-1.5 rounded-full">
           {job.department}
         </span>
-        <span className="bg-gray-50 text-deep-blue/50 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+        <span className="bg-gray-50 text-deep-blue/50 text-xs font-black uppercase tracking-wide px-4 py-1.5 rounded-full">
           {job.type}
         </span>
       </div>
@@ -31,7 +31,7 @@ export const JobCard = ({ job, onApply }) => {
         {job.description}
       </p>
       <div className="mb-8">
-        <p className="text-deep-blue/30 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+        <p className="text-deep-blue/30 text-xs font-black uppercase tracking-wide mb-4">
           {pageCopy.requirements}
         </p>
         <ul className="space-y-3">

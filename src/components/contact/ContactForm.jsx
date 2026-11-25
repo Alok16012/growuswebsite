@@ -53,12 +53,12 @@ ${S}: ${p[S]}`;
   };
   return (
     <section className="site-section bg-gray-50 border-t border-black/5">
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="space-y-12">
             <div>
               <h2
-                className="text-sm font-black tracking-[0.3em] uppercase mb-4"
+                className="text-sm font-black tracking-wide uppercase mb-4"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||
@@ -126,7 +126,7 @@ ${S}: ${p[S]}`;
                 }}
               >
                 <p
-                  className="font-black text-[9px] tracking-[0.3em] uppercase mb-1"
+                  className="font-black text-xs tracking-wide uppercase mb-1"
                   style={{
                     color: config_global.primaryBlue,
                   }}
@@ -273,7 +273,7 @@ ${S}: ${p[S]}`;
                 <button
                   disabled={i === "submitting"}
                   type="submit"
-                  className="w-full text-white font-black py-5 rounded-2xl shadow-xl hover:shadow-2xl active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group uppercase tracking-[0.2em] text-xs"
+                  className="w-full text-white font-black py-5 rounded-2xl shadow-xl hover:shadow-2xl active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group uppercase tracking-wide text-xs"
                   style={{
                     backgroundColor:
                       config.contact.form.submitButtonBg ||

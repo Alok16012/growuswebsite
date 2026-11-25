@@ -7,13 +7,13 @@ export const WhyChooseUs = () => {
   const config_global = config.global;
   return (
     <section
-      className="py-16 md:site-section border-t border-black/5"
+      className="site-section border-t border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
       }}
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="site-content grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div>
           <h2
             className="section-title mb-8 uppercase"

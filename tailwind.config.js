@@ -9,7 +9,7 @@ export default {
         "accent-green": "#32cd32",
       },
       fontFamily: {
-        sora: ["Sora", "sans-serif"],
+        sans: ["var(--site-font)"],
       },
     },
   },

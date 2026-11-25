@@ -32,7 +32,7 @@ export const ServicesPage = ({ setCurrentPage }) => {
             backgroundColor: global.primaryBlue,
           }}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 site-content">
           {services.items.map((service, m) => (
             <ServiceCard
               key={m}

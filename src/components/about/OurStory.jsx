@@ -14,7 +14,7 @@ export const OurStory = () => {
           config_global.design?.backgrounds?.sectionLight || "#ffffff",
       }}
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="site-content grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div className="relative group">
           <div
             className="absolute -inset-4 rounded-2xl blur-2xl transition-all duration-700"
@@ -28,7 +28,7 @@ export const OurStory = () => {
             alt="Modern Factory"
             className="growus-photo relative z-10 growus-photo-frame w-full aspect-[4/3] object-cover lg:h-[500px] lg:aspect-auto"
           />
-          <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white/80 backdrop-blur-3xl rounded-3xl border border-black/5 shadow-2xl z-20 flex flex-col items-center justify-center text-center p-4">
+          <div className="absolute bottom-3 right-3 w-32 h-32 sm:w-40 sm:h-40 lg:-bottom-6 lg:right-0 bg-white/80 backdrop-blur-3xl rounded-3xl border border-black/5 shadow-2xl z-20 flex flex-col items-center justify-center text-center p-4">
             <span
               className="text-4xl font-black mb-1"
               style={{

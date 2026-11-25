@@ -18,10 +18,10 @@ export const JobList = ({ onApply }) => {
   });
   return (
     <section className="bg-gray-50 site-section border-y border-black/5">
-      <div className="max-w-6xl mx-auto">
+      <div className="site-content">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <h2 className="text-primary-blue text-sm font-black tracking-[0.3em] uppercase mb-4">
+            <h2 className="text-primary-blue text-sm font-black tracking-wide uppercase mb-4">
               {pageCopy.currentVacancies}
             </h2>
             <h3 className="section-title text-deep-blue uppercase">
@@ -58,7 +58,7 @@ export const JobList = ({ onApply }) => {
             <button
               key={g}
               onClick={() => setU(g)}
-              className={`text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm ${u === g ? "bg-primary-blue text-white" : "bg-white text-deep-blue hover:bg-gray-50 border border-black/5"}`}
+              className={`text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full transition-all duration-300 shadow-sm ${u === g ? "bg-primary-blue text-white" : "bg-white text-deep-blue hover:bg-gray-50 border border-black/5"}`}
             >
               {g}
             </button>
