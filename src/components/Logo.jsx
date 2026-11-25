@@ -1,3 +1,4 @@
+import { SiteImage } from "./SiteImage";
 import { useSiteConfig } from "../context/SiteConfigContext";
 
 export const Logo = ({ size = "md", className = "" }) => {
@@ -10,7 +11,9 @@ export const Logo = ({ size = "md", className = "" }) => {
   const i = s[size] || s.md;
   return (
     <div className={`flex items-center group ${className}`}>
-      <img
+      <SiteImage
+        loading="eager"
+        fallbackSrc="/growus-logo.png"
         src={logoUrl || "/growus-logo.png"}
         alt={[logoText, logoHighlight].filter(Boolean).join(" ") || "Growus Auto"}
         className={`w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] ${i}`}

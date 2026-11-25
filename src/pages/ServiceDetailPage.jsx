@@ -1,3 +1,4 @@
+import { HeroImage } from "../components/SiteImage";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
@@ -27,12 +28,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
     <div className="min-h-screen bg-white">
       <Navbar currentPage="services" setCurrentPage={setCurrentPage} />
       <section className="relative flex min-h-[26rem] w-full overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${m.image})`,
-          }}
-        />
+        <HeroImage themed src={m.image} />
         <div className="absolute inset-0 bg-black/40" />
         <div className="site-container relative z-10 flex flex-col justify-end pb-10 pt-36">
           <p

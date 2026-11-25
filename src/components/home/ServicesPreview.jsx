@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const ServicesPreview = ({ setCurrentPage }) => {
@@ -94,7 +95,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
   return (
     <section
       id="services"
-      className="py-12 md:py-16 px-4 md:px-12 lg:px-20 border-t border-black/5"
+      className="home-services-theme py-12 md:py-16 px-4 md:px-12 lg:px-20 border-t border-black/5"
       style={{
         backgroundColor:
           config_global.design?.backgrounds?.sectionLight || "#f9fafb",
@@ -123,20 +124,21 @@ export const ServicesPreview = ({ setCurrentPage }) => {
         {services.items.slice(0, 6).map((u, d) => (
           <div
             key={d}
-            className="group relative h-[280px] md:h-[420px] rounded-[16px] md:rounded-[20px] overflow-hidden cursor-pointer border border-black/10 transition-all duration-300 shadow-xl"
+            className="home-services-card group relative h-[280px] md:h-[420px] rounded-[16px] md:rounded-[20px] overflow-hidden cursor-pointer border border-black/10 transition-all duration-300 shadow-xl"
             style={{
               borderColor:
                 config_global.design?.text?.subheading ||
                 config_global.primaryBlue,
             }}
           >
-            <div className="absolute inset-0">
-              <img
+            <div className="growus-image-surface absolute inset-0 h-1/2 overflow-hidden">
+              <SiteImage
+                sizes="(min-width: 1024px) 33vw, 50vw"
                 src={u.image}
                 alt={u.title}
-                className="w-full h-1/2 object-cover transition-transform duration-500 group-hover:scale-110"
+                className="growus-photo w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 h-1/2 bg-white/10 group-hover:bg-white/0 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-white/10 group-hover:bg-white/0 transition-colors duration-500" />
             </div>
             <div
               className="absolute top-[calc(50%-16px)] md:top-[calc(50%-20px)] left-1/2 -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-white z-10 shadow-lg"
@@ -150,7 +152,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
               {c[d] || c[0]}
             </div>
             <div
-              className="absolute bottom-0 w-full h-1/2 p-3 md:p-6 flex flex-col border-t border-white/10"
+              className="home-services-copy absolute bottom-0 w-full h-1/2 p-3 md:p-6 flex flex-col border-t border-white/10"
               style={{
                 backgroundColor:
                   config_global.design?.backgrounds?.sectionDark ||
@@ -158,7 +160,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
               }}
             >
               <p
-                className="text-[8px] md:text-[10px] font-black uppercase tracking-widest mb-1 md:mb-2"
+                className="home-services-category text-[8px] md:text-[10px] font-black uppercase tracking-widest mb-1 md:mb-2"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||

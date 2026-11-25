@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const OurStory = () => {
@@ -21,10 +22,11 @@ export const OurStory = () => {
               backgroundColor: `${config_global.design?.text?.subheading || config_global.primaryBlue}33`,
             }}
           />
-          <img
+          <SiteImage
+            sizes="(min-width: 1024px) 560px, 100vw"
             src={story.image}
             alt="Modern Factory"
-            className="relative z-10 rounded-[24px] shadow-2xl border border-black/5 w-full h-[500px] object-cover"
+            className="growus-photo relative z-10 growus-photo-frame w-full aspect-[4/3] object-cover lg:h-[500px] lg:aspect-auto"
           />
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white/80 backdrop-blur-3xl rounded-3xl border border-black/5 shadow-2xl z-20 flex flex-col items-center justify-center text-center p-4">
             <span

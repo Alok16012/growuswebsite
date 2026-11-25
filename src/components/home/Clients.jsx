@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const Clients = () => {
@@ -13,10 +14,10 @@ export const Clients = () => {
         {[...clients, ...clients, ...clients].map((d, m) => (
           <div
             key={m}
-            className="w-56 h-32 rounded-2xl flex items-center justify-center p-8 bg-white border border-black/5 hover:border-primary-blue/30 transition-all duration-500 group shadow-lg hover:shadow-2xl overflow-hidden"
+            className="w-56 h-32 rounded-2xl flex items-center justify-center p-8 bg-white growus-logo-tile transition-all duration-500 group shadow-lg hover:shadow-2xl overflow-hidden"
           >
             {d.logo ? (
-              <img
+              <SiteImage
                 src={d.logo}
                 alt={d.name}
                 className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"

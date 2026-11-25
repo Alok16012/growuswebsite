@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const ServiceCard = ({ service, onClick }) => {
@@ -137,11 +138,12 @@ export const ServiceCard = ({ service, onClick }) => {
       className="group relative h-[480px] rounded-3xl overflow-hidden cursor-pointer border border-black/10 hover:border-primary-blue/30 transition-all duration-500 hover:shadow-2xl bg-white shadow-xl"
       onClick={onClick}
     >
-      <div className="relative h-56 overflow-hidden">
-        <img
+      <div className="growus-image-surface relative h-56 overflow-hidden">
+        <SiteImage
+          sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
           src={service.image}
           alt={service.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="growus-photo w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60" />
         <div

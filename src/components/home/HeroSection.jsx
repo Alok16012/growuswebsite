@@ -1,3 +1,4 @@
+import { HeroImage } from "../SiteImage";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 import { useSiteConfig } from "../../context/SiteConfigContext";
@@ -12,12 +13,7 @@ export const HeroSection = ({ setCurrentPage }) => {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
     <section className="relative isolate flex min-h-[min(100svh,52rem)] w-full flex-col overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat w-full"
-        style={{
-          backgroundImage: `url(${hero.bgImage})`,
-        }}
-      />
+      <HeroImage themed src={hero.bgImage} />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
       <div className="site-container relative z-10 flex flex-1 flex-col justify-center pb-12 pt-36 sm:pb-16">

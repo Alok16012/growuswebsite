@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const Ecosystem = ({ onJoinClick }) => {
@@ -59,11 +60,12 @@ export const Ecosystem = ({ onJoinClick }) => {
                   config_global.deepBlue,
               }}
             >
-              <div className="h-64 overflow-hidden relative">
-                <img
+              <div className="growus-image-surface h-64 overflow-hidden relative">
+                <SiteImage
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   src={c.image}
                   alt={c.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="growus-photo w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-[var(--deep-blue)] via-[var(--deep-blue-20)] to-transparent"

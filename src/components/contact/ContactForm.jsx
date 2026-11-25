@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useState } from "react";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 import { supabase } from "../../lib/supabase";
@@ -92,12 +93,12 @@ ${S}: ${p[S]}`;
                   {[1, 2, 3, 4].map((d) => (
                     <div
                       key={d}
-                      className="w-12 h-12 rounded-full border-4 border-white bg-gray-200 overflow-hidden shadow-sm"
+                      className="w-12 h-12 rounded-full border-4 border-white growus-image-surface overflow-hidden shadow-sm"
                     >
-                      <img
+                      <SiteImage
                         src={`https://i.pravatar.cc/100?img=${d + 10}`}
-                        alt="Team"
-                        className="w-full h-full object-cover"
+                        alt=""
+                        className="growus-photo w-full h-full object-cover"
                       />
                     </div>
                   ))}

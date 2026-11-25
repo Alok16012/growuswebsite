@@ -1,3 +1,4 @@
+import { HeroImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const ServicesHero = () => {
@@ -5,12 +6,7 @@ export const ServicesHero = () => {
   const { services, global } = config;
   return (
     <section className="relative flex w-full overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${services.heroBg})`,
-        }}
-      />
+      <HeroImage themed src={services.heroBg} />
       <div className="absolute inset-0 bg-black/40" />
       <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p

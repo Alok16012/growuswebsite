@@ -1,0 +1,95 @@
+:root {
+  --growus-ink: #201d42;
+}
+
+body:has(#root > div > header.fixed) {
+  color: var(--growus-ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-optical-sizing: auto;
+}
+
+#root:has(> div > header.fixed) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+#root:has(> div > header.fixed) :is(.page-title, .section-title) {
+  letter-spacing: -0.045em;
+}
+
+/* Tint the existing overlays without moving the image or changing transitions. */
+section:has(> .site-container .page-title) > .bg-gradient-to-r {
+  --tw-gradient-from: #211a4ce8 var(--tw-gradient-from-position);
+  --tw-gradient-via: #42318470 var(--tw-gradient-via-position);
+  --tw-gradient-to: #6341aa38 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+section:has(> .page-hero):has(> .growus-hero-image) > .bg-black\/40 {
+  background-color: #1f1b4b80;
+}
+
+#root:has(> div > header.fixed) ::selection {
+  background-color: #5143b5;
+  color: #fff;
+}
+
+.home-services-theme {
+  background-image:
+    radial-gradient(ellipse at 8% 10%, #c4b5fd32, transparent 48%),
+    radial-gradient(ellipse at 93% 90%, #a5b4fc32, transparent 52%);
+}
+
+.home-services-theme .section-title {
+  color: var(--growus-ink);
+}
+
+.home-services-card .home-services-copy {
+  background-image: linear-gradient(135deg, #4831a34d, #17142c33);
+}
+
+.home-services-copy h3,
+.home-services-copy button {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.home-services-copy .home-services-category {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+
+/* Photo frames and tones follow the public site's indigo palette. */
+.growus-image-surface,
+.growus-photo-frame {
+  background-color: #ede9f8;
+}
+
+.growus-photo-frame {
+  border-radius: clamp(1rem, 2vw, 1.25rem);
+  box-shadow: 0 12px 30px #201d4220;
+}
+
+.growus-photo {
+  filter: saturate(0.88) contrast(1.04);
+}
+
+.growus-hero-image {
+  background-color: var(--growus-ink);
+}
+
+.growus-hero-image::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, #201d4259, #5143b522);
+  content: "";
+  pointer-events: none;
+}
+
+.growus-logo-tile {
+  border: 1px solid #201d421a;
+}
+
+.growus-logo-tile:hover {
+  border-color: #5143b566;
+}

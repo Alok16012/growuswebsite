@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const Workspaces = () => {
@@ -28,12 +29,13 @@ export const Workspaces = () => {
           {culture.workspaces.map((i, c) => (
             <div
               key={c}
-              className="group relative h-[350px] rounded-2xl overflow-hidden"
+              className="growus-photo-frame group relative aspect-[4/3] overflow-hidden md:aspect-[4/5]"
             >
-              <img
+              <SiteImage
+                sizes="(min-width: 768px) 33vw, 100vw"
                 src={i.img}
                 alt={i.label}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="growus-photo w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
               <div className="absolute bottom-8 left-8">

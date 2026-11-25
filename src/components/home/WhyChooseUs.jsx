@@ -1,3 +1,4 @@
+import { SiteImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const WhyChooseUs = () => {
@@ -106,10 +107,11 @@ export const WhyChooseUs = () => {
               backgroundColor: `${config_global.primaryBlue}10`,
             }}
           />
-          <img
+          <SiteImage
+            sizes="(min-width: 1024px) 560px, 100vw"
             src={whyChooseUs.image}
             alt="Quality Control Engineers"
-            className="rounded-2xl relative z-10 w-full h-[400px] md:h-[500px] object-cover shadow-2xl"
+            className="growus-photo growus-photo-frame relative z-10 w-full aspect-[4/3] object-cover lg:h-[500px] lg:aspect-auto"
           />
         </div>
       </div>
