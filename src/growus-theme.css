@@ -86,7 +86,8 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   background-color: var(--growus-ink);
 }
 
-.growus-hero-image::after {
+.growus-hero-image::after,
+.growus-home-hero-photo::after {
   position: absolute;
   inset: 0;
   background: linear-gradient(115deg, #10264066, #24476622);
@@ -107,6 +108,7 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 }
 
 .growus-home-hero-photo {
+  position: relative;
   aspect-ratio: 3 / 2;
   overflow: hidden;
   border: 1px solid #adc7e365;
