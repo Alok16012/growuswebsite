@@ -28,6 +28,7 @@ function ClientLogo({ name, logo }) {
 
 export function Clients() {
   const { config } = useSiteConfig();
+  const [paused, setPaused] = useState(false);
   const { homeClients: copy } = config.pageCopy;
   const { clients } = config.home;
   const groups = [
@@ -46,6 +47,13 @@ export function Clients() {
             {clients.title}
           </h2>
           <div aria-hidden="true" className="growus-section-rule" />
+          <button
+            type="button"
+            className="growus-client-motion-toggle mt-4 min-h-11 rounded-lg border border-slate-300 px-4 text-sm font-semibold hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            onClick={() => setPaused((current) => !current)}
+          >
+            {paused ? "Play logo animation" : "Pause logo animation"}
+          </button>
         </header>
         <div className="space-y-8">
           {groups.map(({ id, label, count, entries }) => (
@@ -54,11 +62,22 @@ export function Clients() {
                 <h3 id={`clients-${id}-title`} className="text-lg font-bold">{label}</h3>
                 <span className="text-sm font-semibold tabular-nums text-slate-600">{count}</span>
               </div>
-              <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-5">
-                {entries.map(({ name, logo }, index) => (
-                  <ClientLogo key={`${index}:${name}`} name={name} logo={logo} />
-                ))}
-              </ul>
+              <div className="growus-client-marquee" data-paused={paused} data-direction={id}>
+                <div className="growus-client-track">
+                  {[false, true].map((duplicate) => (
+                    <ul
+                      key={String(duplicate)}
+                      className="growus-client-list"
+                      data-duplicate={duplicate}
+                      aria-hidden={duplicate || undefined}
+                    >
+                      {entries.map(({ name, logo }, index) => (
+                        <ClientLogo key={index + ":" + name} name={name} logo={logo} />
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+              </div>
             </section>
           ))}
         </div>

@@ -212,3 +212,79 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
     transform: none;
   }
 }
+
+.growus-client-marquee {
+  overflow: hidden;
+}
+
+.growus-client-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  animation: growus-client-scroll 52s linear infinite;
+}
+
+.growus-client-marquee[data-direction="overseas"] .growus-client-track {
+  animation-direction: reverse;
+  animation-duration: 58s;
+}
+
+@media (hover: hover) {
+  .growus-client-marquee:hover .growus-client-track {
+    animation-play-state: paused;
+  }
+}
+
+.growus-client-list {
+  display: flex;
+  flex: 1 0 50%;
+  gap: .75rem;
+  padding-right: .75rem;
+}
+
+.growus-client-list > li {
+  flex: 0 0 clamp(9rem, 17vw, 13rem);
+}
+
+@keyframes growus-client-scroll {
+  to { transform: translateX(-50%); }
+}
+
+.growus-client-marquee[data-paused="true"] .growus-client-track {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  animation: none;
+}
+
+.growus-client-list[data-duplicate="false"] {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr));
+}
+
+.growus-client-marquee[data-paused="true"] .growus-client-list {
+  display: grid;
+  padding: 0;
+}
+
+.growus-client-marquee[data-paused="true"] .growus-client-list[data-duplicate="true"] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .growus-client-motion-toggle,
+  .growus-client-marquee .growus-client-list[data-duplicate="true"] {
+    display: none;
+  }
+
+  .growus-client-marquee .growus-client-track {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    animation: none;
+  }
+
+  .growus-client-marquee .growus-client-list {
+    display: grid;
+    padding: 0;
+  }
+}
