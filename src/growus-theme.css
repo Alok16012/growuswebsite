@@ -114,7 +114,7 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 }
 
 .growus-home-hero {
-  background: radial-gradient(ellipse at 85% 0%, #294b70, transparent 65%), var(--growus-ink);
+  background: var(--growus-ink);
 }
 
 .growus-home-hero-photo {
@@ -127,8 +127,11 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 .growus-home-hero-photo::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #0b172bee, #0b172bb8 54%, #0b172b40);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--growus-ink) 70%, transparent), transparent 26%, transparent 55%, var(--growus-ink)),
+    linear-gradient(90deg, var(--growus-ink), color-mix(in srgb, var(--growus-ink) 73%, transparent) 48%, transparent 90%);
   content: "";
+  pointer-events: none;
 }
 
 .growus-image-surface:is(.relative, .absolute)::after {
@@ -146,15 +149,10 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 
 .growus-hero-layout {
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
   min-height: clamp(27rem, 42vw, 38rem);
   align-items: center;
   gap: clamp(1.25rem, 3vw, 2.75rem);
   padding: clamp(1.25rem, 5vw, 4.5rem);
-  border: 1px solid #8fb0d13d;
-  border-radius: clamp(1.25rem, 3vw, 2rem);
-  background: linear-gradient(135deg, var(--growus-panel), var(--growus-panel-light));
 }
 
 .growus-hero-promo,
@@ -194,7 +192,9 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 
 @media (max-width: 639px) {
   .growus-home-hero-photo::after {
-    background: linear-gradient(90deg, #0b172be8, #0b172b9c);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--growus-ink) 65%, transparent), transparent 28%, transparent 55%, var(--growus-ink)),
+      linear-gradient(90deg, color-mix(in srgb, var(--growus-ink) 92%, transparent), color-mix(in srgb, var(--growus-ink) 58%, transparent));
   }
 }
 

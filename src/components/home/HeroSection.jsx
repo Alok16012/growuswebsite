@@ -18,6 +18,36 @@ export const HeroSection = ({ setCurrentPage }) => {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
     <section className="growus-home-hero relative isolate flex w-full flex-col overflow-hidden">
+      <div className="growus-home-hero-photo" aria-hidden="true">
+        <SiteImage
+          src={hero.bgImage}
+          sizes="100vw"
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          className="block h-full w-full object-cover"
+        />
+        {!reducedMotion && (
+          <video
+            ref={videoRef}
+            className={`absolute inset-0 h-full w-full object-cover object-[70%_center] ${videoHasPlayed ? "" : "opacity-0"}`}
+            src="/growus-inspection-background.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            onPlaying={() => {
+              setVideoHasPlayed(true);
+              setIsVideoPlaying(true);
+            }}
+            onPause={() => setIsVideoPlaying(false)}
+            onError={() => {
+              setVideoHasPlayed(false);
+              setIsVideoPlaying(false);
+            }}
+          />
+        )}
+      </div>
       <div className="site-container growus-hero-shell">
         <div className="growus-hero-layout grid">
           <div className="growus-hero-copy min-w-0">
@@ -70,36 +100,6 @@ export const HeroSection = ({ setCurrentPage }) => {
               <span aria-hidden="true" className="size-2 rounded-full" style={{ backgroundColor: hero.sideTabBg || "#ff687e" }} />
               {hero.sideTabText}
             </button>
-          </div>
-          <div className="growus-home-hero-photo" aria-hidden="true">
-            <SiteImage
-              src={hero.bgImage}
-              sizes="(min-width: 1376px) 1312px, 95vw"
-              alt=""
-              loading="eager"
-              fetchPriority="high"
-              className="block h-full w-full object-cover"
-            />
-            {!reducedMotion && (
-              <video
-                ref={videoRef}
-                className={`absolute inset-0 h-full w-full object-cover object-[70%_center] ${videoHasPlayed ? "" : "opacity-0"}`}
-                src="/growus-inspection-background.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                onPlaying={() => {
-                  setVideoHasPlayed(true);
-                  setIsVideoPlaying(true);
-                }}
-                onPause={() => setIsVideoPlaying(false)}
-                onError={() => {
-                  setVideoHasPlayed(false);
-                  setIsVideoPlaying(false);
-                }}
-              />
-            )}
           </div>
           {!reducedMotion && videoHasPlayed && (
             <button
