@@ -17,7 +17,7 @@ export const Footer = ({ setCurrentPage }) => {
       <div className="site-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <div className="mb-6">
-            <Logo size="md" />
+            <Logo size="md" onDark />
           </div>
           <p
             className="text-sm mb-6 font-medium leading-relaxed"
