@@ -1,5 +1,5 @@
 import { SiteImage } from "../SiteImage";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import CountUp from "react-countup";
 import { useSiteConfig } from "../../context/SiteConfigContext";
@@ -11,6 +11,9 @@ export const HeroSection = ({ setCurrentPage }) => {
   const hero = config.home.hero;
   const config_global = config.global;
   const reducedMotion = useReducedMotion();
+  const videoRef = useRef(null);
+  const [videoHasPlayed, setVideoHasPlayed] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isPromoVisible, setIsPromoVisible] = useState(true);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
@@ -77,7 +80,43 @@ export const HeroSection = ({ setCurrentPage }) => {
               fetchPriority="high"
               className="block h-full w-full object-cover"
             />
+            {!reducedMotion && (
+              <video
+                ref={videoRef}
+                className={`absolute inset-0 h-full w-full object-cover object-[70%_center] ${videoHasPlayed ? "" : "opacity-0"}`}
+                src="/growus-inspection-background.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                onPlaying={() => {
+                  setVideoHasPlayed(true);
+                  setIsVideoPlaying(true);
+                }}
+                onPause={() => setIsVideoPlaying(false)}
+                onError={() => {
+                  setVideoHasPlayed(false);
+                  setIsVideoPlaying(false);
+                }}
+              />
+            )}
           </div>
+          {!reducedMotion && videoHasPlayed && (
+            <button
+              type="button"
+              className="absolute bottom-3 right-3 rounded-md bg-slate-950/80 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-950"
+              onClick={() => {
+                const video = videoRef.current;
+                if (video.paused) {
+                  video.play().catch(() => setIsVideoPlaying(false));
+                } else {
+                  video.pause();
+                }
+              }}
+            >
+              {isVideoPlaying ? "Pause video" : "Play video"}
+            </button>
+          )}
         </div>
         {isPromoVisible && (
           <div className="growus-hero-promo relative mt-3 hidden flex-wrap items-center gap-x-4 gap-y-2 rounded-xl px-5 py-3 pr-12 text-white md:flex">
