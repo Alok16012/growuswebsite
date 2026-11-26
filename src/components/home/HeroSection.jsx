@@ -12,12 +12,29 @@ export const HeroSection = ({ setCurrentPage }) => {
   const config_global = config.global;
   const reducedMotion = useReducedMotion();
   const videoRef = useRef(null);
-  const [videoHasPlayed, setVideoHasPlayed] = useState(false);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [playingVideo, setPlayingVideo] = useState(null);
+  const [startedVideo, setStartedVideo] = useState(null);
+  const [failedVideo, setFailedVideo] = useState(null);
   const [isPromoVisible, setIsPromoVisible] = useState(true);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const videoSrc = hero.bgVideo?.trim();
+  const hasVideo = Boolean(videoSrc) && !reducedMotion;
+  const openDestination = (destination) => {
+    if (destination === "quote") {
+      setIsQuoteOpen(true);
+      return;
+    }
+    const hasService = config.services.items.some(({ slug }) => `service-${slug}` === destination);
+    setCurrentPage(destination === "contact" || hasService ? destination : "services");
+  };
   return (
-    <section className="growus-home-hero relative isolate flex w-full flex-col overflow-hidden">
+    <section
+      className="growus-home-hero relative isolate flex w-full flex-col overflow-hidden"
+      style={hero.useCustomOverlay ? {
+        "--hero-overlay-start": hero.overlayColor || undefined,
+        "--hero-overlay-end": hero.overlayToColor || undefined,
+      } : undefined}
+    >
       <div className="growus-home-hero-photo" aria-hidden="true">
         <SiteImage
           src={hero.bgImage}
@@ -27,23 +44,27 @@ export const HeroSection = ({ setCurrentPage }) => {
           fetchPriority="high"
           className="block h-full w-full object-cover"
         />
-        {!reducedMotion && (
+        {hasVideo && (
           <video
+            key={videoSrc}
             ref={videoRef}
-            className={`absolute inset-0 h-full w-full object-cover object-[70%_center] ${videoHasPlayed ? "" : "opacity-0"}`}
-            src="/growus-inspection-background.mp4"
-            autoPlay
+            className={`absolute inset-0 h-full w-full object-cover object-[70%_center] ${startedVideo === videoSrc && failedVideo !== videoSrc ? "" : "opacity-0"}`}
+            src={videoSrc}
+            autoPlay={hero.videoAutoplay}
+            preload={hero.videoAutoplay ? "auto" : "metadata"}
             muted
-            loop
+            loop={hero.videoLoop}
             playsInline
             onPlaying={() => {
-              setVideoHasPlayed(true);
-              setIsVideoPlaying(true);
+              setStartedVideo(videoSrc);
+              setPlayingVideo(videoSrc);
+              setFailedVideo(null);
             }}
-            onPause={() => setIsVideoPlaying(false)}
+            onPause={() => setPlayingVideo(null)}
+            onEnded={() => setPlayingVideo(null)}
             onError={() => {
-              setVideoHasPlayed(false);
-              setIsVideoPlaying(false);
+              setFailedVideo(videoSrc);
+              setPlayingVideo(null);
             }}
           />
         )}
@@ -66,7 +87,7 @@ export const HeroSection = ({ setCurrentPage }) => {
             <div className="growus-hero-actions grid max-w-lg grid-cols-1 gap-3 min-[480px]:grid-cols-2">
               <button
                 type="button"
-                onClick={() => setCurrentPage("services")}
+                onClick={() => openDestination(hero.button1Destination)}
                 className="growus-hero-button rounded-xl px-4 py-3 text-sm font-semibold shadow-lg hover:brightness-110"
                 style={{
                   backgroundColor:
@@ -81,12 +102,12 @@ export const HeroSection = ({ setCurrentPage }) => {
               </button>
               <button
                 type="button"
-                onClick={() => setCurrentPage("services")}
+                onClick={() => openDestination(hero.button2Destination)}
                 className="growus-hero-button rounded-xl px-4 py-3 text-sm font-semibold hover:bg-white/10"
                 style={{
                   border: `2px solid ${hero.button2Border || "rgba(255,255,255,0.7)"}`,
                   color:
-                    config_global.design?.buttons?.secondaryText || "#ffffff",
+                    hero.button2TextColor || config_global.design?.buttons?.secondaryText || "#ffffff",
                 }}
               >
                 {hero.button2Text}
@@ -101,28 +122,28 @@ export const HeroSection = ({ setCurrentPage }) => {
               {hero.sideTabText}
             </button>
           </div>
-          {!reducedMotion && videoHasPlayed && (
+          {hasVideo && failedVideo !== videoSrc && (
             <button
               type="button"
               className="absolute bottom-3 right-3 rounded-md bg-slate-950/80 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-950"
               onClick={() => {
                 const video = videoRef.current;
                 if (video.paused) {
-                  video.play().catch(() => setIsVideoPlaying(false));
+                  video.play().catch(() => setPlayingVideo(null));
                 } else {
                   video.pause();
                 }
               }}
             >
-              {isVideoPlaying ? "Pause video" : "Play video"}
+              {playingVideo === videoSrc ? pageCopy.pauseVideo : pageCopy.playVideo}
             </button>
           )}
         </div>
-        {isPromoVisible && (
+        {hero.showPromo && isPromoVisible && (
           <div className="growus-hero-promo relative mt-3 hidden flex-wrap items-center gap-x-4 gap-y-2 rounded-xl px-5 py-3 pr-12 text-white md:flex">
             <button
               type="button"
-              aria-label="Close automated inspection promotion"
+              aria-label={pageCopy.closePromo}
               onClick={() => setIsPromoVisible(false)}
               className="absolute right-2 top-2 grid size-8 place-items-center rounded-md text-white/70 hover:bg-white/10 hover:text-white"
             >
@@ -146,7 +167,7 @@ export const HeroSection = ({ setCurrentPage }) => {
             </div>
             <button
               type="button"
-              onClick={() => setCurrentPage("services")}
+              onClick={() => openDestination(hero.promoDestination)}
               className="shrink-0 rounded text-sm font-semibold text-[#ffd0d7] underline-offset-4 hover:underline"
             >
               {pageCopy.clickHere}
@@ -154,7 +175,7 @@ export const HeroSection = ({ setCurrentPage }) => {
           </div>
         )}
       </div>
-      <div className="growus-hero-stats">
+      <div className="growus-hero-stats" hidden={!hero.showStats || !hero.stats.length}>
         <div className="site-container grid grid-cols-2 gap-y-5 py-5 sm:flex sm:justify-around">
           {hero.stats.map((u, d) => (
             <div

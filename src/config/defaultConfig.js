@@ -55,6 +55,15 @@ export const defaultConfig = {
     hero: {
       bgImage:
         "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2560&auto=format&fit=crop",
+      bgVideo: "/growus-inspection-background.mp4",
+      videoAutoplay: true,
+      videoLoop: true,
+      useCustomOverlay: false,
+      showPromo: true,
+      showStats: true,
+      button1Destination: "services",
+      button2Destination: "services",
+      promoDestination: "services",
       overlayColor: "#064289",
       overlayToColor: "#0a3663",
       heading: "Quality Control That Keeps Production Moving",

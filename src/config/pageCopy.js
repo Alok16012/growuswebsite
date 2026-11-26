@@ -26,6 +26,9 @@ export const pageCopySections = {
     tab: "home-hero",
     fields: {
       clickHere: "CLICK HERE",
+      pauseVideo: "Pause video",
+      playVideo: "Play video",
+      closePromo: "Close automated inspection promotion",
     },
   },
   homeServices: {

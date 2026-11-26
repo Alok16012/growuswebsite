@@ -129,7 +129,7 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   inset: 0;
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--growus-ink) 70%, transparent), transparent 26%, transparent 55%, var(--growus-ink)),
-    linear-gradient(90deg, var(--growus-ink), color-mix(in srgb, var(--growus-ink) 73%, transparent) 48%, transparent 90%);
+    linear-gradient(90deg, var(--hero-overlay-start, var(--growus-ink)), color-mix(in srgb, var(--hero-overlay-start, var(--growus-ink)) 73%, transparent) 48%, var(--hero-overlay-end, transparent) 90%);
   content: "";
   pointer-events: none;
 }
@@ -194,7 +194,7 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   .growus-home-hero-photo::after {
     background:
       linear-gradient(180deg, color-mix(in srgb, var(--growus-ink) 65%, transparent), transparent 28%, transparent 55%, var(--growus-ink)),
-      linear-gradient(90deg, color-mix(in srgb, var(--growus-ink) 92%, transparent), color-mix(in srgb, var(--growus-ink) 58%, transparent));
+      linear-gradient(90deg, color-mix(in srgb, var(--hero-overlay-start, var(--growus-ink)) 92%, transparent), color-mix(in srgb, var(--hero-overlay-end, var(--growus-ink)) 58%, transparent));
   }
 }
 
