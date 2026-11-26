@@ -27,13 +27,7 @@ export const ServicesPreview = ({ setCurrentPage }) => {
       >
         {services.sectionTitle}
       </h2>
-      <div
-        className="w-24 h-1 mx-auto mb-8 md:mb-12"
-        style={{
-          backgroundColor:
-            config_global.design?.text?.subheading || config_global.primaryBlue,
-        }}
-      />
+      <div aria-hidden="true" className="growus-section-rule mb-8 md:mb-12" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 site-content">
         {services.items.slice(0, 6).map((service, index) => (
           <ServiceCard

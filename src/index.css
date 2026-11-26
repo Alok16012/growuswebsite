@@ -105,9 +105,9 @@ html {
   background: #1a1a1a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6358d0;
+  background: #617e9c;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7970e2;
+  background: #819db8;
 }

@@ -149,7 +149,7 @@ export const ServiceCard = ({
   };
   return (
     <div
-      className="group relative flex min-h-[480px] flex-col rounded-3xl overflow-hidden cursor-pointer border border-black/10 hover:border-primary-blue/30 transition-all duration-500 hover:shadow-2xl bg-white shadow-xl"
+      className="growus-service-card group relative flex min-h-[480px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 transition-colors duration-300"
       onClick={onClick}
     >
       <div className="growus-image-surface relative h-56 shrink-0 overflow-hidden">
@@ -162,10 +162,7 @@ export const ServiceCard = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60" />
         <div
-          className="absolute top-6 left-6 max-w-[calc(100%-3rem)] text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest z-10 shadow-lg"
-          style={{
-            backgroundColor: config_global.primaryBlue,
-          }}
+          className="growus-service-badge absolute left-5 top-5 z-10 max-w-[calc(100%-2.5rem)] rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wide"
         >
           {service.category}
         </div>
@@ -187,14 +184,11 @@ export const ServiceCard = ({
       </div>
       <div
         className="flex flex-1 flex-col px-6 pb-7 pt-10 sm:px-8"
-        style={{
-          backgroundColor: config_global.deepBlue,
-        }}
       >
-        <h3 className="text-white font-black text-xl mb-4 leading-tight group-hover:text-primary-blue transition-colors duration-300 uppercase tracking-tight">
+        <h3 className="mb-3 text-xl font-bold leading-tight tracking-tight text-white">
           {service.title}
         </h3>
-        <p className="text-slate-400 font-medium text-sm leading-relaxed line-clamp-3 mb-auto">
+        <p className="text-slate-200 text-sm leading-relaxed line-clamp-3 mb-auto">
           {service.description}
         </p>
         <button
@@ -203,10 +197,7 @@ export const ServiceCard = ({
             event.stopPropagation();
             onClick();
           }}
-          className="mt-8 w-max text-white font-black text-[10px] px-6 py-2.5 rounded-full transition-all duration-300 uppercase tracking-widest shadow-lg active:scale-95 flex items-center gap-2"
-          style={{
-            backgroundColor: config_global.primaryBlue,
-          }}
+          className="growus-service-action mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors"
         >
           {actionLabel ?? pageCopy.exploreService}
           <svg

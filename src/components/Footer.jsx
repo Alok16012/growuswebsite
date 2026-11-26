@@ -8,7 +8,7 @@ export const Footer = ({ setCurrentPage }) => {
   const { footer, global } = config;
   return (
     <footer
-      className="site-section border-t border-white/10"
+      className="growus-footer site-section border-t border-white/10"
       style={{
         backgroundColor:
           global.design?.backgrounds?.sectionDark || global.deepBlue,
@@ -212,11 +212,11 @@ export const Footer = ({ setCurrentPage }) => {
       </div>
       <div className="site-content mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-          <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">
+          <p className="text-slate-300 text-xs font-medium uppercase tracking-widest">
             {footer.copyright}
           </p>
           <span className="hidden md:block text-gray-700">|</span>
-          <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">
+          <p className="text-slate-300 text-xs font-medium uppercase tracking-widest">
             Developed by{" "}
             <a
               href="https://blinks-ai.com/"

@@ -1,37 +1,79 @@
 :root {
-  --growus-ink: #201d42;
+  --growus-ink: #102640;
+  --growus-panel: #183553;
+  --growus-panel-light: #244766;
+  --growus-coral: #ff687e;
+  --growus-coral-light: #ffd0d7;
+  --growus-surface: #edf3f9;
 }
 
-/* Tint the existing overlays without moving the image or changing transitions. */
-section:has(> .site-container .page-title) > .bg-gradient-to-r {
-  --tw-gradient-from: #211a4ce8 var(--tw-gradient-from-position);
-  --tw-gradient-via: #42318470 var(--tw-gradient-via-position);
-  --tw-gradient-to: #6341aa38 var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
+  background-color: #102640a8;
 }
 
-section:has(> .page-hero):has(> .growus-hero-image) > .bg-black\/40 {
-  background-color: #1f1b4b80;
+#root header.fixed {
+  background-image: linear-gradient(90deg, #10264073, #24476640);
 }
 
 #root:has(> div > header.fixed) ::selection {
-  background-color: #5143b5;
-  color: #fff;
+  background-color: var(--growus-coral-light);
+  color: var(--growus-ink);
 }
 
+.growus-section-rule {
+  width: 3.75rem;
+  height: .25rem;
+  margin-inline: auto;
+  border-radius: 999px;
+  background: var(--growus-coral);
+}
+
+.growus-footer {
+  background-image: linear-gradient(135deg, #102640d9, #183553a8);
+}
+
+.growus-service-card {
+  background-color: var(--growus-ink);
+  box-shadow: 0 10px 26px #1026401f;
+}
+
+.growus-service-card:hover,
+.growus-service-card:focus-within {
+  border-color: var(--growus-coral);
+  box-shadow: 0 14px 32px #10264033;
+}
+
+.growus-service-badge {
+  background-color: var(--growus-coral-light);
+  color: var(--growus-ink);
+}
+
+.growus-service-action {
+  border: 1px solid #adc7e365;
+  color: var(--growus-coral-light);
+}
+
+.growus-service-action:hover {
+  background-color: #ffffff14;
+}
+
+.growus-service-action:focus-visible {
+  outline: 2px solid var(--growus-coral-light);
+  outline-offset: 3px;
+}
 .home-services-theme {
-  background-image: linear-gradient(#edf3fa, #fff 32rem);
+  background-image: linear-gradient(var(--growus-surface), #fff 32rem);
 }
 
-/* Photo frames and tones follow the public site's indigo palette. */
+/* Photo frames and tones follow the public site's navy palette. */
 .growus-image-surface,
 .growus-photo-frame {
-  background-color: #ede9f8;
+  background-color: var(--growus-surface);
 }
 
 .growus-photo-frame {
   border-radius: clamp(1rem, 2vw, 1.25rem);
-  box-shadow: 0 12px 30px #201d4220;
+  box-shadow: 0 12px 30px #10264020;
   outline: 2px solid #b8cbe2;
   outline-offset: 3px;
 }
@@ -47,21 +89,21 @@ section:has(> .page-hero):has(> .growus-hero-image) > .bg-black\/40 {
 .growus-hero-image::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(115deg, #201d4259, #5143b522);
+  background: linear-gradient(115deg, #10264066, #24476622);
   content: "";
   pointer-events: none;
 }
 
 .growus-logo-tile {
-  border: 1px solid #201d421a;
+  border: 1px solid #1026401a;
 }
 
 .growus-logo-tile:hover {
-  border-color: #5143b566;
+  border-color: #24476666;
 }
 
 .growus-home-hero {
-  background: radial-gradient(ellipse at 85% 0%, #294b70, transparent 65%), #102640;
+  background: radial-gradient(ellipse at 85% 0%, #294b70, transparent 65%), var(--growus-ink);
 }
 
 .growus-home-hero-photo {
@@ -76,7 +118,7 @@ section:has(> .page-hero):has(> .growus-hero-image) > .bg-black\/40 {
   position: absolute;
   inset: auto 0 0;
   height: 4px;
-  background: linear-gradient(90deg, #ff536d 0 3rem, #1c3957 3rem);
+  background: linear-gradient(90deg, var(--growus-coral) 0 3rem, #1c3957 3rem);
   content: "";
   pointer-events: none;
 }
@@ -91,7 +133,7 @@ section:has(> .page-hero):has(> .growus-hero-image) > .bg-black\/40 {
   padding: clamp(1rem, 3vw, 2.5rem);
   border: 1px solid #8fb0d13d;
   border-radius: clamp(1.25rem, 3vw, 2rem);
-  background: linear-gradient(135deg, #183553, #1d4162);
+  background: linear-gradient(135deg, var(--growus-panel), var(--growus-panel-light));
 }
 
 .growus-hero-promo,
