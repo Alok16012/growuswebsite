@@ -9,7 +9,7 @@ export const Logo = ({ size = "md", className = "", onDark = false }) => {
   const useDarkBackgroundLogo = onDark && (!logoUrl || logoUrl === defaultLogo);
   const s = {
     sm: "h-8",
-    md: "h-12",
+    md: "h-12 xl:h-14",
     lg: "h-20",
   };
   const i = s[size] || s.md;
@@ -23,7 +23,7 @@ export const Logo = ({ size = "md", className = "", onDark = false }) => {
         className={`w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] ${i}`}
         style={{
           backgroundColor: useDarkBackgroundLogo ? "transparent" : "rgba(255,255,255,0.95)",
-          padding: "8px 12px",
+          padding: useDarkBackgroundLogo ? 0 : "8px 12px",
           borderRadius: "8px",
         }}
       />
