@@ -100,12 +100,18 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   pointer-events: none;
 }
 
-.growus-logo-tile {
-  border: 1px solid #1026401a;
+.growus-clients {
+  color: var(--growus-ink);
+  background: linear-gradient(var(--growus-surface), #fff);
 }
 
-.growus-logo-tile:hover {
-  border-color: #24476666;
+.growus-client-eyebrow {
+  color: #9d283f;
+}
+
+.growus-logo-tile {
+  border: 1px solid #1026401f;
+  box-shadow: 0 3px 12px #10264008;
 }
 
 .growus-home-hero {

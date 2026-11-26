@@ -1,163 +1,68 @@
-import { SiteImage } from "../SiteImage";
+import { useState } from "react";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
-export const Clients = () => {
-  const { config } = useSiteConfig();
-  const pageCopy = config.pageCopy.homeClients;
-  const clients = config.home.clients;
-  const config_global = config.global;
-  const IComponent = ({ clients, reverse = false }) => (
-    <div className="flex overflow-hidden py-4 select-none">
-      <div
-        className={`flex gap-6 whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee-slow"}`}
-      >
-        {[...clients, ...clients, ...clients].map((d, m) => (
-          <div
-            key={m}
-            className="w-56 h-32 rounded-2xl flex items-center justify-center p-8 bg-white growus-logo-tile transition-all duration-500 group shadow-lg hover:shadow-2xl overflow-hidden"
-          >
-            {d.logo ? (
-              <SiteImage
-                src={d.logo}
-                alt={d.name}
-                className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-              />
-            ) : (
-              <span
-                className="font-black text-center text-sm leading-tight transition-colors uppercase tracking-widest px-2"
-                style={{
-                  color: config_global.deepBlue,
-                }}
-              >
-                {d.name}
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+function ClientLogo({ name, logo }) {
+  const [failedLogo, setFailedLogo] = useState(null);
+  const showLogo = Boolean(logo) && failedLogo !== logo;
+
   return (
-    <section
-      className="site-section overflow-hidden relative border-t border-black/5"
-      style={{
-        backgroundColor:
-          config_global.design?.backgrounds?.sectionLight || "#f9fafb",
-      }}
-    >
-      <div className="site-content relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between mb-12 gap-10">
-          <div className="text-center lg:text-left">
-            <h2
-              className="text-xs md:text-sm font-black tracking-[0.4em] uppercase mb-4"
-              style={{
-                color:
-                  config_global.design?.text?.subheading ||
-                  config_global.primaryBlue,
-              }}
-            >
-              {clients.subtitle}
-            </h2>
-            <h3
-              className="section-title mb-6 uppercase"
-              style={{
-                color:
-                  config_global.design?.backgrounds?.sectionLight ===
-                    "#f9fafb" ||
-                  !config_global.design?.backgrounds?.sectionLight
-                    ? config_global.deepBlue
-                    : config_global.design?.text?.heading,
-              }}
-            >
-              {clients.title}
-            </h3>
-            <div
-              className="w-24 h-2 mx-auto lg:mx-0 mb-8 rounded-full"
-              style={{
-                backgroundColor:
-                  config_global.design?.text?.subheading ||
-                  config_global.primaryBlue,
-              }}
-            />
-          </div>
-          <div className="flex w-full max-w-sm justify-center gap-4 bg-white p-4 sm:gap-8 sm:p-8 rounded-3xl border border-gray-100 shadow-2xl">
-            <div className="text-center">
-              <div
-                className="text-3xl sm:text-4xl font-black mb-2"
-                style={{
-                  color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#f9fafb" ||
-                    !config_global.design?.backgrounds?.sectionLight
-                      ? config_global.deepBlue
-                      : config_global.design?.text?.heading,
-                }}
-              >
-                {clients.domesticCount}
-              </div>
-              <div
-                className="text-xs font-bold uppercase tracking-wide"
-                style={{
-                  color:
-                    config_global.design?.text?.subheading ||
-                    config_global.primaryBlue,
-                }}
-              >
-                {pageCopy.domestic}
-              </div>
-            </div>
-            <div className="h-16 w-px bg-gray-200 self-center" />
-            <div className="text-center">
-              <div
-                className="text-3xl sm:text-4xl font-black mb-2"
-                style={{
-                  color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#f9fafb" ||
-                    !config_global.design?.backgrounds?.sectionLight
-                      ? config_global.deepBlue
-                      : config_global.design?.text?.heading,
-                }}
-              >
-                {clients.overseasCount}
-              </div>
-              <div
-                className="text-xs font-bold uppercase tracking-wide"
-                style={{
-                  color:
-                    config_global.design?.text?.subheading ||
-                    config_global.primaryBlue,
-                }}
-              >
-                {pageCopy.overseas}
-              </div>
-            </div>
-          </div>
+    <li className="growus-logo-tile flex min-h-36 min-w-0 flex-col items-center justify-center gap-3 rounded-xl bg-white px-3 py-4 text-center sm:px-5">
+      {showLogo && (
+        <div className="flex h-16 w-full items-center justify-center">
+          <img
+            src={logo}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            onError={() => setFailedLogo(logo)}
+            className="max-h-full max-w-full object-contain"
+          />
         </div>
-        <div className="space-y-6">
-          <IComponent clients={clients.row1} />
-          <IComponent clients={clients.row2} reverse />
+      )}
+      <span className={showLogo ? "break-words text-sm font-medium text-slate-600" : "break-words text-base font-bold text-slate-900"}>
+        {name}
+      </span>
+    </li>
+  );
+}
+
+export function Clients() {
+  const { config } = useSiteConfig();
+  const { homeClients: copy } = config.pageCopy;
+  const { clients } = config.home;
+  const groups = [
+    { id: "domestic", label: copy.domestic, count: clients.domesticCount, entries: clients.row1 },
+    { id: "overseas", label: copy.overseas, count: clients.overseasCount, entries: clients.row2 },
+  ];
+
+  return (
+    <section id="clients" aria-labelledby="clients-title" className="growus-clients site-section scroll-mt-32 border-t border-slate-200">
+      <div className="site-content">
+        <header className="mb-8 text-center md:mb-10">
+          <p className="growus-client-eyebrow mb-3 text-sm font-semibold uppercase tracking-widest">
+            {clients.subtitle}
+          </p>
+          <h2 id="clients-title" className="section-title mb-4 uppercase">
+            {clients.title}
+          </h2>
+          <div aria-hidden="true" className="growus-section-rule" />
+        </header>
+        <div className="space-y-8">
+          {groups.map(({ id, label, count, entries }) => (
+            <section key={id} aria-labelledby={`clients-${id}-title`}>
+              <div className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-slate-200 pb-3">
+                <h3 id={`clients-${id}-title`} className="text-lg font-bold">{label}</h3>
+                <span className="text-sm font-semibold tabular-nums text-slate-600">{count}</span>
+              </div>
+              <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-5">
+                {entries.map(({ name, logo }, index) => (
+                  <ClientLogo key={`${index}:${name}`} name={name} logo={logo} />
+                ))}
+              </ul>
+            </section>
+          ))}
         </div>
       </div>
-      <style>{`
-        @keyframes marquee-slow {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
-        }
-        @keyframes marquee-reverse {
-          0% { transform: translateX(-33.33%); }
-          100% { transform: translateX(0); }
-        }
-        .animate-marquee-slow {
-          animation: marquee-slow 50s linear infinite;
-        }
-        .animate-marquee-reverse {
-          animation: marquee-reverse 55s linear infinite;
-        }
-        .animate-marquee-slow:hover, .animate-marquee-reverse:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
-};
+}

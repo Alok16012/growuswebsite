@@ -13,8 +13,9 @@ import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 export const App = () => {
   const [n, setN] = useState("home");
   useEffect(() => {
-    if (n === "home" && window.location.hash === "#pan-india-presence") {
-      document.getElementById("pan-india-presence")?.scrollIntoView();
+    const sectionId = window.location.hash.slice(1);
+    if (n === "home" && ["pan-india-presence", "clients"].includes(sectionId)) {
+      document.getElementById(sectionId)?.scrollIntoView();
       return;
     }
     window.scrollTo(0, 0);
