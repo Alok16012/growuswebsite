@@ -1,3 +1,4 @@
+import { HeroImage } from "../SiteImage";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
 export const GalleryHero = () => {
@@ -5,12 +6,7 @@ export const GalleryHero = () => {
   const { gallery, global } = config;
   return (
     <section className="relative flex w-full overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${gallery.heroBg})`,
-        }}
-      />
+      <HeroImage themed src={gallery.heroBg} />
       <div className="absolute inset-0 bg-black/40" />
       <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
@@ -36,7 +32,7 @@ export const GalleryHero = () => {
           {gallery.heroTitle}
         </h1>
         <p
-          className="max-w-2xl text-lg leading-relaxed font-medium"
+          className="page-intro font-medium"
           style={{
             color: global.design?.text?.paragraph || "#f1f5f9",
           }}

@@ -9,7 +9,7 @@ export const CareersHero = () => {
     <section className="relative flex w-full overflow-hidden">
       <HeroImage themed src={config.careers.heroImage} />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="page-hero site-container relative z-10 flex flex-col items-start justify-end">
+      <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
           className="text-white/70 text-sm font-black tracking-[0.4em] mb-6 cursor-pointer hover:text-primary-blue transition-colors uppercase"
           onClick={() => (window.location.href = "/")}
@@ -35,7 +35,10 @@ export const CareersHero = () => {
           <br />
           {pageCopy.atGrowus}
         </h1>
-        <p className="page-intro text-gray-100 font-medium">
+        <p
+          className="page-intro font-medium"
+          style={{ color: config_global.design?.text?.paragraph || "#f1f5f9" }}
+        >
           {pageCopy.joinOurTeamOf700}
         </p>
         <div

@@ -8,7 +8,7 @@ export const CultureHero = () => {
     <section className="relative flex w-full overflow-hidden">
       <HeroImage themed src={culture.heroBg} />
       <div className="absolute inset-0 bg-black/40" />
-      <div className="page-hero site-container relative z-10 flex flex-col items-start justify-end">
+      <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
         <p
           className="font-black text-sm tracking-[0.4em] mb-6 uppercase"
           style={{
@@ -41,7 +41,10 @@ export const CultureHero = () => {
             {culture.heroTitleHighlight}
           </span>
         </h1>
-        <p className="page-intro text-gray-100 font-medium">
+        <p
+          className="page-intro font-medium"
+          style={{ color: global.design?.text?.paragraph || "#f1f5f9" }}
+        >
           {culture.heroDescription}
         </p>
         <div

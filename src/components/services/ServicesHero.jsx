@@ -41,7 +41,10 @@ export const ServicesHero = () => {
             {services.heroTitleHighlight}
           </span>
         </h1>
-        <p className="page-intro text-gray-100 font-medium">
+        <p
+          className="page-intro font-medium"
+          style={{ color: global.design?.text?.paragraph || "#f1f5f9" }}
+        >
           {services.heroSubtext}
         </p>
         <div

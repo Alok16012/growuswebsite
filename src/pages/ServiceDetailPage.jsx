@@ -27,10 +27,10 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar currentPage="services" setCurrentPage={setCurrentPage} />
-      <section className="relative flex min-h-[26rem] w-full overflow-hidden">
+      <section className="relative flex w-full overflow-hidden">
         <HeroImage themed src={m.image} />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="page-hero site-container relative z-10 flex flex-col justify-end">
+        <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
           <p
             className="text-[10px] font-black tracking-[0.4em] uppercase mb-2"
             style={{
@@ -534,16 +534,16 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
         </div>
       </section>
       <section
-        className="py-10 px-6"
+        className="site-section"
         style={{
-          background: `linear-gradient(to right, ${config_global.primaryBlue}, #c0392b)`,
+          background: `linear-gradient(to right, ${config_global.primaryBlue}, ${config_global.deepBlue})`,
         }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-white text-xl md:text-2xl font-black mb-3">
+          <h2 className="section-title text-white mb-3">
             {pageCopy.readyToGetStartedWith} {m.title}?
           </h2>
-          <p className="text-white/80 text-sm mb-6">
+          <p className="page-intro text-white/80 mb-6 mx-auto">
             {pageCopy.getInTouchWithOur}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -558,7 +558,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
             </button>
             <a
               href={`tel:${config.footer.phone}`}
-              className="border-2 border-white text-white hover:bg-white font-black px-7 py-3 rounded-full text-xs uppercase tracking-widest transition-all"
+              className="border-2 border-white text-white hover:bg-white hover:text-[var(--growus-ink)] font-black px-7 py-3 rounded-full text-xs uppercase tracking-widest transition-all"
             >
               {pageCopy.callUsNow}
             </a>

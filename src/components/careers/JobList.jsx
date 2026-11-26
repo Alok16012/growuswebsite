@@ -29,7 +29,7 @@ export const JobList = ({ onApply }) => {
             </h3>
           </div>
           <div className="flex items-center gap-4">
-            <div className="relative">
+            <div className="relative w-full sm:w-80">
               <svg
                 className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"
                 fill="none"
@@ -48,7 +48,7 @@ export const JobList = ({ onApply }) => {
                 placeholder={pageCopy.searchByTitleOrDepartment}
                 value={i}
                 onChange={(g) => setI(g.target.value)}
-                className="bg-white border border-black/10 rounded-full pl-10 pr-6 py-3 text-deep-blue text-sm font-medium placeholder:text-deep-blue/50 focus:outline-none focus:border-primary-blue transition-colors w-80 shadow-inner"
+                className="bg-white border border-black/10 rounded-full pl-10 pr-6 py-3 text-deep-blue text-sm font-medium placeholder:text-deep-blue/50 focus:outline-none focus:border-primary-blue transition-colors w-full shadow-inner"
               />
             </div>
           </div>

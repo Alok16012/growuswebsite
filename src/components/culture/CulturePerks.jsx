@@ -143,7 +143,7 @@ export const CulturePerks = () => {
               }}
             />
             <div
-              className="relative rounded-3xl p-16 text-center shadow-2xl transition-transform hover:scale-105 duration-500"
+              className="relative rounded-3xl px-5 py-10 sm:p-16 text-center shadow-2xl transition-transform hover:scale-105 duration-500"
               style={{
                 backgroundColor: global.primaryBlue,
               }}

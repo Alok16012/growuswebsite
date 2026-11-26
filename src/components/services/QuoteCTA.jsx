@@ -7,14 +7,14 @@ export const QuoteCTA = ({ onQuoteClick }) => {
     <section
       className="site-section"
       style={{
-        background: `linear-gradient(to right, ${global.primaryBlue}, #c0392b)`,
+        background: `linear-gradient(to right, ${global.primaryBlue}, ${global.deepBlue})`,
       }}
     >
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">
+        <h2 className="section-title text-white mb-4">
           {services.ctaTitle}
         </h2>
-        <p className="text-white/80 mb-8">{services.ctaSubtitle}</p>
+        <p className="page-intro text-white/80 mb-8 mx-auto">{services.ctaSubtitle}</p>
         <div className="flex flex-wrap justify-center gap-4">
           <button
             onClick={onQuoteClick}
@@ -26,7 +26,7 @@ export const QuoteCTA = ({ onQuoteClick }) => {
             {services.ctaButton1Text}
           </button>
           <button
-            className="border-2 border-white text-white hover:bg-white font-bold px-8 py-3 rounded-full transition-colors duration-300"
+            className="border-2 border-white text-white hover:bg-white hover:text-[var(--hover-color)] font-bold px-8 py-3 rounded-full transition-colors duration-300"
             style={{
               "--hover-color": global.primaryBlue,
             }}
