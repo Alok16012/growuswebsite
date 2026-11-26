@@ -14,11 +14,10 @@ export const ServiceCard = ({
   service,
   onClick,
   actionLabel,
-  imageSizes = "(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw",
+  imageSizes = "(min-width: 1280px) 300px, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
 }) => {
   const { config } = useSiteConfig();
   const pageCopy = config.pageCopy.services;
-  const config_global = config.global;
   const c = {
     "quality-management": (
       <svg
@@ -147,74 +146,43 @@ export const ServiceCard = ({
       </svg>
     ),
   };
+  const icon = c[service.slug] || c[iconByCategory[service.category]] || c["quality-management"];
+
   return (
-    <div
-      className="growus-service-card group relative flex min-h-[480px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 transition-colors duration-300"
-      onClick={onClick}
-    >
-      <div className="growus-image-surface relative h-56 shrink-0 overflow-hidden">
+    <article className="growus-service-card group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 transition-shadow">
+      <div className="growus-image-surface relative aspect-[16/10] shrink-0 overflow-hidden">
         <SiteImage
           sizes={imageSizes}
           fallbackSrc={service.category === "RISK" ? "/risk-mitigation.webp" : undefined}
           src={service.image}
-          alt={service.title}
-          className="growus-photo w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          alt=""
+          className="growus-photo block h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60" />
-        <div
-          className="growus-service-badge absolute left-5 top-5 z-10 max-w-[calc(100%-2.5rem)] rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wide"
-        >
-          {service.category}
-        </div>
       </div>
-      <div
-        className="absolute top-48 right-8 w-16 h-16 bg-white rounded-2xl flex items-center justify-center z-20 shadow-2xl border border-black/5 group-hover:-translate-y-2 transition-transform duration-500"
-        style={{
-          color: config_global.primaryBlue,
-        }}
-      >
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center"
-          style={{
-            backgroundColor: `${config_global.primaryBlue}1a`,
-          }}
-        >
-          {c[service.slug] || c[iconByCategory[service.category]] || c["quality-management"]}
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="mb-4 flex items-center gap-3">
+          <span aria-hidden="true" className="growus-service-icon grid size-10 shrink-0 place-items-center rounded-lg">
+            {icon}
+          </span>
+          <span className="growus-service-badge min-w-0 break-words text-xs font-semibold uppercase tracking-wide">
+            {service.category}
+          </span>
         </div>
-      </div>
-      <div
-        className="flex flex-1 flex-col px-6 pb-7 pt-10 sm:px-8"
-      >
-        <h3 className="mb-3 text-xl font-bold leading-tight tracking-tight text-white">
+        <h3 className="mb-2 break-words text-xl font-bold leading-snug text-white">
           {service.title}
         </h3>
-        <p className="text-slate-200 text-sm leading-relaxed line-clamp-3 mb-auto">
+        <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-slate-200">
           {service.description}
         </p>
         <button
           type="button"
-          onClick={(event) => {
-            event.stopPropagation();
-            onClick();
-          }}
-          className="growus-service-action mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors"
+          onClick={onClick}
+          aria-label={(actionLabel ?? pageCopy.exploreService) + " — " + service.title}
+          className="growus-service-action mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-semibold transition-colors after:absolute after:inset-0 after:content-['']"
         >
           {actionLabel ?? pageCopy.exploreService}
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={3}
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
         </button>
       </div>
-    </div>
+    </article>
   );
 };

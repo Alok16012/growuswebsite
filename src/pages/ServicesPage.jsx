@@ -27,7 +27,7 @@ export const ServicesPage = ({ setCurrentPage }) => {
           {services.sectionTitle}
         </h2>
         <div aria-hidden="true" className="growus-section-rule mb-12" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 site-content">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 site-content">
           {services.items.map((service, m) => (
             <ServiceCard
               key={m}

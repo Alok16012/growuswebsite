@@ -33,8 +33,8 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 }
 
 .growus-service-card {
-  background-color: var(--growus-ink);
-  box-shadow: 0 10px 26px #1026401f;
+  background: linear-gradient(150deg, var(--growus-panel), var(--growus-ink) 70%);
+  box-shadow: 0 6px 20px #10264014;
 }
 
 .growus-service-card:hover,
@@ -43,14 +43,19 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   box-shadow: 0 14px 32px #10264033;
 }
 
+.growus-service-icon {
+  background-color: #ffffff14;
+  color: var(--growus-coral-light);
+}
+
 .growus-service-badge {
-  background-color: var(--growus-coral-light);
-  color: var(--growus-ink);
+  color: var(--growus-coral-light);
 }
 
 .growus-service-action {
   border: 1px solid #adc7e365;
-  color: var(--growus-coral-light);
+  background-color: #ffffff0d;
+  color: #fff;
 }
 
 .growus-service-action:hover {
