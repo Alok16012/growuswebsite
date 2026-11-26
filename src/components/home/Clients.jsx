@@ -1,27 +1,17 @@
 import { useState } from "react";
 import { useSiteConfig } from "../../context/SiteConfigContext";
 
-function ClientLogo({ name, logo }) {
-  const [failedLogo, setFailedLogo] = useState(null);
-  const showLogo = Boolean(logo) && failedLogo !== logo;
-
+function ClientLogo({ name, logo, onImageError }) {
   return (
-    <li className="growus-logo-tile flex min-h-36 min-w-0 flex-col items-center justify-center gap-3 rounded-xl bg-white px-3 py-4 text-center sm:px-5">
-      {showLogo && (
-        <div className="flex h-16 w-full items-center justify-center">
-          <img
-            src={logo}
-            alt=""
-            loading="lazy"
-            decoding="async"
-            onError={() => setFailedLogo(logo)}
-            className="max-h-full max-w-full object-contain"
-          />
-        </div>
-      )}
-      <span className={showLogo ? "break-words text-sm font-medium text-slate-600" : "break-words text-base font-bold text-slate-900"}>
-        {name}
-      </span>
+    <li className="growus-logo-tile flex h-28 min-w-0 items-center justify-center rounded-xl bg-white px-3 py-4 sm:px-5">
+      <img
+        src={logo}
+        alt={name || ""}
+        loading="lazy"
+        decoding="async"
+        onError={() => onImageError(logo)}
+        className="block h-16 w-full max-w-36 object-contain"
+      />
     </li>
   );
 }
@@ -29,12 +19,20 @@ function ClientLogo({ name, logo }) {
 export function Clients() {
   const { config } = useSiteConfig();
   const [paused, setPaused] = useState(false);
+  const [failedLogos, setFailedLogos] = useState(() => new Set());
   const { homeClients: copy } = config.pageCopy;
   const { clients } = config.home;
   const groups = [
     { id: "domestic", label: copy.domestic, count: clients.domesticCount, entries: clients.row1 },
     { id: "overseas", label: copy.overseas, count: clients.overseasCount, entries: clients.row2 },
-  ];
+  ].map((group) => ({
+    ...group,
+    entries: group.entries.filter(({ logo }) => logo && !failedLogos.has(logo)),
+  })).filter(({ entries }) => entries.length > 0);
+
+  function hideFailedLogo(logo) {
+    setFailedLogos((current) => current.has(logo) ? current : new Set([...current, logo]));
+  }
 
   return (
     <section id="clients" aria-labelledby="clients-title" className="growus-clients site-section scroll-mt-32 border-t border-slate-200">
@@ -72,7 +70,7 @@ export function Clients() {
                       aria-hidden={duplicate || undefined}
                     >
                       {entries.map(({ name, logo }, index) => (
-                        <ClientLogo key={index + ":" + name} name={name} logo={logo} />
+                        <ClientLogo key={index + ":" + name} name={name} logo={logo} onImageError={hideFailedLogo} />
                       ))}
                     </ul>
                   ))}
