@@ -1,16 +1,24 @@
 import { useState } from "react";
 import { useSiteConfig } from "../../context/SiteConfigContext";
+import { getClientLogoArtwork } from "./clientLogoArtwork";
 
 function ClientLogo({ name, logo, onImageError }) {
+  const [artwork, setArtwork] = useState(null);
   return (
-    <li className="growus-logo-tile flex h-28 min-w-0 items-center justify-center rounded-xl bg-white px-3 py-4 sm:px-5">
+    <li className="flex h-24 min-w-0 items-center justify-center px-2 sm:h-28 sm:px-3">
       <img
-        src={logo}
+        src={artwork || logo}
         alt={name || ""}
         loading="lazy"
         decoding="async"
-        onError={() => onImageError(logo)}
-        className="block h-16 w-full max-w-36 object-contain"
+        onLoad={() => {
+          if (artwork === null) getClientLogoArtwork(logo).then(setArtwork);
+        }}
+        onError={() => {
+          if (artwork && artwork !== logo) setArtwork(logo);
+          else onImageError(logo);
+        }}
+        className="block h-[4.5rem] w-full max-w-44 object-contain sm:h-20"
       />
     </li>
   );
@@ -70,7 +78,7 @@ export function Clients() {
                       aria-hidden={duplicate || undefined}
                     >
                       {entries.map(({ name, logo }, index) => (
-                        <ClientLogo key={index + ":" + name} name={name} logo={logo} onImageError={hideFailedLogo} />
+                        <ClientLogo key={index + ":" + logo} name={name} logo={logo} onImageError={hideFailedLogo} />
                       ))}
                     </ul>
                   ))}

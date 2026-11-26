@@ -108,11 +108,6 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   color: #9d283f;
 }
 
-.growus-logo-tile {
-  border: 1px solid #1026401f;
-  box-shadow: 0 3px 12px #10264008;
-}
-
 .growus-home-hero {
   background: var(--growus-ink);
 }
