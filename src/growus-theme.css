@@ -91,8 +91,7 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   background-color: var(--growus-ink);
 }
 
-.growus-hero-image::after,
-.growus-home-hero-photo::after {
+.growus-hero-image::after {
   position: absolute;
   inset: 0;
   background: linear-gradient(115deg, #10264066, #24476622);
@@ -119,12 +118,17 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 }
 
 .growus-home-hero-photo {
-  position: relative;
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-  border: 1px solid #adc7e365;
-  border-radius: clamp(.75rem, 2vw, 1.25rem);
-  background-color: #183553;
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-color: var(--growus-panel);
+}
+
+.growus-home-hero-photo::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #0b172bee, #0b172bb8 54%, #0b172b40);
+  content: "";
 }
 
 .growus-image-surface:is(.relative, .absolute)::after {
@@ -141,9 +145,13 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
 }
 
 .growus-hero-layout {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(27rem, 42vw, 38rem);
   align-items: center;
   gap: clamp(1.25rem, 3vw, 2.75rem);
-  padding: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 5vw, 4.5rem);
   border: 1px solid #8fb0d13d;
   border-radius: clamp(1.25rem, 3vw, 2rem);
   background: linear-gradient(135deg, var(--growus-panel), var(--growus-panel-light));
@@ -166,6 +174,10 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   text-wrap: balance;
 }
 
+.growus-hero-copy {
+  max-width: 36rem;
+}
+
 .growus-hero-button {
   min-height: 3.25rem;
   transition: background-color .2s ease, filter .2s ease, transform .2s ease;
@@ -180,21 +192,47 @@ section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {
   outline-offset: 3px;
 }
 
-@media (min-width: 1024px) {
-  .growus-hero-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.07fr);
+@media (max-width: 639px) {
+  .growus-home-hero-photo::after {
+    background: linear-gradient(90deg, #0b172be8, #0b172b9c);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .growus-hero-layout {
-    animation: growus-hero-enter .5s cubic-bezier(.2, .75, .25, 1) both;
+  .growus-home-hero-photo img {
+    transform-origin: 65% 50%;
+    animation: growus-hero-camera 4.8s ease-out both;
+  }
+
+  .growus-hero-copy > :is(h1, p, .growus-hero-actions, .growus-hero-quote) {
+    animation: growus-hero-enter .8s cubic-bezier(.2, .75, .25, 1) both;
+  }
+
+  .growus-hero-copy > p {
+    animation-delay: .14s;
+  }
+
+  .growus-hero-actions {
+    animation-delay: .28s;
+  }
+
+  .growus-hero-quote {
+    animation-delay: .38s;
+  }
+
+  @keyframes growus-hero-camera {
+    from {
+      transform: scale(1.14);
+    }
+    to {
+      transform: scale(1);
+    }
   }
 
   @keyframes growus-hero-enter {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(18px);
     }
     to {
       opacity: 1;

@@ -138,7 +138,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
               className="flex items-center cursor-pointer flex-shrink-0"
               onClick={() => setCurrentPage("home")}
             >
-              <Logo size="md" light={false} />
+              <Logo size="md" onDark />
             </div>
             <div className="hidden lg:flex items-center gap-4 xl:gap-8">
               {S.map((R) => {

@@ -30,7 +30,7 @@ export const HeroSection = ({ setCurrentPage }) => {
             >
               {hero.subtext}
             </p>
-            <div className="grid max-w-lg grid-cols-1 gap-3 min-[480px]:grid-cols-2">
+            <div className="growus-hero-actions grid max-w-lg grid-cols-1 gap-3 min-[480px]:grid-cols-2">
               <button
                 type="button"
                 onClick={() => setCurrentPage("services")}
@@ -62,23 +62,21 @@ export const HeroSection = ({ setCurrentPage }) => {
             <button
               type="button"
               onClick={() => setIsQuoteOpen(true)}
-              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-[#ffd0d7] underline-offset-4 hover:underline"
+              className="growus-hero-quote mt-4 inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-[#ffd0d7] underline-offset-4 hover:underline"
             >
               <span aria-hidden="true" className="size-2 rounded-full" style={{ backgroundColor: hero.sideTabBg || "#ff687e" }} />
               {hero.sideTabText}
             </button>
           </div>
-          <div className="min-w-0">
-            <div className="growus-home-hero-photo">
-              <SiteImage
-                src={hero.bgImage}
-                sizes="(min-width: 1376px) 620px, (min-width: 1024px) 46vw, 93vw"
-                alt=""
-                loading="eager"
-                fetchPriority="high"
-                className="block h-full w-full object-cover"
-              />
-            </div>
+          <div className="growus-home-hero-photo" aria-hidden="true">
+            <SiteImage
+              src={hero.bgImage}
+              sizes="(min-width: 1376px) 1312px, 95vw"
+              alt=""
+              loading="eager"
+              fetchPriority="high"
+              className="block h-full w-full object-cover"
+            />
           </div>
         </div>
         {isPromoVisible && (
