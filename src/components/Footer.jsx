@@ -8,19 +8,19 @@ export const Footer = ({ setCurrentPage }) => {
   const { footer, global } = config;
   return (
     <footer
-      className="growus-footer site-section border-t border-white/10"
+      className="growus-footer site-gutter border-t border-white/10 pt-8 pb-5 md:pt-10 md:pb-6"
       style={{
         backgroundColor:
           global.design?.backgrounds?.sectionDark || global.deepBlue,
       }}
     >
-      <div className="site-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="site-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
         <div>
-          <div className="mb-6">
+          <div className="mb-3">
             <Logo size="md" onDark />
           </div>
           <p
-            className="text-sm mb-6 font-medium leading-relaxed"
+            className="text-sm font-medium leading-relaxed"
             style={{
               color: global.design?.text?.paragraph || "#94a3b8",
             }}
@@ -67,14 +67,14 @@ export const Footer = ({ setCurrentPage }) => {
         </div>
         <div>
           <h4
-            className="font-black mb-6 uppercase tracking-wide text-xs"
+            className="font-black mb-3 uppercase tracking-wide text-xs"
             style={{
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
           >
             {pageCopy.quickLinks}
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-2">
             {footer.quickLinks.map(readFooterLink).map(({ label, page }, index) => (
               <li key={index}>
                 <button
@@ -100,14 +100,14 @@ export const Footer = ({ setCurrentPage }) => {
         </div>
         <div>
           <h4
-            className="font-black mb-6 uppercase tracking-wide text-xs"
+            className="font-black mb-3 uppercase tracking-wide text-xs"
             style={{
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
           >
             {pageCopy.ourServices}
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-2">
             {footer.servicesList.map((i) => (
               <li key={i}>
                 <button
@@ -133,14 +133,14 @@ export const Footer = ({ setCurrentPage }) => {
         </div>
         <div>
           <h4
-            className="font-black mb-6 uppercase tracking-wide text-xs"
+            className="font-black mb-3 uppercase tracking-wide text-xs"
             style={{
               color: global.design?.text?.subheading || global.primaryBlue,
             }}
           >
             {pageCopy.contactInfo}
           </h4>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             <li
               className="flex items-center gap-4 text-sm font-medium group"
               style={{
@@ -210,7 +210,7 @@ export const Footer = ({ setCurrentPage }) => {
           </ul>
         </div>
       </div>
-      <div className="site-content mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="site-content mt-6 pt-4 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3">
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
           <p className="text-slate-300 text-xs font-medium uppercase tracking-widest">
             {footer.copyright}
