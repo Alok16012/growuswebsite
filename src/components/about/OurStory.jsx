@@ -64,9 +64,8 @@ export const OurStory = () => {
             className="section-title mb-8 uppercase"
             style={{
               color:
-                ["#ffffff", "#edf3f9", "#f8fafc"].includes(
-                  config_global.design?.backgrounds?.sectionLight || "#ffffff",
-                )
+                config_global.design?.backgrounds?.sectionLight === "#ffffff" ||
+                !config_global.design?.backgrounds?.sectionLight
                   ? config_global.deepBlue
                   : config_global.design?.text?.heading,
             }}
@@ -76,7 +75,7 @@ export const OurStory = () => {
           <p
             className="text-lg leading-relaxed mb-8"
             style={{
-              color: "#334155",
+              color: config_global.design?.text?.paragraph || "#64748b",
             }}
           >
             {story.paragraph1}
@@ -84,7 +83,7 @@ export const OurStory = () => {
           <p
             className="text-lg leading-relaxed mb-10"
             style={{
-              color: "#334155",
+              color: config_global.design?.text?.paragraph || "#64748b",
             }}
           >
             {story.paragraph2}
@@ -105,9 +104,9 @@ export const OurStory = () => {
                 className="font-black text-3xl mb-1"
                 style={{
                   color:
-                    ["#ffffff", "#edf3f9", "#f8fafc"].includes(
-                      config_global.design?.backgrounds?.sectionLight || "#ffffff",
-                    )
+                    config_global.design?.backgrounds?.sectionLight ===
+                      "#ffffff" ||
+                    !config_global.design?.backgrounds?.sectionLight
                       ? config_global.deepBlue
                       : config_global.design?.text?.heading,
                 }}
@@ -140,9 +139,9 @@ export const OurStory = () => {
                 className="font-black text-3xl mb-1"
                 style={{
                   color:
-                    ["#ffffff", "#edf3f9", "#f8fafc"].includes(
-                      config_global.design?.backgrounds?.sectionLight || "#ffffff",
-                    )
+                    config_global.design?.backgrounds?.sectionLight ===
+                      "#ffffff" ||
+                    !config_global.design?.backgrounds?.sectionLight
                       ? config_global.deepBlue
                       : config_global.design?.text?.heading,
                 }}

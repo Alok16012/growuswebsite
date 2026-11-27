@@ -31,7 +31,7 @@ export const GlobalEditor = ({ config, updateConfig }) => (
         onChange={(s) => updateConfig("global.deepBlue", s)}
       />
       <ColorInput
-        label="Action Accent"
+        label="Accent (Green)"
         value={config.global.accentGreen}
         onChange={(s) => updateConfig("global.accentGreen", s)}
       />

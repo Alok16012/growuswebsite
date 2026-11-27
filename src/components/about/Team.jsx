@@ -29,9 +29,8 @@ export const Team = () => {
             className="section-title uppercase"
             style={{
               color:
-                ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
-                  config_global.design?.backgrounds?.sectionLight || "#f9fafb",
-                )
+                config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
+                !config_global.design?.backgrounds?.sectionLight
                   ? config_global.deepBlue
                   : config_global.design?.text?.heading,
             }}
@@ -67,9 +66,9 @@ export const Team = () => {
                 className="font-black text-xl mb-1 uppercase tracking-tight"
                 style={{
                   color:
-                    ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
-                      config_global.design?.backgrounds?.sectionLight || "#f9fafb",
-                    )
+                    config_global.design?.backgrounds?.sectionLight ===
+                      "#f9fafb" ||
+                    !config_global.design?.backgrounds?.sectionLight
                       ? config_global.deepBlue
                       : config_global.design?.text?.heading,
                 }}

@@ -19,9 +19,8 @@ export const WhyChooseUs = () => {
             className="section-title mb-8 uppercase"
             style={{
               color:
-                ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
-                  config_global.design?.backgrounds?.sectionLight || "#f9fafb",
-                )
+                config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
+                !config_global.design?.backgrounds?.sectionLight
                   ? config_global.deepBlue
                   : config_global.design?.text?.heading,
             }}
@@ -77,9 +76,9 @@ export const WhyChooseUs = () => {
                   className="font-black text-lg uppercase tracking-tight transition-colors"
                   style={{
                     color:
-                      ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
-                        config_global.design?.backgrounds?.sectionLight || "#f9fafb",
-                      )
+                      config_global.design?.backgrounds?.sectionLight ===
+                        "#f9fafb" ||
+                      !config_global.design?.backgrounds?.sectionLight
                         ? config_global.deepBlue
                         : config_global.design?.text?.heading,
                   }}
