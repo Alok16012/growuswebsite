@@ -29,12 +29,7 @@ export const Ecosystem = ({ onJoinClick }) => {
             <h3
               className="section-title uppercase"
               style={{
-                color:
-                  config_global.design?.backgrounds?.sectionLight ===
-                    "#f9fafb" ||
-                  !config_global.design?.backgrounds?.sectionLight
-                    ? config_global.deepBlue
-                    : config_global.design?.text?.heading,
+                color: "var(--growus-ink)",
               }}
             >
               {ecosystem.heading}
@@ -43,7 +38,7 @@ export const Ecosystem = ({ onJoinClick }) => {
           <p
             className="max-w-md text-sm leading-relaxed font-medium"
             style={{
-              color: config_global.design?.text?.paragraph || "#94a3b8",
+              color: "var(--growus-copy)",
             }}
           >
             {ecosystem.description}

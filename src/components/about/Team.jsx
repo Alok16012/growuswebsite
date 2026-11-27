@@ -28,11 +28,7 @@ export const Team = () => {
           <h3
             className="section-title uppercase"
             style={{
-              color:
-                config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
-                !config_global.design?.backgrounds?.sectionLight
-                  ? config_global.deepBlue
-                  : config_global.design?.text?.heading,
+              color: "var(--growus-ink)",
             }}
           >
             {team.heading}
@@ -53,9 +49,7 @@ export const Team = () => {
                   <p
                     className="text-xs italic font-black leading-relaxed"
                     style={{
-                      color:
-                        config_global.design?.text?.heading ||
-                        config_global.deepBlue,
+                      color: "var(--growus-ink)",
                     }}
                   >
                     "{i.quote}"
@@ -65,12 +59,7 @@ export const Team = () => {
               <h4
                 className="font-black text-xl mb-1 uppercase tracking-tight"
                 style={{
-                  color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#f9fafb" ||
-                    !config_global.design?.backgrounds?.sectionLight
-                      ? config_global.deepBlue
-                      : config_global.design?.text?.heading,
+                  color: "var(--growus-ink)",
                 }}
               >
                 {i.name}

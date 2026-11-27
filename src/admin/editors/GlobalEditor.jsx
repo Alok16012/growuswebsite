@@ -50,7 +50,7 @@ export const GlobalEditor = ({ config, updateConfig }) => (
     </FieldGroup>
     <FieldGroup title="Text Colors">
       <ColorInput
-        label="Headings"
+        label="Headings on dark surfaces"
         value={config.global.design?.text?.heading}
         onChange={(s) => updateConfig("global.design.text.heading", s)}
       />
@@ -60,7 +60,7 @@ export const GlobalEditor = ({ config, updateConfig }) => (
         onChange={(s) => updateConfig("global.design.text.subheading", s)}
       />
       <ColorInput
-        label="Main Paragraphs"
+        label="Paragraphs on dark surfaces"
         value={config.global.design?.text?.paragraph}
         onChange={(s) => updateConfig("global.design.text.paragraph", s)}
       />

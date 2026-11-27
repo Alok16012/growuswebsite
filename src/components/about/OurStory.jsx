@@ -63,11 +63,7 @@ export const OurStory = () => {
           <h3
             className="section-title mb-8 uppercase"
             style={{
-              color:
-                config_global.design?.backgrounds?.sectionLight === "#ffffff" ||
-                !config_global.design?.backgrounds?.sectionLight
-                  ? config_global.deepBlue
-                  : config_global.design?.text?.heading,
+              color: "var(--growus-ink)",
             }}
           >
             {story.heading}
@@ -75,7 +71,7 @@ export const OurStory = () => {
           <p
             className="text-lg leading-relaxed mb-8"
             style={{
-              color: config_global.design?.text?.paragraph || "#64748b",
+              color: "var(--growus-copy)",
             }}
           >
             {story.paragraph1}
@@ -83,7 +79,7 @@ export const OurStory = () => {
           <p
             className="text-lg leading-relaxed mb-10"
             style={{
-              color: config_global.design?.text?.paragraph || "#64748b",
+              color: "var(--growus-copy)",
             }}
           >
             {story.paragraph2}
@@ -103,12 +99,7 @@ export const OurStory = () => {
               <h4
                 className="font-black text-3xl mb-1"
                 style={{
-                  color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#ffffff" ||
-                    !config_global.design?.backgrounds?.sectionLight
-                      ? config_global.deepBlue
-                      : config_global.design?.text?.heading,
+                  color: "var(--growus-ink)",
                 }}
               >
                 {story.stat1}
@@ -138,12 +129,7 @@ export const OurStory = () => {
               <h4
                 className="font-black text-3xl mb-1"
                 style={{
-                  color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#ffffff" ||
-                    !config_global.design?.backgrounds?.sectionLight
-                      ? config_global.deepBlue
-                      : config_global.design?.text?.heading,
+                  color: "var(--growus-ink)",
                 }}
               >
                 {story.stat2}

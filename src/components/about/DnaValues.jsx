@@ -27,11 +27,7 @@ export const DnaValues = () => {
           <h3
             className="section-title uppercase"
             style={{
-              color:
-                config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
-                !config_global.design?.backgrounds?.sectionLight
-                  ? config_global.deepBlue
-                  : config_global.design?.text?.heading,
+              color: "var(--growus-ink)",
             }}
           >
             {dna.heading}

@@ -78,8 +78,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
             <h3
               className="font-black text-2xl tracking-tighter uppercase"
               style={{
-                color:
-                  config_global.design?.text?.heading || config_global.deepBlue,
+                color: "var(--growus-ink)",
               }}
             >
               {pageCopy.getAQuote}
@@ -128,9 +127,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
               <h4
                 className="text-2xl font-black mb-2 uppercase tracking-tight"
                 style={{
-                  color:
-                    config_global.design?.text?.heading ||
-                    config_global.deepBlue,
+                  color: "var(--growus-ink)",
                 }}
               >
                 {pageCopy.requestSent}
@@ -159,9 +156,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
               <h4
                 className="text-2xl font-black mb-2 uppercase tracking-tight"
                 style={{
-                  color:
-                    config_global.design?.text?.heading ||
-                    config_global.deepBlue,
+                  color: "var(--growus-ink)",
                 }}
               >
                 {pageCopy.somethingWentWrong}

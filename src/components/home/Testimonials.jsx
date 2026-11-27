@@ -16,11 +16,7 @@ export const Testimonials = () => {
         <h2
           className="section-title text-center mb-12 uppercase"
           style={{
-            color:
-              config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
-              !config_global.design?.backgrounds?.sectionLight
-                ? config_global.deepBlue
-                : config_global.design?.text?.heading,
+            color: "var(--growus-ink)",
           }}
         >
           {testimonials.sectionTitle}{" "}

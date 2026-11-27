@@ -18,11 +18,7 @@ export const WhyChooseUs = () => {
           <h2
             className="section-title mb-8 uppercase"
             style={{
-              color:
-                config_global.design?.backgrounds?.sectionLight === "#f9fafb" ||
-                !config_global.design?.backgrounds?.sectionLight
-                  ? config_global.deepBlue
-                  : config_global.design?.text?.heading,
+              color: "var(--growus-ink)",
             }}
           >
             {whyChooseUs.heading} <br />{" "}
@@ -75,12 +71,7 @@ export const WhyChooseUs = () => {
                 <span
                   className="font-black text-lg uppercase tracking-tight transition-colors"
                   style={{
-                    color:
-                      config_global.design?.backgrounds?.sectionLight ===
-                        "#f9fafb" ||
-                      !config_global.design?.backgrounds?.sectionLight
-                        ? config_global.deepBlue
-                        : config_global.design?.text?.heading,
+                    color: "var(--growus-ink)",
                   }}
                 >
                   {i}

@@ -29,7 +29,7 @@ export const GalleryGrid = () => {
                 color:
                   i === "events"
                     ? global.design?.buttons?.primaryText || "#ffffff"
-                    : "#6b7280",
+                    : "var(--growus-copy)",
               }}
             >
               {pageCopy.events}
@@ -45,7 +45,7 @@ export const GalleryGrid = () => {
                 color:
                   i === "activities"
                     ? global.design?.buttons?.primaryText || "#ffffff"
-                    : "#6b7280",
+                    : "var(--growus-copy)",
               }}
             >
               {pageCopy.activities}
@@ -68,16 +68,12 @@ export const GalleryGrid = () => {
                 alt={p.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:from-white/0 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-95 transition-all duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <h4
                   className="font-black text-sm uppercase tracking-tight leading-tight transition-colors"
                   style={{
-                    color:
-                      global.design?.backgrounds?.sectionLight === "#ffffff" ||
-                      !global.design?.backgrounds?.sectionLight
-                        ? global.deepBlue
-                        : global.design?.text?.heading,
+                    color: "var(--growus-ink)",
                   }}
                 >
                   {p.title}

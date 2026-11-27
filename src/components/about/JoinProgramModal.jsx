@@ -77,7 +77,7 @@ ${C}: ${b[C]}`;
             <h3
               className="font-black text-2xl tracking-tighter uppercase"
               style={{
-                color: global.design?.text?.heading || global.deepBlue,
+                color: "var(--growus-ink)",
               }}
             >
               {pageCopy.joinTheProgram}

@@ -5,6 +5,7 @@
   --growus-coral: #ff687e;
   --growus-coral-light: #ffd0d7;
   --growus-surface: #edf3f9;
+  --growus-copy: color-mix(in srgb, var(--growus-ink) 78%, white);
 }
 
 section:has(> .growus-hero-image) > :is(.bg-black\/40, .bg-black\/60) {

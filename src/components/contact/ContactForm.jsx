@@ -70,12 +70,7 @@ ${S}: ${p[S]}`;
               <h3
                 className="section-title mb-8 uppercase"
                 style={{
-                  color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#f9fafb" ||
-                    !config_global.design?.backgrounds?.sectionLight
-                      ? config_global.deepBlue
-                      : config_global.design?.text?.heading,
+                  color: "var(--growus-ink)",
                 }}
               >
                 {form_1.heading}
@@ -83,7 +78,7 @@ ${S}: ${p[S]}`;
               <p
                 className="text-lg leading-relaxed mb-8 font-medium"
                 style={{
-                  color: config_global.design?.text?.paragraph || "#4b5563",
+                  color: "var(--growus-copy)",
                 }}
               >
                 {form_1.description}
@@ -106,12 +101,7 @@ ${S}: ${p[S]}`;
                 <p
                   className="font-black uppercase tracking-tight text-xs"
                   style={{
-                    color:
-                      config_global.design?.backgrounds?.sectionLight ===
-                        "#f9fafb" ||
-                      !config_global.design?.backgrounds?.sectionLight
-                        ? config_global.deepBlue
-                        : config_global.design?.text?.heading,
+                    color: "var(--growus-ink)",
                   }}
                 >
                   {form_1.supportText}
