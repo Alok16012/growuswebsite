@@ -75,7 +75,7 @@ export const OurStory = () => {
           <p
             className="text-lg leading-relaxed mb-8"
             style={{
-              color: config_global.design?.text?.paragraph || "#64748b",
+              color: "#334155",
             }}
           >
             {story.paragraph1}
@@ -83,7 +83,7 @@ export const OurStory = () => {
           <p
             className="text-lg leading-relaxed mb-10"
             style={{
-              color: config_global.design?.text?.paragraph || "#64748b",
+              color: "#334155",
             }}
           >
             {story.paragraph2}

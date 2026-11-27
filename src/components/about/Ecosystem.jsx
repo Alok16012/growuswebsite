@@ -43,7 +43,7 @@ export const Ecosystem = ({ onJoinClick }) => {
           <p
             className="max-w-md text-sm leading-relaxed font-medium"
             style={{
-              color: config_global.design?.text?.paragraph || "#94a3b8",
+              color: "#334155",
             }}
           >
             {ecosystem.description}

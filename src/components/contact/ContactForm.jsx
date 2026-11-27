@@ -83,7 +83,7 @@ ${S}: ${p[S]}`;
               <p
                 className="text-lg leading-relaxed mb-8 font-medium"
                 style={{
-                  color: config_global.design?.text?.paragraph || "#4b5563",
+                  color: "#334155",
                 }}
               >
                 {form_1.description}

@@ -467,7 +467,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 window.scrollTo(0, 0);
               }}
               aria-label={pageCopy.previous}
-              className="flex items-center gap-3 justify-self-start text-gray-400 hover:text-primary-blue transition-all group"
+              className="flex items-center gap-3 justify-self-start text-gray-600 hover:text-primary-blue transition-all group"
             >
               <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-primary-blue group-hover:text-white transition-all">
                 <svg
@@ -507,7 +507,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 window.scrollTo(0, 0);
               }}
               aria-label={pageCopy.next}
-              className="flex items-center gap-3 justify-self-end text-gray-400 hover:text-primary-blue transition-all group"
+              className="flex items-center gap-3 justify-self-end text-gray-600 hover:text-primary-blue transition-all group"
             >
               <span className="text-[10px] font-black uppercase tracking-widest hidden md:block">
                 {pageCopy.next}
