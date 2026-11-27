@@ -6,6 +6,10 @@ export const Footer = ({ setCurrentPage }) => {
   const { config } = useSiteConfig();
   const pageCopy = config.pageCopy.footer;
   const { footer, global } = config;
+  const footerAccent =
+    global.design?.hero?.subheading ||
+    global.design?.text?.subheading ||
+    global.primaryBlue;
   return (
     <footer
       className="growus-footer site-gutter border-t border-white/10 pt-8 pb-5 md:pt-10 md:pb-6"
@@ -69,7 +73,7 @@ export const Footer = ({ setCurrentPage }) => {
           <h4
             className="font-black mb-3 uppercase tracking-wide text-xs"
             style={{
-              color: global.design?.text?.subheading || global.primaryBlue,
+              color: footerAccent,
             }}
           >
             {pageCopy.quickLinks}
@@ -89,7 +93,7 @@ export const Footer = ({ setCurrentPage }) => {
                     className="w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{
                       backgroundColor:
-                        global.design?.text?.subheading || global.primaryBlue,
+                        footerAccent,
                     }}
                   />
                   {label}
@@ -102,7 +106,7 @@ export const Footer = ({ setCurrentPage }) => {
           <h4
             className="font-black mb-3 uppercase tracking-wide text-xs"
             style={{
-              color: global.design?.text?.subheading || global.primaryBlue,
+              color: footerAccent,
             }}
           >
             {pageCopy.ourServices}
@@ -122,7 +126,7 @@ export const Footer = ({ setCurrentPage }) => {
                     className="w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{
                       backgroundColor:
-                        global.design?.text?.subheading || global.primaryBlue,
+                        footerAccent,
                     }}
                   />
                   {i}
@@ -135,7 +139,7 @@ export const Footer = ({ setCurrentPage }) => {
           <h4
             className="font-black mb-3 uppercase tracking-wide text-xs"
             style={{
-              color: global.design?.text?.subheading || global.primaryBlue,
+              color: footerAccent,
             }}
           >
             {pageCopy.contactInfo}
@@ -224,7 +228,7 @@ export const Footer = ({ setCurrentPage }) => {
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
               style={{
-                color: global.design?.text?.subheading || global.primaryBlue,
+                color: footerAccent,
               }}
             >
               Blinks AI

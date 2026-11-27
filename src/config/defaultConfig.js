@@ -1,40 +1,66 @@
 import { defaultPageCopy } from "./pageCopy.js";
 
+export const legacyGlobalColors = {
+  primaryBlue: "#2563eb",
+  deepBlue: "#0a3663",
+  accentGreen: "#32cd32",
+  emeraldGreen: "#10B981",
+  goldAccent: "#F59E0B",
+  navbarTopBarBg: "#064289",
+  heroOverlayColor: "#064289",
+  design: {
+    text: {
+      heading: "#ffffff",
+      subheading: "#2563eb",
+      paragraph: "#cbd5e1",
+      muted: "#94a3b8",
+    },
+    hero: {
+      heading: "#ffffff",
+      subheading: "#3b82f6",
+    },
+    buttons: {
+      primaryBg: "#32cd32",
+      primaryText: "#ffffff",
+      secondaryBorder: "#ffffff",
+      secondaryText: "#ffffff",
+    },
+    icons: {
+      color: "#2563eb",
+      bg: "#ffffff1a",
+    },
+    backgrounds: {
+      sectionDark: "#0a3663",
+      sectionLight: "#f8fafc",
+      heroOverlay: "#064289",
+    },
+  },
+};
+
 export const defaultConfig = {
   pageCopy: defaultPageCopy,
   global: {
-    primaryBlue: "#2563eb",
-    deepBlue: "#0a3663",
-    accentGreen: "#32cd32",
-    emeraldGreen: "#10B981",
-    goldAccent: "#F59E0B",
-    navbarTopBarBg: "#064289",
-    heroOverlayColor: "#064289",
+    ...legacyGlobalColors,
+    primaryBlue: "#a82d4a",
+    deepBlue: "#102640",
+    accentGreen: "#a82d4a",
+    navbarTopBarBg: "#183553",
+    heroOverlayColor: "#102640",
     design: {
+      ...legacyGlobalColors.design,
       text: {
-        heading: "#ffffff",
-        subheading: "#2563eb",
-        paragraph: "#cbd5e1",
-        muted: "#94a3b8",
+        ...legacyGlobalColors.design.text,
+        subheading: "#9d283f",
+        paragraph: "#e2e8f0",
+        muted: "#cbd5e1",
       },
-      hero: {
-        heading: "#ffffff",
-        subheading: "#3b82f6",
-      },
-      buttons: {
-        primaryBg: "#32cd32",
-        primaryText: "#ffffff",
-        secondaryBorder: "#ffffff",
-        secondaryText: "#ffffff",
-      },
-      icons: {
-        color: "#2563eb",
-        bg: "#ffffff1a",
-      },
+      hero: { heading: "#ffffff", subheading: "#ffd0d7" },
+      buttons: { ...legacyGlobalColors.design.buttons, primaryBg: "#a82d4a" },
+      icons: { ...legacyGlobalColors.design.icons, color: "#ffd0d7" },
       backgrounds: {
-        sectionDark: "#0a3663",
-        sectionLight: "#f8fafc",
-        heroOverlay: "#064289",
+        sectionDark: "#183553",
+        sectionLight: "#edf3f9",
+        heroOverlay: "#102640",
       },
     },
   },

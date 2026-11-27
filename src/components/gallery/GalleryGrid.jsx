@@ -74,8 +74,9 @@ export const GalleryGrid = () => {
                   className="font-black text-sm uppercase tracking-tight leading-tight transition-colors"
                   style={{
                     color:
-                      global.design?.backgrounds?.sectionLight === "#ffffff" ||
-                      !global.design?.backgrounds?.sectionLight
+["#ffffff", "#edf3f9", "#f8fafc"].includes(
+                        global.design?.backgrounds?.sectionLight || "#ffffff",
+                      )
                         ? global.deepBlue
                         : global.design?.text?.heading,
                   }}

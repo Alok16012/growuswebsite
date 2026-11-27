@@ -71,9 +71,9 @@ ${S}: ${p[S]}`;
                 className="section-title mb-8 uppercase"
                 style={{
                   color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#f9fafb" ||
-                    !config_global.design?.backgrounds?.sectionLight
+                    ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
+                      config_global.design?.backgrounds?.sectionLight || "#f9fafb",
+                    )
                       ? config_global.deepBlue
                       : config_global.design?.text?.heading,
                 }}
@@ -107,9 +107,9 @@ ${S}: ${p[S]}`;
                   className="font-black uppercase tracking-tight text-xs"
                   style={{
                     color:
-                      config_global.design?.backgrounds?.sectionLight ===
-                        "#f9fafb" ||
-                      !config_global.design?.backgrounds?.sectionLight
+                      ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
+                        config_global.design?.backgrounds?.sectionLight || "#f9fafb",
+                      )
                         ? config_global.deepBlue
                         : config_global.design?.text?.heading,
                   }}

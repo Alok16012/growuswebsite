@@ -30,9 +30,9 @@ export const Ecosystem = ({ onJoinClick }) => {
               className="section-title uppercase"
               style={{
                 color:
-                  config_global.design?.backgrounds?.sectionLight ===
-                    "#f9fafb" ||
-                  !config_global.design?.backgrounds?.sectionLight
+                  ["#f9fafb", "#edf3f9", "#f8fafc"].includes(
+                    config_global.design?.backgrounds?.sectionLight || "#f9fafb",
+                  )
                     ? config_global.deepBlue
                     : config_global.design?.text?.heading,
               }}

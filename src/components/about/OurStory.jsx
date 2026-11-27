@@ -64,8 +64,9 @@ export const OurStory = () => {
             className="section-title mb-8 uppercase"
             style={{
               color:
-                config_global.design?.backgrounds?.sectionLight === "#ffffff" ||
-                !config_global.design?.backgrounds?.sectionLight
+                ["#ffffff", "#edf3f9", "#f8fafc"].includes(
+                  config_global.design?.backgrounds?.sectionLight || "#ffffff",
+                )
                   ? config_global.deepBlue
                   : config_global.design?.text?.heading,
             }}
@@ -104,9 +105,9 @@ export const OurStory = () => {
                 className="font-black text-3xl mb-1"
                 style={{
                   color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#ffffff" ||
-                    !config_global.design?.backgrounds?.sectionLight
+                    ["#ffffff", "#edf3f9", "#f8fafc"].includes(
+                      config_global.design?.backgrounds?.sectionLight || "#ffffff",
+                    )
                       ? config_global.deepBlue
                       : config_global.design?.text?.heading,
                 }}
@@ -139,9 +140,9 @@ export const OurStory = () => {
                 className="font-black text-3xl mb-1"
                 style={{
                   color:
-                    config_global.design?.backgrounds?.sectionLight ===
-                      "#ffffff" ||
-                    !config_global.design?.backgrounds?.sectionLight
+                    ["#ffffff", "#edf3f9", "#f8fafc"].includes(
+                      config_global.design?.backgrounds?.sectionLight || "#ffffff",
+                    )
                       ? config_global.deepBlue
                       : config_global.design?.text?.heading,
                 }}

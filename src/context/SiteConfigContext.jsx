@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { defaultConfig } from "../config/defaultConfig";
+import { defaultConfig, legacyGlobalColors } from "../config/defaultConfig";
 import { supabase } from "../lib/supabase";
 
 export const SiteConfigContext = createContext();
@@ -16,12 +16,7 @@ export const SiteConfigProvider = ({ children }) => {
           .eq("id", 1)
           .single();
         if (data && data.config_data) {
-          setConfig(
-            deepMerge(
-              JSON.parse(JSON.stringify(defaultConfig)),
-              data.config_data,
-            ),
-          );
+          setConfig(mergePublishedConfig(data.config_data));
         }
       } catch (error) {
         console.error("Error fetching site config from Supabase:", error);
@@ -43,12 +38,7 @@ export const SiteConfigProvider = ({ children }) => {
         (p) => {
           if (p.new && p.new.config_data) {
             try {
-              setConfig(
-                deepMerge(
-                  JSON.parse(JSON.stringify(defaultConfig)),
-                  p.new.config_data,
-                ),
-              );
+              setConfig(mergePublishedConfig(p.new.config_data));
             } catch (error) {
               console.warn("Failed to merge remote config:", error);
             }
@@ -127,4 +117,19 @@ export function deepMerge(n, e) {
     }
   }
   return s;
+}
+
+function matchesLegacyColors(value, legacy) {
+  if (value === legacy) return true;
+  if (!value || typeof value !== "object" || typeof legacy !== "object") return false;
+  const keys = Object.keys(legacy);
+  return Object.keys(value).length === keys.length &&
+    keys.every((key) => matchesLegacyColors(value[key], legacy[key]));
+}
+
+export function mergePublishedConfig(savedConfig) {
+  const config = matchesLegacyColors(savedConfig.global, legacyGlobalColors)
+    ? { ...savedConfig, global: defaultConfig.global }
+    : savedConfig;
+  return deepMerge(structuredClone(defaultConfig), config);
 }
