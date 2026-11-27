@@ -44,17 +44,13 @@ export const Team = () => {
                   alt={i.name}
                   className="growus-photo w-full h-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <p
-                    className="text-xs italic font-black leading-relaxed"
-                    style={{
-                      color: "var(--growus-ink)",
-                    }}
-                  >
-                    "{i.quote}"
-                  </p>
-                </div>
+                {i.quote && (
+                  <div className="absolute inset-x-0 bottom-0 bg-[color-mix(in_srgb,var(--growus-ink)_92%,transparent)] px-4 py-3 text-white sm:px-5 sm:py-4">
+                    <p className="border-l-2 border-[var(--growus-coral)] pl-3 text-sm font-medium italic leading-snug">
+                      "{i.quote}"
+                    </p>
+                  </div>
+                )}
               </div>
               <h4
                 className="font-black text-xl mb-1 uppercase tracking-tight"
