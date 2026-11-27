@@ -28,23 +28,11 @@ export const OurStory = () => {
             alt="Modern Factory"
             className="growus-photo relative z-10 growus-photo-frame w-full aspect-[4/3] object-cover lg:h-[500px] lg:aspect-auto"
           />
-          <div className="absolute bottom-3 right-3 w-32 h-32 sm:w-40 sm:h-40 lg:-bottom-6 lg:right-0 bg-white/80 backdrop-blur-3xl rounded-3xl border border-black/5 shadow-2xl z-20 flex flex-col items-center justify-center text-center p-4">
-            <span
-              className="text-4xl font-black mb-1"
-              style={{
-                color:
-                  config_global.design?.text?.subheading ||
-                  config_global.primaryBlue,
-              }}
-            >
+          <div className="absolute bottom-3 right-3 z-20 flex h-32 w-32 flex-col items-center justify-center rounded-3xl border border-white/15 bg-[var(--growus-ink)] p-4 text-center shadow-2xl sm:h-40 sm:w-40 lg:-bottom-6 lg:right-0">
+            <span className="mb-1 text-4xl font-black text-[var(--growus-coral-light)]">
               15+
             </span>
-            <span
-              className="text-xs font-bold tracking-widest uppercase"
-              style={{
-                color: config_global.deepBlue,
-              }}
-            >
+            <span className="text-xs font-bold uppercase tracking-widest text-white">
               {pageCopy.yearsOf} <br /> {pageCopy.excellence}
             </span>
           </div>
@@ -84,67 +72,23 @@ export const OurStory = () => {
           >
             {story.paragraph2}
           </p>
-          <div className="grid grid-cols-2 gap-6">
-            <div
-              className="p-6 rounded-2xl border border-black/5 shadow-sm"
-              style={{
-                backgroundColor:
-                  config_global.design?.backgrounds?.sectionLight ===
-                    "#ffffff" ||
-                  !config_global.design?.backgrounds?.sectionLight
-                    ? "#f9fafb"
-                    : "rgba(255,255,255,0.05)",
-              }}
-            >
-              <h4
-                className="font-black text-3xl mb-1"
-                style={{
-                  color: "var(--growus-ink)",
-                }}
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
+            {[
+              [story.stat1, story.stat1Label],
+              [story.stat2, story.stat2Label],
+            ].map(([value, label], index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-t-4 border-black/5 border-t-[var(--growus-coral)] bg-[var(--growus-surface)] p-4 shadow-sm sm:p-6"
               >
-                {story.stat1}
-              </h4>
-              <p
-                className="text-xs font-black uppercase tracking-widest"
-                style={{
-                  color:
-                    config_global.design?.text?.subheading ||
-                    config_global.primaryBlue,
-                }}
-              >
-                {story.stat1Label}
-              </p>
-            </div>
-            <div
-              className="p-6 rounded-2xl border border-black/5 shadow-sm"
-              style={{
-                backgroundColor:
-                  config_global.design?.backgrounds?.sectionLight ===
-                    "#ffffff" ||
-                  !config_global.design?.backgrounds?.sectionLight
-                    ? "#f9fafb"
-                    : "rgba(255,255,255,0.05)",
-              }}
-            >
-              <h4
-                className="font-black text-3xl mb-1"
-                style={{
-                  color: "var(--growus-ink)",
-                }}
-              >
-                {story.stat2}
-              </h4>
-              <p
-                className="text-xs font-black uppercase tracking-widest"
-                style={{
-                  color:
-                    config_global.design?.text?.subheading ||
-                    config_global.primaryBlue,
-                }}
-              >
-                {story.stat2Label}
-              </p>
-            </div>
+                <p className="mb-1 break-words text-3xl font-black text-[var(--growus-accent-text,#a82d4a)]">
+                  {value}
+                </p>
+                <p className="text-xs font-bold uppercase tracking-wide text-[var(--growus-ink)]">
+                  {label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
