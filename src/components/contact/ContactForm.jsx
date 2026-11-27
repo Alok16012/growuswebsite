@@ -201,7 +201,7 @@ ${S}: ${p[S]}`;
                         name={d.name}
                         placeholder={d.placeholder}
                         rows="4"
-                        className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white font-medium placeholder:text-white/50 focus:outline-none focus:border-primary-blue transition-all shadow-inner resize-none"
+                        className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white font-medium placeholder:text-white/75 focus:outline-none focus:border-primary-blue transition-all shadow-inner resize-none"
                       />
                     ) : d.type === "select" ? (
                       <div className="relative">
@@ -255,7 +255,7 @@ ${S}: ${p[S]}`;
                         name={d.name}
                         type={d.type}
                         placeholder={d.placeholder}
-                        className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white font-medium placeholder:text-white/50 focus:outline-none focus:border-primary-blue transition-all shadow-inner"
+                        className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white font-medium placeholder:text-white/75 focus:outline-none focus:border-primary-blue transition-all shadow-inner"
                       />
                     )}
                   </div>

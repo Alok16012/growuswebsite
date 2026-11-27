@@ -51,7 +51,7 @@ export const OurStory = () => {
         </div>
         <div>
           <h2
-            className="text-sm font-black tracking-[0.3em] uppercase mb-4"
+            className="text-sm font-black tracking-wider uppercase mb-4"
             style={{
               color:
                 config_global.design?.text?.subheading ||
@@ -105,7 +105,7 @@ export const OurStory = () => {
                 {story.stat1}
               </h4>
               <p
-                className="text-[10px] font-black uppercase tracking-widest"
+                className="text-xs font-black uppercase tracking-widest"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||
@@ -135,7 +135,7 @@ export const OurStory = () => {
                 {story.stat2}
               </h4>
               <p
-                className="text-[10px] font-black uppercase tracking-widest"
+                className="text-xs font-black uppercase tracking-widest"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||

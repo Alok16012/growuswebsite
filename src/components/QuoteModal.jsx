@@ -170,7 +170,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label
-                    className="text-[10px] font-black uppercase tracking-widest pl-1"
+                    className="text-sm font-semibold pl-1"
                     style={{
                       color:
                         config_global.design?.text?.subheading ||
@@ -195,7 +195,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                 </div>
                 <div className="space-y-1.5">
                   <label
-                    className="text-[10px] font-black uppercase tracking-widest pl-1"
+                    className="text-sm font-semibold pl-1"
                     style={{
                       color:
                         config_global.design?.text?.subheading ||
@@ -222,7 +222,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label
-                    className="text-[10px] font-black uppercase tracking-widest pl-1"
+                    className="text-sm font-semibold pl-1"
                     style={{
                       color:
                         config_global.design?.text?.subheading ||
@@ -247,7 +247,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
                 </div>
                 <div className="space-y-1.5">
                   <label
-                    className="text-[10px] font-black uppercase tracking-widest pl-1"
+                    className="text-sm font-semibold pl-1"
                     style={{
                       color:
                         config_global.design?.text?.subheading ||
@@ -272,7 +272,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
               </div>
               <div className="space-y-1.5">
                 <label
-                  className="text-[10px] font-black uppercase tracking-widest pl-1"
+                  className="text-sm font-semibold pl-1"
                   style={{
                     color:
                       config_global.design?.text?.subheading ||
@@ -313,7 +313,7 @@ export const QuoteModal = ({ isOpen, onClose }) => {
               </div>
               <div className="space-y-1.5">
                 <label
-                  className="text-[10px] font-black uppercase tracking-widest pl-1"
+                  className="text-sm font-semibold pl-1"
                   style={{
                     color:
                       config_global.design?.text?.subheading ||

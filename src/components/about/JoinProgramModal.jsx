@@ -159,7 +159,7 @@ ${C}: ${b[C]}`;
               {joinProgramForm.fields?.map((p, g) => (
                 <div key={g} className="space-y-1.5">
                   <label
-                    className="text-[10px] font-black uppercase tracking-widest pl-1"
+                    className="text-sm font-semibold pl-1"
                     style={{
                       color:
                         global.design?.text?.subheading || global.primaryBlue,

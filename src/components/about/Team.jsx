@@ -16,7 +16,7 @@ export const Team = () => {
       <div className="site-content">
         <div className="text-center mb-12">
           <h2
-            className="text-sm font-black tracking-[0.3em] uppercase mb-4"
+            className="text-sm font-black tracking-wider uppercase mb-4"
             style={{
               color:
                 config_global.design?.text?.subheading ||
@@ -61,7 +61,7 @@ export const Team = () => {
                 {i.name}
               </h4>
               <p
-                className="text-[11px] font-black uppercase tracking-[0.2em]"
+                className="text-xs font-black uppercase tracking-[0.2em]"
                 style={{
                   color:
                     config_global.design?.text?.subheading ||

@@ -72,7 +72,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
         }}
       >
         <div
-          className="text-white/60 text-[10px] font-bold py-2 px-4 md:px-8 flex justify-between items-center border-b border-white/5"
+          className="text-white/85 text-xs font-bold py-2 px-4 md:px-8 flex justify-between items-center border-b border-white/5"
           style={{
             backgroundColor: c ? "transparent" : "rgba(255,255,255,0.02)",
           }}
@@ -140,7 +140,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
             >
               <Logo size="md" onDark />
             </div>
-            <div className="hidden lg:flex items-center gap-4 xl:gap-8">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-8">
               {S.map((R) => {
                 if (R === "CAREERS") {
                   return (
@@ -212,7 +212,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
           <div className="hidden lg:flex items-center gap-6">
             <button
               onClick={() => setP(true)}
-              className="group flex items-center gap-2.5 text-[11px] font-black px-6 py-2.5 rounded-xl transition-all duration-300 uppercase tracking-widest border border-white/10 hover:border-[#ff3b5c]/30 text-white/70 hover:text-white bg-white/5"
+              className="group flex items-center gap-2.5 text-sm font-black px-4 py-2.5 rounded-xl transition-all duration-300 uppercase tracking-widest border border-white/10 hover:border-[#ff3b5c]/30 text-white/70 hover:text-white bg-white/5"
             >
               <svg
                 className="w-4 h-4 text-[#ff3b5c] transition-transform group-hover:scale-110"
@@ -231,7 +231,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
             </button>
             <button
               onClick={() => setB(true)}
-              className="text-[11px] font-black px-8 py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#ff3b5c]/20 active:scale-95 text-white uppercase tracking-[0.2em] relative overflow-hidden group"
+              className="text-sm font-black px-5 py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#ff3b5c]/20 active:scale-95 text-white uppercase tracking-[0.2em] relative overflow-hidden group"
               style={{
                 background: "linear-gradient(135deg, #ff3b5c, #e11d48)",
               }}
@@ -355,7 +355,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                     setP(true);
                     setV(false);
                   }}
-                  className="flex-1 border-2 text-[11px] font-bold py-2.5 rounded-xl uppercase tracking-widest text-center border-white/10 text-white/70 hover:bg-white/5 transition-colors"
+                  className="flex-1 border-2 text-sm font-bold px-2 py-2.5 rounded-xl uppercase tracking-widest text-center border-white/10 text-white/70 hover:bg-white/5 transition-colors"
                 >
                   {config_navbar.brochureButtonText}
                 </button>
@@ -364,7 +364,7 @@ export const Navbar = ({ currentPage, setCurrentPage }) => {
                     setB(true);
                     setV(false);
                   }}
-                  className="flex-1 text-white text-[11px] font-bold py-2.5 rounded-xl uppercase tracking-widest text-center shadow-lg active:scale-95 transition-all"
+                  className="flex-1 text-white text-sm font-bold px-2 py-2.5 rounded-xl uppercase tracking-widest text-center shadow-lg active:scale-95 transition-all"
                   style={{
                     background: "linear-gradient(135deg, #ff3b5c, #e11d48)",
                   }}

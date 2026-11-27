@@ -44,7 +44,7 @@ export const CultureDna = () => {
               <h4 className="text-white font-black text-xl mb-4 uppercase tracking-tight">
                 {i.title}
               </h4>
-              <p className="text-slate-300 font-medium text-sm leading-relaxed">
+              <p className="text-slate-200 font-medium text-base leading-relaxed">
                 {i.desc}
               </p>
             </div>

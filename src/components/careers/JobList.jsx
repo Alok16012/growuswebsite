@@ -71,7 +71,7 @@ export const JobList = ({ onApply }) => {
         </div>
         {p.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-deep-blue/40 text-lg font-black uppercase tracking-widest">
+            <p className="text-[var(--growus-copy)] text-lg font-black uppercase tracking-widest">
               {pageCopy.noPositionsFoundMatchingYour}
             </p>
           </div>

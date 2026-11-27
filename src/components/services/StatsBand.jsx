@@ -19,7 +19,7 @@ export const StatsBand = () => {
               {i.suffix}
             </p>
             <p
-              className="text-[11px] font-black uppercase tracking-[0.3em]"
+              className="text-xs font-black uppercase tracking-wider"
               style={{
                 color: config_global.primaryBlue,
               }}

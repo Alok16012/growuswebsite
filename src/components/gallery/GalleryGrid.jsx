@@ -20,7 +20,7 @@ export const GalleryGrid = () => {
           <div className="bg-slate-50 rounded-full p-2 inline-flex border border-black/5 shadow-inner">
             <button
               onClick={() => setI("events")}
-              className={`px-10 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 ${i === "events" ? "text-white shadow-xl scale-105" : "text-gray-500"}`}
+              className={`px-4 py-3 sm:px-8 rounded-full text-sm font-bold uppercase tracking-wide transition-all duration-500 ${i === "events" ? "text-white shadow-xl scale-105" : "text-gray-500"}`}
               style={{
                 backgroundColor:
                   i === "events"
@@ -36,7 +36,7 @@ export const GalleryGrid = () => {
             </button>
             <button
               onClick={() => setI("activities")}
-              className={`px-10 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 ${i === "activities" ? "text-white shadow-xl scale-105" : "text-gray-500"}`}
+              className={`px-4 py-3 sm:px-8 rounded-full text-sm font-bold uppercase tracking-wide transition-all duration-500 ${i === "activities" ? "text-white shadow-xl scale-105" : "text-gray-500"}`}
               style={{
                 backgroundColor:
                   i === "activities"

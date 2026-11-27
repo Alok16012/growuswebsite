@@ -27,7 +27,7 @@ export const JobCard = ({ job, onApply }) => {
         </svg>
         <span>{job.location}</span>
       </div>
-      <p className="text-gray-600 font-medium text-sm leading-relaxed mb-6">
+      <p className="text-[var(--growus-copy)] font-medium text-base leading-relaxed mb-6">
         {job.description}
       </p>
       <div className="mb-8">

@@ -171,7 +171,7 @@ export const ServiceCard = ({
         <h3 className="mb-2 break-words text-xl font-bold leading-snug text-white">
           {service.title}
         </h3>
-        <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-slate-200">
+        <p className="mb-5 line-clamp-3 text-base leading-relaxed text-slate-200">
           {service.description}
         </p>
         <button

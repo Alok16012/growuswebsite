@@ -184,7 +184,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
           </button>
           {c === 1 && (
             <div>
-              <p className="text-primary-blue text-[10px] font-black tracking-[0.3em] uppercase mb-2">
+              <p className="text-primary-blue text-xs font-black tracking-wider uppercase mb-2">
                 {pageCopy.step1Of2}
               </p>
               <h3 className="text-deep-blue text-xl font-black mb-6 uppercase tracking-tighter">
@@ -216,7 +216,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                       <p className="text-deep-blue text-xs font-black uppercase tracking-widest group-hover:text-primary-blue transition-colors">
                         {E.title}
                       </p>
-                      <p className="text-gray-600 font-bold text-[10px] mt-0.5 tracking-tight">
+                      <p className="text-gray-600 font-bold text-xs mt-0.5 tracking-tight">
                         {E.desc}
                       </p>
                     </div>
@@ -242,7 +242,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
             <div>
               <button
                 onClick={() => setC(1)}
-                className="flex items-center gap-1 text-gray-500 hover:text-primary-blue text-[10px] font-bold uppercase tracking-widest mb-3 transition-colors"
+                className="flex items-center gap-1 text-gray-500 hover:text-primary-blue text-xs font-bold uppercase tracking-widest mb-3 transition-colors"
               >
                 <svg
                   className="w-3 h-3"
@@ -259,7 +259,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                 </svg>
                 {pageCopy.back}
               </button>
-              <p className="text-primary-blue text-[10px] font-black tracking-[0.3em] uppercase mb-2">
+              <p className="text-primary-blue text-xs font-black tracking-wider uppercase mb-2">
                 {pageCopy.step2Of2}
               </p>
               <h3 className="text-deep-blue text-xl font-black mb-1 uppercase tracking-tighter">
@@ -365,7 +365,7 @@ export const BrochureModal = ({ isOpen, onClose }) => {
                   )}
                 </button>
               </form>
-              <p className="text-gray-600 text-[9px] text-center mt-3">
+              <p className="text-gray-600 text-xs text-center mt-3">
                 {pageCopy.byDownloadingYouAgreeTo}
               </p>
             </div>

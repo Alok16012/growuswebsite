@@ -32,7 +32,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
         <div className="absolute inset-0 bg-black/40" />
         <div className="page-hero site-container relative z-10 flex flex-col items-center justify-center text-center">
           <p
-            className="text-[10px] font-black tracking-[0.4em] uppercase mb-2"
+            className="text-xs font-black tracking-[0.4em] uppercase mb-2"
             style={{
               color:
                 config_global.design?.hero?.subheading ||
@@ -94,7 +94,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 </span>
               </div>
               <p
-                className="text-[10px] font-black uppercase tracking-[0.3em] mt-2 opacity-40"
+                className="text-xs font-bold uppercase tracking-wider mt-2"
                 style={{
                   color: config_global.deepBlue,
                 }}
@@ -122,10 +122,10 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                 backgroundColor: config_global.primaryBlue,
               }}
             />
-            <p className="text-gray-600 font-medium text-sm leading-relaxed mb-4">
+            <p className="text-[var(--growus-copy)] font-medium text-base leading-relaxed mb-4">
               {m.description}
             </p>
-            <p className="text-gray-500 text-sm leading-relaxed">
+            <p className="text-[var(--growus-copy)] text-base leading-relaxed">
               {m.longDescription}
             </p>
             <button
@@ -213,7 +213,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
             >
               {pageCopy.ourProcess}
             </h2>
-            <p className="text-gray-500 font-medium text-sm md:text-base mb-4">
+            <p className="text-[var(--growus-copy)] font-medium text-base mb-4">
               {pageCopy.tracingOurSuccessStepBy}
             </p>
             <div
@@ -413,7 +413,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                     </div>
                     <div className="flex-1 bg-white border border-gray-100 p-5 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300">
                       <span
-                        className="text-[10px] font-black tracking-widest uppercase mb-1 block"
+                        className="text-xs font-black tracking-widest uppercase mb-1 block"
                         style={{
                           color: config_global.primaryBlue,
                         }}
@@ -450,7 +450,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
             {m.industries.map((v, j) => (
               <span
                 key={j}
-                className="bg-white text-gray-600 text-[10px] font-black uppercase tracking-widest border border-black/10 rounded-full px-4 py-2 hover:border-primary-blue hover:text-white hover:bg-primary-blue transition-all cursor-default shadow-sm group"
+                className="bg-white text-gray-600 text-xs font-black uppercase tracking-widest border border-black/10 rounded-full px-4 py-2 hover:border-primary-blue hover:text-white hover:bg-primary-blue transition-all cursor-default shadow-sm group"
               >
                 {v}
               </span>
@@ -484,7 +484,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
                   />
                 </svg>
               </div>
-              <span className="text-[10px] font-black uppercase tracking-widest hidden md:block">
+              <span className="text-xs font-black uppercase tracking-widest hidden md:block">
                 {pageCopy.previous}
               </span>
             </button>
@@ -493,7 +493,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
           )}
           <button
             onClick={() => setCurrentPage("services")}
-            className="text-[10px] font-black uppercase tracking-widest hover:text-white transition-all border border-black/10 px-4 py-4 sm:px-8 rounded-full bg-white shadow-sm"
+            className="text-xs font-black uppercase tracking-widest hover:text-white transition-all border border-black/10 px-4 py-4 sm:px-8 rounded-full bg-white shadow-sm"
             style={{
               color: config_global.deepBlue,
             }}
@@ -509,7 +509,7 @@ export const ServiceDetailPage = ({ serviceSlug, setCurrentPage }) => {
               aria-label={pageCopy.next}
               className="flex items-center gap-3 justify-self-end text-[var(--growus-copy)] hover:text-primary-blue transition-all group"
             >
-              <span className="text-[10px] font-black uppercase tracking-widest hidden md:block">
+              <span className="text-xs font-black uppercase tracking-widest hidden md:block">
                 {pageCopy.next}
               </span>
               <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-primary-blue group-hover:text-white transition-all">
