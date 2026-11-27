@@ -43,21 +43,10 @@ export const WhyChooseUs = () => {
           <ul className="space-y-6">
             {whyChooseUs.benefits.map((i, c) => (
               <li key={c} className="flex items-center gap-5 group">
-                <div
-                  className="w-10 h-10 border border-white/10 group-hover:border-primary-blue rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 shadow-lg"
-                  style={{
-                    backgroundColor:
-                      config_global.design?.backgrounds?.sectionDark ||
-                      config_global.deepBlue,
-                  }}
-                >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[var(--growus-ink)] text-[var(--growus-coral-light)] shadow-lg">
                   <svg
-                    className="w-5 h-5 group-hover:text-white transition-colors"
-                    style={{
-                      color:
-                        config_global.design?.text?.subheading ||
-                        config_global.primaryBlue,
-                    }}
+                    aria-hidden="true"
+                    className="h-5 w-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
